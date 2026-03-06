@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bakwtt7aavn5t"]
+
+[ext_resource type="PackedScene" uid="uid://daxfttal8sqc1" path="res://scenes/upgrades/move_speed.tscn" id="1_ctfre"]
+[ext_resource type="Script" uid="uid://ks18pjoilf85" path="res://scripts/item_selection.gd" id="1_fidhh"]
+[ext_resource type="PackedScene" uid="uid://bhikrrw4lhvmb" path="res://scenes/upgrades/double_jump.tscn" id="2_fidhh"]
+
+[node name="ItemSelection" type="Control" unique_id=1848016840]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fidhh")
+item_list = Array[PackedScene]([ExtResource("2_fidhh"), ExtResource("1_ctfre")])
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1870979787]
+layout_mode = 0
+offset_left = -628.0
+offset_top = -347.0
+offset_right = 652.0
+offset_bottom = 373.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=4437926]
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=580467274]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=785938932]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=442815230]
+layout_mode = 2
+text = "LEFT ITEM"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1185360004]
+layout_mode = 2
+theme_override_constants/separation = 364
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1282223215]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1305241622]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2093471057]
+layout_mode = 2
+text = "RIGHT ITEM"

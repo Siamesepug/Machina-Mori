@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bnn7us75voip7" path="res://assets/images/tilemap/Terrain (16x16).png" id="1_3n7h2"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="1_g0jr5"]
 [ext_resource type="PackedScene" uid="uid://vjuntkxlfvjv" path="res://scenes/player.tscn" id="2_msin7"]
+[ext_resource type="PackedScene" uid="uid://bakwtt7aavn5t" path="res://scenes/menus/item_selection.tscn" id="4_i4uh8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_msin7"]
 texture = ExtResource("1_3n7h2")
@@ -198,3 +199,10 @@ tile_set = SubResource("TileSet_g0jr5")
 [node name="Player" parent="." unique_id=131089335 instance=ExtResource("2_msin7")]
 position = Vector2(32.666668, 192.66667)
 scale = Vector2(1, 1)
+
+[node name="ItemSelection" parent="Player" unique_id=1848016840 instance=ExtResource("4_i4uh8")]
+offset_left = -0.99999976
+offset_top = -43.666668
+offset_right = -0.99999976
+offset_bottom = -43.666668
+scale = Vector2(0.285, 0.285)

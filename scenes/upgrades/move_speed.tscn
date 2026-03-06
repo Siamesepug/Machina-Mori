@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://daxfttal8sqc1"]
+
+[ext_resource type="Script" uid="uid://bar3bo7h6mmsb" path="res://scripts/move_speed.gd" id="1_j0x51"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_s1rsq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
+size = Vector2(64, 64)
+
+[node name="MoveSpeed" type="StaticBody2D" unique_id=567444937]
+position = Vector2(32, 32)
+script = ExtResource("1_j0x51")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
+modulate = Color(0.14809194, 0.752655, 0.7878075, 1)
+texture = ExtResource("2_s1rsq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
+shape = SubResource("RectangleShape2D_e7mu8")
+
+[node name="DoubleJump" type="Node2D" parent="." unique_id=990389484]
