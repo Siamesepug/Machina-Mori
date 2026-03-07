@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cft4omc85o6i7"]
+
+[ext_resource type="Script" uid="uid://bhnf34l33vk61" path="res://scripts/basic_flyer.gd" id="1_orw3q"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_6ct5k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7xp6"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pk7ar"]
+radius = 44.0
+
+[node name="BasicFlyer" type="CharacterBody2D" unique_id=494621083]
+modulate = Color(0.6392157, 1, 1, 1)
+scale = Vector2(0.25, 0.25)
+collision_layer = 4
+script = ExtResource("1_orw3q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2091209592]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("2_6ct5k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525793527]
+shape = SubResource("RectangleShape2D_c7xp6")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=354206683]
+target_position = Vector2(-120, 0)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=675640495]
+path_desired_distance = 40.0
+avoidance_enabled = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2072010273]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1931091940]
+shape = SubResource("CircleShape2D_pk7ar")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

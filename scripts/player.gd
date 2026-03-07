@@ -2,12 +2,16 @@ extends CharacterBody2D
 
 @onready var player_sprite = $AnimatedSprite2D
 @onready var jump_sound = $JumpSound
+@onready var sword_attack = $SwordAttack
 
 @export var air_resistance = 10.0 # lower means more floating in the air
 @export var friction = 50.0 # how snappy the turning and stopping is on the ground
 
 var death_screen_resource = load("res://scenes/menus/death_screen.tscn")
 var death_screen_instance = death_screen_resource.instantiate()
+
+var current_weapon = PlayerAttributes.current_weapon
+var weapon_damage = PlayerAttributes.weapon_damage
 
 var current_health = PlayerAttributes.current_health
 var max_health = PlayerAttributes.max_health
@@ -74,8 +78,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 	if direction == 1.0:
+		sword_attack.global_position.x = global_position.x + (50 * direction)
 		player_sprite.flip_h = false
 	elif direction == -1.0:
+		sword_attack.global_position.x = global_position.x + (50 * direction)
 		player_sprite.flip_h = true
 	
 	# Fall death
@@ -83,6 +89,11 @@ func _physics_process(delta):
 		get_tree().current_scene.add_child(death_screen_instance)
 
 func _input(event):
+	
+	# Attack input
+	if Input.is_action_just_pressed("attack"):
+		if current_weapon == "sword":
+			sword_attack.swing_sword()
 	
 	# Dash input
 	if Input.is_action_just_pressed("dash"):

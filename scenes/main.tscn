@@ -6,15 +6,25 @@
 [ext_resource type="PackedScene" uid="uid://bhikrrw4lhvmb" path="res://scenes/upgrades/double_jump.tscn" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://daxfttal8sqc1" path="res://scenes/upgrades/move_speed.tscn" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://cyl8tofu4bsb6" path="res://scenes/upgrades/xp_boost.tscn" id="6_tipki"]
+[ext_resource type="PackedScene" uid="uid://mk3lry0wtxna" path="res://scenes/upgrades/regen_improve.tscn" id="7_85g3d"]
+[ext_resource type="Script" uid="uid://g2y70bi570ye" path="res://scripts/level_change_timer.gd" id="8_85g3d"]
+[ext_resource type="PackedScene" uid="uid://mlnfjf77krvl" path="res://scenes/upgrades/max_health.tscn" id="8_choun"]
 
 [node name="Main" type="Node2D" unique_id=687830750]
 position = Vector2(292, -257)
 
-[node name="LevelRoot" parent="." unique_id=1082038515 instance=ExtResource("1_o5qli")]
+[node name="Level01" parent="." unique_id=1082038515 instance=ExtResource("1_o5qli")]
 
 [node name="GameUI" parent="." unique_id=508800275 instance=ExtResource("2_0wfyh")]
 
 [node name="ItemSelection" parent="." unique_id=2141210872 instance=ExtResource("3_sugp2")]
 scale = Vector2(0.285, 0.285)
 transform = Transform2D(0.285, 0, 0, 0.285, 0, 0)
-item_list = Array[PackedScene]([ExtResource("4_tefeu"), ExtResource("5_o6xl0"), ExtResource("6_tipki")])
+item_list = Array[PackedScene]([ExtResource("4_tefeu"), ExtResource("5_o6xl0"), ExtResource("6_tipki"), ExtResource("7_85g3d"), ExtResource("8_choun")])
+
+[node name="LevelChangeTimer" type="Timer" parent="." unique_id=1857395138]
+wait_time = 300.0
+autostart = true
+script = ExtResource("8_85g3d")
+
+[connection signal="timeout" from="LevelChangeTimer" to="LevelChangeTimer" method="_on_timeout"]

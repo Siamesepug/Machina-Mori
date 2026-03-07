@@ -71,6 +71,19 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.44
 
+[node name="TimeLeft" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1196523528]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6v45u")
+theme_override_font_sizes/font_size = 30
+text = "TIME LEFT
+99:99"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer" unique_id=727890790]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.44
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=670483788]
 layout_mode = 2
 theme_override_constants/separation = 18

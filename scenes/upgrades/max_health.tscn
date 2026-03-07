@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://mlnfjf77krvl"]
+
+[ext_resource type="Script" uid="uid://c6mbc6sij6dpc" path="res://scripts/max_health.gd" id="1_tbn1q"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_0vtcj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
+size = Vector2(64, 64)
+
+[node name="MaxHealth" type="StaticBody2D" unique_id=567444937]
+position = Vector2(32, 0)
+script = ExtResource("1_tbn1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
+modulate = Color(0.80757797, 0, 0.12833506, 1)
+texture = ExtResource("2_0vtcj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
+shape = SubResource("RectangleShape2D_e7mu8")

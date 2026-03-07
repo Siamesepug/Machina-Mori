@@ -10,6 +10,7 @@ size = Vector2(64, 18)
 size = Vector2(64, 22)
 
 [node name="BoostFan" type="StaticBody2D" unique_id=241240892]
+collision_layer = 2
 script = ExtResource("1_g32uu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1365668153]

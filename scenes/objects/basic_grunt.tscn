@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://e886w33jbyu6"]
 
-[ext_resource type="Script" uid="uid://cc261vvnfqhil" path="res://basic_grunt.gd" id="1_pk7ar"]
+[ext_resource type="Script" uid="uid://cc261vvnfqhil" path="res://scripts/basic_grunt.gd" id="1_pk7ar"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_fjbdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7xp6"]
@@ -25,7 +25,7 @@ shape = SubResource("RectangleShape2D_c7xp6")
 target_position = Vector2(-120, 0)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=675640495]
-path_desired_distance = 40.0
+path_desired_distance = 1.0
 avoidance_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2072010273]
@@ -34,4 +34,9 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1931091940]
 shape = SubResource("CircleShape2D_pk7ar")
 
+[node name="Timer" type="Timer" parent="." unique_id=1714618657]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

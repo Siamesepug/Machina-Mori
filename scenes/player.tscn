@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c6sh66he14syx" path="res://assets/images/player/Run (32x32).png" id="4_fjrip"]
 [ext_resource type="AudioStream" uid="uid://cok360m5t6wct" path="res://assets/sounds/jump.wav" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://cycxj1oy1fpd0" path="res://scripts/health_regen.gd" id="7_fjrip"]
+[ext_resource type="Script" uid="uid://ctfre087qh7qq" path="res://scripts/sword_attack.gd" id="8_smehm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("1_dqkch")
@@ -247,6 +248,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
 size = Vector2(15.666668, 20.666834)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur7pv"]
+size = Vector2(39.333336, 37)
+
 [node name="Player" type="CharacterBody2D" unique_id=131089335]
 scale = Vector2(3, 3)
 collision_layer = 2
@@ -272,3 +276,11 @@ limit_bottom = 720
 
 [node name="HealthRegen" type="Node2D" parent="." unique_id=2002800006]
 script = ExtResource("7_fjrip")
+
+[node name="SwordAttack" type="Area2D" parent="." unique_id=1114010595]
+script = ExtResource("8_smehm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordAttack" unique_id=596881158]
+shape = SubResource("RectangleShape2D_ur7pv")
+
+[connection signal="body_entered" from="SwordAttack" to="SwordAttack" method="_on_sword_attack_body_entered"]

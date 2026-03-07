@@ -5,6 +5,9 @@ extends Node
 # You can change these numbers from other scripts such as items/upgrades.
 # Avoid directly changing the player's variables.
 
+var current_weapon = "sword"
+var weapon_damage = 500.0
+
 var current_health = 100.0
 var max_health = 100.0
 var regen_cd = 3.0 # seconds before regen starts

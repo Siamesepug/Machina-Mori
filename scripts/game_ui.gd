@@ -2,10 +2,12 @@ extends CanvasLayer
 
 @onready var xp_bar = $MarginContainer/HBoxContainer/HBoxContainer2/ProgressBar
 @onready var hp_bar = $MarginContainer/HBoxContainer/HBoxContainer/HealthBar
+@onready var time_left = $MarginContainer/HBoxContainer/TimeLeft
 
 func _ready():
 	SignalManager.xp_gained.connect(_update_xp_bar)
 	SignalManager.hp_changed.connect(_update_hp_bar)
+	SignalManager.time_left.connect(_update_time_left)
 
 # manages levelling up the player, and carries over extra xp
 func _update_xp_bar(amount):
@@ -26,3 +28,9 @@ func _update_xp_bar(amount):
 
 func _update_hp_bar():
 	hp_bar.value = PlayerAttributes.current_health
+
+func _update_time_left(time):
+	var minutes = int(time / 60)
+	var secs = int(time) % 60
+	
+	time_left.text = ("TIME LEFT\n" + str(minutes) + ":" + str("%02d" % secs))
