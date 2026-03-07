@@ -2,16 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b6wrhtdpisyq4" path="res://scripts/title_screen.gd" id="1_eqhve"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="1_n17qi"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqhve"]
-bg_color = Color(0.1701296, 0.015360288, 0.05358547, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.3348673, 0.030770576, 2.4065375e-08, 1)
-border_blend = true
-corner_detail = 1
+[ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="3_qc2aw"]
+[ext_resource type="StyleBox" uid="uid://c6kxtadbn2l03" path="res://scenes/menus/MenuButtons.tres" id="4_vudbd"]
+[ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="5_ptv5j"]
 
 [node name="TitleScreen" type="Control" unique_id=293983182]
 layout_mode = 3
@@ -46,9 +39,10 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.6857328, 3.1044335e-06, 5.7756904e-07, 1)
 theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.3372549)
 theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
-theme_override_constants/shadow_offset_x = -7
-theme_override_constants/outline_size = 35
-theme_override_constants/shadow_outline_size = 29
+theme_override_constants/shadow_offset_x = -11
+theme_override_constants/outline_size = 22
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("3_qc2aw")
 theme_override_font_sizes/font_size = 64
 text = "ARTIFICIAL
 PURGE"
@@ -57,20 +51,26 @@ horizontal_alignment = 1
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=12593080]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qc2aw")
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_styles/normal = ExtResource("4_vudbd")
+theme_override_styles/hover = ExtResource("5_ptv5j")
 text = "PLAY"
 
 [node name="Button3" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=152492992]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_fonts/font = ExtResource("3_qc2aw")
+theme_override_styles/normal = ExtResource("4_vudbd")
+theme_override_styles/hover = ExtResource("5_ptv5j")
 text = "CREDITS"
 
 [node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=875554567]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_fonts/font = ExtResource("3_qc2aw")
+theme_override_styles/normal = ExtResource("4_vudbd")
+theme_override_styles/hover = ExtResource("5_ptv5j")
 text = "QUIT"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_play_pressed"]

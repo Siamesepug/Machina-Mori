@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://biu73v5dp2dfk"]
 
 [ext_resource type="Script" uid="uid://bxo641sonttt8" path="res://scripts/game_ui.gd" id="1_7oade"]
+[ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="2_6v45u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7oade"]
 content_margin_left = 50.0
@@ -37,6 +38,7 @@ offset_bottom = 52.0
 
 [node name="Label" type="Label" parent="HBoxContainer" unique_id=1281861374]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_font_sizes/font_size = 16
 text = "XP PROGRESS"
 
@@ -48,5 +50,6 @@ theme_override_constants/separation = 69
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_styles/background = SubResource("StyleBoxFlat_7oade")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6v45u")

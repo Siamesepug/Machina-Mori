@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bsq626y0lmqhc"]
+
+[ext_resource type="AudioStream" uid="uid://d4hs22go6qfvy" path="res://assets/sounds/kaazoom_secrets_main_menu.mp3" id="1_5geqf"]
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" unique_id=1219345589]
+stream = ExtResource("1_5geqf")
+volume_db = -9.827
+autoplay = true
+parameters/looping = false

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerAttributes="*uid://b31smgif6tu2l"
 SignalManager="*uid://4b20uqiu53rd"
+MainMenuMusic="*uid://bsq626y0lmqhc"
 
 [display]
 

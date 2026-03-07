@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://jmma5rddvyud" path="res://scripts/credits.gd" id="1_iiqlc"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_b2mra"]
+[ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="3_b2mra"]
+[ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="4_yrcfj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqhve"]
 bg_color = Color(0.1701296, 0.015360288, 0.05358547, 1)
@@ -48,6 +50,7 @@ theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
 theme_override_constants/shadow_offset_x = -7
 theme_override_constants/outline_size = 35
 theme_override_constants/shadow_outline_size = 29
+theme_override_fonts/font = ExtResource("3_b2mra")
 theme_override_font_sizes/font_size = 55
 text = "A GAME BY
 
@@ -63,6 +66,7 @@ theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
 theme_override_constants/shadow_offset_x = -7
 theme_override_constants/outline_size = 35
 theme_override_constants/shadow_outline_size = 29
+theme_override_fonts/font = ExtResource("3_b2mra")
 theme_override_font_sizes/font_size = 20
 text = "SUBMISSION TO THE SPRING 2026 MISSOURI S&T GAME JAM
 "
@@ -72,8 +76,10 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_b2mra")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_styles/hover = ExtResource("4_yrcfj")
 text = "      BACK      "
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
