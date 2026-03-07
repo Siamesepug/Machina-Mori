@@ -3,8 +3,12 @@ extends CharacterBody2D
 @onready var player_sprite = $AnimatedSprite2D
 @onready var jump_sound = $JumpSound
 
+@export var air_resistance = 10.0 # lower means more floating in the air
+@export var friction = 50.0 # how snappy the turning and stopping is on the ground
+
 var xp_level = PlayerAttributes.xp_level
 var xp_progress = PlayerAttributes.xp_progress
+var xp_gain = PlayerAttributes.xp_gain
 
 var dash_speed = PlayerAttributes.default_speed
 var is_dashing = false
@@ -39,7 +43,8 @@ func _physics_process(delta):
 			player_jump()
 	
 	if Input.is_action_just_pressed("debug_level_up"):
-		level_up()
+		PlayerAttributes.xp_progress += xp_gain
+		SignalManager.xp_gained.emit(xp_gain)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -47,7 +52,10 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction * speed * dash_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		if is_on_floor():
+			velocity.x = move_toward(velocity.x, 0, friction)
+		else:
+			velocity.x = move_toward(velocity.x, 0, air_resistance)
 
 	move_and_slide()
 
@@ -69,8 +77,9 @@ func _input(event):
 			print("DASHING")
 			
 			dash_speed = PlayerAttributes.dash_speed
-			await get_tree().create_timer(0.2).timeout
-			dash_speed = PlayerAttributes.default_speed
+			# LENGTH OF DASH, MIGHT MAKE VARIABLE
+			await get_tree().create_timer(0.1).timeout
+			_slow_from_dash()
 			await get_tree().create_timer(1.0).timeout
 			
 			print("Dash is restored")
@@ -81,15 +90,22 @@ func player_jump():
 	jump_sound.play()
 	jump_count += 1
 
-func level_up():
-	SignalManager.level_up.emit()
-	PlayerAttributes.xp_level += 1
-	print("Current Level: " + str(PlayerAttributes.xp_level))
+func _slow_from_dash():
+	
+	# Gradual slow from dash, not instant back to normal speed
+	if dash_speed > PlayerAttributes.default_speed:
+		dash_speed -= 0.5
+		await get_tree().create_timer(0.1).timeout
+		_slow_from_dash()
+	else:
+		dash_speed = PlayerAttributes.default_speed
+		return
 
 func get_attributes():
 	# Update all player stats with any new changes
 	xp_level = PlayerAttributes.xp_level
 	xp_progress = PlayerAttributes.xp_progress
+	xp_gain = PlayerAttributes.xp_gain
 	
 	speed = PlayerAttributes.speed
 	jump_velocity = PlayerAttributes.jump_velocity

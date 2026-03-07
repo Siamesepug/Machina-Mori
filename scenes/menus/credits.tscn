@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://csx4htc57ylu8"]
+
+[ext_resource type="Script" uid="uid://jmma5rddvyud" path="res://scripts/credits.gd" id="1_iiqlc"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_b2mra"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqhve"]
+bg_color = Color(0.1701296, 0.015360288, 0.05358547, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3348673, 0.030770576, 2.4065375e-08, 1)
+border_blend = true
+corner_detail = 1
+
+[node name="Credits" type="Control" unique_id=293983182]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iiqlc")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=866428598]
+modulate = Color(0.08468992, 0.08468992, 0.08468992, 1)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_b2mra")
+stretch_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=948152360]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1205255961]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1532669979]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6857328, 3.1044335e-06, 5.7756904e-07, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.3372549)
+theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -7
+theme_override_constants/outline_size = 35
+theme_override_constants/shadow_outline_size = 29
+theme_override_font_sizes/font_size = 55
+text = "A GAME BY
+
+MASON HARBORD  &  LOGAN ABBOTT
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=553930094]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6857328, 3.1044335e-06, 5.7756904e-07, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.3372549)
+theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -7
+theme_override_constants/outline_size = 35
+theme_override_constants/shadow_outline_size = 29
+theme_override_font_sizes/font_size = 20
+text = "SUBMISSION TO THE SPRING 2026 MISSOURI S&T GAME JAM
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=875554567]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+text = "      BACK      "
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cyl8tofu4bsb6"]
+
+[ext_resource type="Script" uid="uid://82t40otkqktw" path="res://scripts/xp_boost.gd" id="1_8va48"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_vbtmq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
+size = Vector2(64, 64)
+
+[node name="XPBoost" type="StaticBody2D" unique_id=567444937]
+position = Vector2(32, 0)
+script = ExtResource("1_8va48")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
+modulate = Color(0, 0, 1, 1)
+texture = ExtResource("2_vbtmq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
+shape = SubResource("RectangleShape2D_e7mu8")

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://daxfttal8sqc1" path="res://scenes/upgrades/move_speed.tscn" id="1_ctfre"]
 [ext_resource type="Script" uid="uid://ks18pjoilf85" path="res://scripts/item_selection.gd" id="1_fidhh"]
 [ext_resource type="PackedScene" uid="uid://bhikrrw4lhvmb" path="res://scenes/upgrades/double_jump.tscn" id="2_fidhh"]
+[ext_resource type="PackedScene" uid="uid://cyl8tofu4bsb6" path="res://scenes/upgrades/xp_boost.tscn" id="4_a57ve"]
 
 [node name="ItemSelection" type="Control" unique_id=1848016840]
 process_mode = 3
@@ -13,7 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fidhh")
-item_list = Array[PackedScene]([ExtResource("2_fidhh"), ExtResource("1_ctfre")])
+item_list = Array[PackedScene]([ExtResource("2_fidhh"), ExtResource("1_ctfre"), ExtResource("4_a57ve")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1870979787]
 layout_mode = 0
@@ -38,6 +39,13 @@ layout_mode = 2
 layout_mode = 2
 text = "LEFT ITEM"
 
+[node name="Item1Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1104773018]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/outline_size = 10
+text = "ITEM DESC"
+horizontal_alignment = 1
+
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1185360004]
 layout_mode = 2
 theme_override_constants/separation = 364
@@ -52,3 +60,36 @@ layout_mode = 2
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2093471057]
 layout_mode = 2
 text = "RIGHT ITEM"
+
+[node name="Item2Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=279475120]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/outline_size = 10
+text = "ITEM DESC"
+horizontal_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=784626983]
+layout_mode = 2
+theme_override_constants/separation = 364
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1090929821]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=2096746567]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=86613166]
+layout_mode = 2
+text = "RIGHT ITEM"
+
+[node name="Item3Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=309649762]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/outline_size = 10
+text = "ITEM DESC"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed" binds= ["item1"]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/Button" to="." method="_on_button_pressed" binds= ["item2"]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer3/Button" to="." method="_on_button_pressed" binds= ["item3"]]

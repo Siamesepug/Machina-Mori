@@ -7,8 +7,20 @@ extends Control
 
 @onready var slot1 = $VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer
 @onready var slot2 = $VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer2
+@onready var slot3 = $VBoxContainer/HBoxContainer/VBoxContainer3/PanelContainer2
+
+@onready var slot1_button = $VBoxContainer/HBoxContainer/VBoxContainer/Button
+@onready var slot2_button = $VBoxContainer/HBoxContainer/VBoxContainer2/Button
+@onready var slot3_button = $VBoxContainer/HBoxContainer/VBoxContainer3/Button
+
+@onready var slot1_desc = $VBoxContainer/HBoxContainer/VBoxContainer/Item1Label
+@onready var slot2_desc = $VBoxContainer/HBoxContainer/VBoxContainer2/Item2Label
+@onready var slot3_desc = $VBoxContainer/HBoxContainer/VBoxContainer3/Item3Label
 
 var slots = 2
+var item1 = null
+var item2 = null
+var item3 = null
 
 func _ready():
 	hide()
@@ -30,10 +42,43 @@ func generate_random_items():
 	var item_pool = item_list.duplicate()
 	item_pool.shuffle()
 	
+	# SLOT 1 ==========================================
 	var selected_item = item_pool[0]
-	var item_instance = selected_item.instantiate()
-	slot1.add_child(item_instance)
+	item1 = selected_item.instantiate()
+	slot1.add_child(item1)
 	
+	slot1_button.text = item1.item_name
+	slot1_desc.text = item1.item_desc
+	
+	# SLOT 2 ==========================================
 	selected_item = item_pool[1]
-	item_instance = selected_item.instantiate()
-	slot2.add_child(item_instance)
+	item2 = selected_item.instantiate()
+	slot2.add_child(item2)
+	
+	slot2_button.text = item2.item_name
+	slot2_desc.text = item2.item_desc
+	
+	# SLOT 3 ==========================================
+	selected_item = item_pool[2]
+	item3 = selected_item.instantiate()
+	slot3.add_child(item3)
+	
+	slot3_button.text = item3.item_name
+	slot3_desc.text = item3.item_desc
+
+
+func _on_button_pressed(item: String):
+	
+	if item == "item1":
+		item1.activate_item()
+		hide()
+	
+	elif item == "item2":
+		item2.activate_item()
+		hide()
+	
+	elif item == "item3":
+		item3.activate_item()
+		hide()
+	
+	get_tree().paused = false

@@ -1,18 +1,9 @@
 extends StaticBody2D
 
+var item_name = "Double Jump"
+var item_desc = "Jump one additional time"
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func _input(event):
-	if Input.is_action_just_pressed("debug_grab"):
-		PlayerAttributes.max_jumps += 1
-		print("GRABBED DOUBLE JUMP")
-		get_tree().paused = false
-		queue_free()
+func activate_item():
+	PlayerAttributes.max_jumps += 1
+	print("GRABBED DOUBLE JUMP")
+	queue_free()

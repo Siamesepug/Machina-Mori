@@ -7,7 +7,7 @@
 size = Vector2(64, 64)
 
 [node name="DoubleJump" type="StaticBody2D" unique_id=567444937]
-position = Vector2(32, 32)
+position = Vector2(32, 0)
 script = ExtResource("1_e7mu8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
@@ -16,5 +16,3 @@ texture = ExtResource("1_yjbps")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
 shape = SubResource("RectangleShape2D_e7mu8")
-
-[node name="DoubleJump" type="Node2D" parent="." unique_id=990389484]

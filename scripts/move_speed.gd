@@ -1,18 +1,10 @@
 extends StaticBody2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var item_name = "Move Speed"
+var item_desc = "Increases move speed"
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func _input(event):
-	if Input.is_action_just_pressed("debug_grab"):
-		PlayerAttributes.speed += 400
-		print("GRABBED MOVE SPEED")
-		get_tree().paused = false
-		queue_free()
+func activate_item():
+	PlayerAttributes.speed += 100
+	print("GRABBED MOVE SPEED")
+	queue_free()

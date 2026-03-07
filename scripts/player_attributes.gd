@@ -7,9 +7,10 @@ extends Node
 
 var xp_level = 0
 var xp_progress = 0.0
+var xp_gain = 60.0
 
 var speed = 400.0
-var jump_velocity = -700.0
+var jump_velocity = -900.0
 var dash_speed = 4.0
 
 # Probably don't change this one, used to reset

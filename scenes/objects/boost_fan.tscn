@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b5entghbysb6f"]
+
+[ext_resource type="Script" uid="uid://cs3jcudp6gwp" path="res://scripts/boost_fan.gd" id="1_g32uu"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_avogr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5j28o"]
+size = Vector2(64, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0mcd"]
+size = Vector2(64, 22)
+
+[node name="BoostFan" type="StaticBody2D" unique_id=241240892]
+script = ExtResource("1_g32uu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1365668153]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_5j28o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=869357305]
+modulate = Color(1, 0.47058824, 0.14901961, 1)
+position = Vector2(0, 23)
+scale = Vector2(1, 0.28125)
+texture = ExtResource("2_avogr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2143537615]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=15782377]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_o0mcd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
