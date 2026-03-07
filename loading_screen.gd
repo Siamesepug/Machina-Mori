@@ -7,6 +7,11 @@ extends Control
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
+func _input(event):
+	if Input.is_action_just_pressed("jump"):
+		MainMenuMusic.stop()
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
+
 func _ready():
 	label.text = "- WARNING -\nROGUE AI TAKEOVER\nIMMINENT"
 	await get_tree().create_timer(1.0).timeout

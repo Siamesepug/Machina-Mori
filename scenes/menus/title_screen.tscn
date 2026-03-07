@@ -79,6 +79,14 @@ theme_override_styles/normal = ExtResource("4_vudbd")
 theme_override_styles/hover = ExtResource("5_ptv5j")
 text = "CREDITS"
 
+[node name="Button4" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=2133452862]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qc2aw")
+theme_override_styles/normal = ExtResource("4_vudbd")
+theme_override_styles/hover = ExtResource("5_ptv5j")
+text = "OPTIONS"
+
 [node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=875554567]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
@@ -101,4 +109,5 @@ stretch_mode = 1
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button3" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button4" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button2" to="." method="_on_quit_pressed"]

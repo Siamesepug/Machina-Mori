@@ -9,6 +9,9 @@ extends CharacterBody2D
 var death_screen_resource = load("res://scenes/menus/death_screen.tscn")
 var death_screen_instance = death_screen_resource.instantiate()
 
+var current_health = PlayerAttributes.current_health
+var max_health = PlayerAttributes.max_health
+
 var xp_level = PlayerAttributes.xp_level
 var xp_progress = PlayerAttributes.xp_progress
 var xp_gain = PlayerAttributes.xp_gain
@@ -20,6 +23,9 @@ var jump_velocity = PlayerAttributes.jump_velocity
 
 var max_jumps = PlayerAttributes.max_jumps
 var jump_count = 0
+
+func _ready():
+	SignalManager.damage_player.connect(_take_damage)
 
 func _process(delta):
 	get_attributes()
@@ -72,7 +78,6 @@ func _physics_process(delta):
 	
 	# Fall death
 	if position.y > 720:
-		#get_tree().quit()
 		get_tree().current_scene.add_child(death_screen_instance)
 
 func _input(event):
@@ -108,8 +113,23 @@ func _slow_from_dash():
 		dash_speed = PlayerAttributes.default_speed
 		return
 
+func _take_damage(damage):
+	PlayerAttributes.current_health -= damage
+	current_health = PlayerAttributes.current_health
+	
+	SignalManager.hp_changed.emit()
+	_is_dead()
+
+func _is_dead():
+	if current_health <= 0.0:
+		get_tree().current_scene.add_child(death_screen_instance)
+		get_tree().paused = true
+
 func get_attributes():
 	# Update all player stats with any new changes
+	current_health = PlayerAttributes.current_health
+	max_health = PlayerAttributes.max_health
+	
 	xp_level = PlayerAttributes.xp_level
 	xp_progress = PlayerAttributes.xp_progress
 	xp_gain = PlayerAttributes.xp_gain

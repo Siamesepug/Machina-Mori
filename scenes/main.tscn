@@ -13,8 +13,6 @@ position = Vector2(292, -257)
 [node name="LevelRoot" parent="." unique_id=1082038515 instance=ExtResource("1_o5qli")]
 
 [node name="GameUI" parent="." unique_id=508800275 instance=ExtResource("2_0wfyh")]
-scale = Vector2(0.5, 0.5)
-transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 
 [node name="ItemSelection" parent="." unique_id=2141210872 instance=ExtResource("3_sugp2")]
 scale = Vector2(0.285, 0.285)

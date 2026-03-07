@@ -12,8 +12,16 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_030jj"]
+bg_color = Color(0.76722765, 0, 0, 1)
+skew = Vector2(0.45, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6v45u"]
-bg_color = Color(0, 0.41772467, 0.75947416, 1)
+bg_color = Color(1.732707e-06, 0.34729698, 0.9146307, 1)
 skew = Vector2(0.45, 0)
 border_width_left = 2
 border_width_top = 2
@@ -23,27 +31,61 @@ border_width_bottom = 2
 [node name="GameUI" type="CanvasLayer" unique_id=508800275]
 script = ExtResource("1_7oade")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=641122740]
-offset_left = 72.0
-offset_top = 65.0
-offset_right = 803.0
-offset_bottom = 139.0
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=822294785]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 74.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
 
-[node name="Label" type="Label" parent="HBoxContainer" unique_id=1281861374]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=641122740]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=850477651]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1060559538]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_6v45u")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/background = SubResource("StyleBoxFlat_7oade")
+theme_override_styles/fill = SubResource("StyleBoxFlat_030jj")
+value = 100.0
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1971750707]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6v45u")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 30
+text = "HEALTH"
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer" unique_id=322161539]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.44
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=670483788]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1281861374]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6v45u")
+theme_override_font_sizes/font_size = 30
 text = "XP PROGRESS"
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer" unique_id=1659182549]
-layout_mode = 2
-theme_override_constants/separation = 69
-
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer" unique_id=1259207512]
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1259207512]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_6v45u")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 30
 theme_override_styles/background = SubResource("StyleBoxFlat_7oade")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6v45u")

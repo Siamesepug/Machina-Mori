@@ -2,6 +2,7 @@ extends Control
 
 @onready var background = $TextureRect
 
+
 func _process(delta):
 	background.rotation -= 0.5 * delta
 

@@ -5,5 +5,4 @@
 [node name="MainMenuMusic" type="AudioStreamPlayer" unique_id=1219345589]
 stream = ExtResource("1_5geqf")
 volume_db = -9.827
-autoplay = true
 parameters/looping = false

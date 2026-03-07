@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dp3ugnfrrd40f" path="res://assets/images/player/Jump (32x32).png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://c6sh66he14syx" path="res://assets/images/player/Run (32x32).png" id="4_fjrip"]
 [ext_resource type="AudioStream" uid="uid://cok360m5t6wct" path="res://assets/sounds/jump.wav" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://cycxj1oy1fpd0" path="res://scripts/health_regen.gd" id="7_fjrip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("1_dqkch")
@@ -244,10 +245,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
-size = Vector2(19, 23.666668)
+size = Vector2(15.666668, 20.666834)
 
 [node name="Player" type="CharacterBody2D" unique_id=131089335]
 scale = Vector2(3, 3)
+collision_layer = 2
 script = ExtResource("1_qlg0r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1007104496]
@@ -257,7 +259,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1797972652]
-position = Vector2(0.5, 3.8333335)
+position = Vector2(0.50000024, 5.333416)
 shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=933953504]
@@ -266,3 +268,6 @@ stream = ExtResource("6_tuyoq")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1003100336]
 zoom = Vector2(0.6, 0.6)
 limit_bottom = 720
+
+[node name="HealthRegen" type="Node2D" parent="." unique_id=2002800006]
+script = ExtResource("7_fjrip")
