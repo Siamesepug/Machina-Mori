@@ -24,11 +24,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iiqlc")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=866428598]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1263827521]
 modulate = Color(0.08468992, 0.08468992, 0.08468992, 1)
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+pivot_offset = Vector2(1920, 1080)
 texture = ExtResource("2_b2mra")
 stretch_mode = 1
 
@@ -47,7 +50,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.6857328, 3.1044335e-06, 5.7756904e-07, 1)
 theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.3372549)
 theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
-theme_override_constants/shadow_offset_x = -7
+theme_override_constants/shadow_offset_x = -5
 theme_override_constants/outline_size = 35
 theme_override_constants/shadow_outline_size = 29
 theme_override_fonts/font = ExtResource("3_b2mra")
@@ -63,7 +66,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.6857328, 3.1044335e-06, 5.7756904e-07, 1)
 theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.3372549)
 theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
-theme_override_constants/shadow_offset_x = -7
+theme_override_constants/shadow_offset_x = -2
 theme_override_constants/outline_size = 35
 theme_override_constants/shadow_outline_size = 29
 theme_override_fonts/font = ExtResource("3_b2mra")

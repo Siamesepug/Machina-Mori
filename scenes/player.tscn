@@ -264,4 +264,5 @@ shape = SubResource("RectangleShape2D_qlg0r")
 stream = ExtResource("6_tuyoq")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1003100336]
+zoom = Vector2(0.6, 0.6)
 limit_bottom = 720

@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 # Displays 3 random items for the player
 # to choose when levelling up
@@ -17,7 +17,6 @@ extends Control
 @onready var slot2_desc = $VBoxContainer/HBoxContainer/VBoxContainer2/Item2Label
 @onready var slot3_desc = $VBoxContainer/HBoxContainer/VBoxContainer3/Item3Label
 
-var slots = 2
 var item1 = null
 var item2 = null
 var item3 = null

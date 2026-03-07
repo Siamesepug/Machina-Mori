@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b6wrhtdpisyq4" path="res://scripts/title_screen.gd" id="1_eqhve"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="1_n17qi"]
+[ext_resource type="Texture2D" uid="uid://t5mtqmcr0wtd" path="res://assets/images/background/fan_blade.png" id="3_ptv5j"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="3_qc2aw"]
 [ext_resource type="StyleBox" uid="uid://c6kxtadbn2l03" path="res://scenes/menus/MenuButtons.tres" id="4_vudbd"]
 [ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="5_ptv5j"]
@@ -18,10 +19,23 @@ script = ExtResource("1_eqhve")
 [node name="TextureRect" type="TextureRect" parent="." unique_id=866428598]
 modulate = Color(0.08468992, 0.08468992, 0.08468992, 1)
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+pivot_offset = Vector2(1920, 1080)
 texture = ExtResource("1_n17qi")
 stretch_mode = 1
+
+[node name="FanBlade" type="TextureRect" parent="." unique_id=218460174]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -1830.0
+offset_top = -1827.0
+offset_right = 1770.0
+offset_bottom = 1773.0
+pivot_offset = Vector2(1811.405, 1830.74)
+texture = ExtResource("3_ptv5j")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=948152360]
 layout_mode = 0
@@ -72,6 +86,18 @@ theme_override_fonts/font = ExtResource("3_qc2aw")
 theme_override_styles/normal = ExtResource("4_vudbd")
 theme_override_styles/hover = ExtResource("5_ptv5j")
 text = "QUIT"
+
+[node name="BlackScreen" type="TextureRect" parent="." unique_id=688350265]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+pivot_offset = Vector2(1920, 1080)
+texture = ExtResource("1_n17qi")
+stretch_mode = 1
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button3" to="." method="_on_credits_pressed"]

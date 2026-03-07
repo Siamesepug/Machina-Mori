@@ -6,6 +6,9 @@ extends CharacterBody2D
 @export var air_resistance = 10.0 # lower means more floating in the air
 @export var friction = 50.0 # how snappy the turning and stopping is on the ground
 
+var death_screen_resource = load("res://scenes/menus/death_screen.tscn")
+var death_screen_instance = death_screen_resource.instantiate()
+
 var xp_level = PlayerAttributes.xp_level
 var xp_progress = PlayerAttributes.xp_progress
 var xp_gain = PlayerAttributes.xp_gain
@@ -45,6 +48,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("debug_level_up"):
 		PlayerAttributes.xp_progress += xp_gain
 		SignalManager.xp_gained.emit(xp_gain)
+	
+	if Input.is_action_just_pressed("back"):
+		get_tree().quit()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -66,7 +72,8 @@ func _physics_process(delta):
 	
 	# Fall death
 	if position.y > 720:
-		get_tree().quit()
+		#get_tree().quit()
+		get_tree().current_scene.add_child(death_screen_instance)
 
 func _input(event):
 	

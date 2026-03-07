@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://tki8xobffht8"]
+
+[ext_resource type="Script" uid="uid://dxbr158fyex6x" path="res://death_screen.gd" id="1_rjrmt"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_fd1p5"]
+[ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="3_omtrp"]
+[ext_resource type="StyleBox" uid="uid://c6kxtadbn2l03" path="res://scenes/menus/MenuButtons.tres" id="4_yx70j"]
+[ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="5_cwqsg"]
+
+[node name="DeathScreen" type="CanvasLayer" unique_id=1695263281]
+process_mode = 3
+script = ExtResource("1_rjrmt")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1215832044]
+modulate = Color(0.17641911, 0.17641908, 0.17641908, 1)
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_fd1p5")
+stretch_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1790597116]
+offset_right = 1280.0
+offset_bottom = 720.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=800678084]
+layout_mode = 2
+theme_override_constants/separation = 47
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=188402974]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6857328, 3.1044335e-06, 5.7756904e-07, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.3372549)
+theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -11
+theme_override_constants/outline_size = 22
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("3_omtrp")
+theme_override_font_sizes/font_size = 64
+text = "YOU ARE
+DEAD"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=743595034]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_omtrp")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_yx70j")
+theme_override_styles/hover = ExtResource("5_cwqsg")
+text = " BACK TO MENU "
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=640617684]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_omtrp")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_yx70j")
+theme_override_styles/hover = ExtResource("5_cwqsg")
+text = "QUIT"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button2" to="." method="_on_quit_pressed"]
