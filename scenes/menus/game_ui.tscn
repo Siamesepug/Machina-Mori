@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://biu73v5dp2dfk"]
 
-[ext_resource type="Script" uid="uid://bxo641sonttt8" path="res://scripts/game_ui.gd" id="1_7oade"]
+[ext_resource type="Script" uid="uid://bxo641sonttt8" path="res://scripts/menus/game_ui.gd" id="1_7oade"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="2_6v45u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7oade"]
 content_margin_left = 150.0
+content_margin_top = 30.0
 content_margin_right = 150.0
+content_margin_bottom = 30.0
 skew = Vector2(0.45, 0)
 border_width_left = 3
 border_width_top = 3
@@ -19,6 +21,17 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3quv2"]
+content_margin_left = 125.0
+content_margin_top = 10.0
+content_margin_right = 125.0
+content_margin_bottom = 10.0
+skew = Vector2(0.45, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6v45u"]
 bg_color = Color(1.732707e-06, 0.34729698, 0.9146307, 1)
@@ -48,19 +61,36 @@ size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=850477651]
 layout_mode = 2
-theme_override_constants/separation = 18
+theme_override_constants/separation = 105
 
-[node name="HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1060559538]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1758178731]
 layout_mode = 2
-size_flags_horizontal = 10
+theme_override_constants/separation = -235
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer" unique_id=1060559538]
+layout_mode = 2
+size_flags_horizontal = 2
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/background = SubResource("StyleBoxFlat_7oade")
 theme_override_styles/fill = SubResource("StyleBoxFlat_030jj")
 value = 100.0
+show_percentage = false
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1971750707]
+[node name="HealthLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer" unique_id=1212220371]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_6v45u")
+theme_override_font_sizes/font_size = 35
+text = "100/100"
+
+[node name="Control3" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1884542970]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.18
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1971750707]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_font_sizes/font_size = 30
@@ -69,7 +99,7 @@ text = "HEALTH"
 [node name="Control" type="Control" parent="MarginContainer/HBoxContainer" unique_id=322161539]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.44
+size_flags_stretch_ratio = 0.5
 
 [node name="TimeLeft" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1196523528]
 layout_mode = 2
@@ -82,7 +112,7 @@ horizontal_alignment = 1
 [node name="Control2" type="Control" parent="MarginContainer/HBoxContainer" unique_id=727890790]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.44
+size_flags_stretch_ratio = 0.5
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=670483788]
 layout_mode = 2
@@ -100,5 +130,5 @@ size_flags_horizontal = 3
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/background = SubResource("StyleBoxFlat_7oade")
+theme_override_styles/background = SubResource("StyleBoxFlat_3quv2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6v45u")

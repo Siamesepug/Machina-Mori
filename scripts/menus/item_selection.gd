@@ -30,10 +30,6 @@ func show_menu():
 	get_tree().paused = true
 	generate_random_items()
 
-func _input(event):
-	if Input.is_action_just_pressed("debug_grab"):
-		hide()
-
 func generate_random_items():
 	# Takes the list of items, makes a copy, shuffles the copy,
 	# and chooses the first few items in the new list

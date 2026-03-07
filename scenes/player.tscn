@@ -249,7 +249,7 @@ animations = [{
 size = Vector2(15.666668, 20.666834)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ur7pv"]
-size = Vector2(39.333336, 37)
+size = Vector2(47, 34.166668)
 
 [node name="Player" type="CharacterBody2D" unique_id=131089335]
 scale = Vector2(3, 3)
@@ -278,6 +278,8 @@ limit_bottom = 720
 script = ExtResource("7_fjrip")
 
 [node name="SwordAttack" type="Area2D" parent="." unique_id=1114010595]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("8_smehm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordAttack" unique_id=596881158]

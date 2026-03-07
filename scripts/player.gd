@@ -12,6 +12,9 @@ var death_screen_instance = death_screen_resource.instantiate()
 
 var current_weapon = PlayerAttributes.current_weapon
 var weapon_damage = PlayerAttributes.weapon_damage
+var weapon_cd = PlayerAttributes.weapon_cd
+var on_weapon_cd = false
+var weapon_size = PlayerAttributes.weapon_size
 
 var current_health = PlayerAttributes.current_health
 var max_health = PlayerAttributes.max_health
@@ -93,13 +96,19 @@ func _input(event):
 	# Attack input
 	if Input.is_action_just_pressed("attack"):
 		if current_weapon == "sword":
-			sword_attack.swing_sword()
+			if !on_weapon_cd:
+				on_weapon_cd = true
+				
+				sword_attack.swing_sword()
+				await get_tree().create_timer(weapon_cd).timeout
+				
+				print("Sword is restored")
+				on_weapon_cd = false
 	
 	# Dash input
 	if Input.is_action_just_pressed("dash"):
 		if !is_dashing:
 			is_dashing = true
-			print("DASHING")
 			
 			dash_speed = PlayerAttributes.dash_speed
 			# LENGTH OF DASH, MIGHT MAKE VARIABLE
@@ -107,7 +116,6 @@ func _input(event):
 			_slow_from_dash()
 			await get_tree().create_timer(1.0).timeout
 			
-			print("Dash is restored")
 			is_dashing = false
 
 func player_jump():
@@ -146,6 +154,11 @@ func _is_dead():
 
 func get_attributes():
 	# Update all player stats with any new changes
+	current_weapon = PlayerAttributes.current_weapon
+	weapon_damage = PlayerAttributes.weapon_damage
+	weapon_cd = PlayerAttributes.weapon_cd
+	weapon_size = PlayerAttributes.weapon_size
+	
 	current_health = PlayerAttributes.current_health
 	max_health = PlayerAttributes.max_health
 	

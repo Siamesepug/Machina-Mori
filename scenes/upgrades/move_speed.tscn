@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://daxfttal8sqc1"]
 
-[ext_resource type="Script" uid="uid://bar3bo7h6mmsb" path="res://scripts/move_speed.gd" id="1_j0x51"]
+[ext_resource type="Script" uid="uid://bar3bo7h6mmsb" path="res://scripts/upgrades/move_speed.gd" id="1_j0x51"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_s1rsq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]

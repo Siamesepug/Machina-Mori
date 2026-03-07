@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bfp1ll7xniy7k"]
+
+[ext_resource type="Script" uid="uid://cl66sgo41api3" path="res://scripts/xp_drop.gd" id="1_npw1g"]
+[ext_resource type="Texture2D" uid="uid://t5mtqmcr0wtd" path="res://assets/images/background/fan_blade.png" id="2_y30ux"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_722qb"]
+radius = 21.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iapjk"]
+radius = 71.95678
+
+[node name="XPDrop" type="RigidBody2D" unique_id=2052740696]
+scale = Vector2(0.3, 0.3)
+collision_layer = 3
+collision_mask = 7
+constant_force = Vector2(0, 1)
+script = ExtResource("1_npw1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=876847604]
+modulate = Color(0, 1, 1, 1)
+scale = Vector2(0.13428572, 0.13428572)
+texture = ExtResource("2_y30ux")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=844487517]
+shape = SubResource("CircleShape2D_722qb")
+
+[node name="PickupRange" type="Area2D" parent="." unique_id=757568881]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRange" unique_id=1661787304]
+shape = SubResource("CircleShape2D_iapjk")
+
+[connection signal="body_entered" from="PickupRange" to="." method="_on_pickup_range_body_entered"]

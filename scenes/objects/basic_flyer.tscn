@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cft4omc85o6i7"]
 
-[ext_resource type="Script" uid="uid://bhnf34l33vk61" path="res://scripts/basic_flyer.gd" id="1_orw3q"]
+[ext_resource type="Script" uid="uid://bhnf34l33vk61" path="res://scripts/enemies/basic_flyer.gd" id="1_orw3q"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_6ct5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7xp6"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bakwtt7aavn5t"]
 
-[ext_resource type="Script" uid="uid://ks18pjoilf85" path="res://scripts/item_selection.gd" id="1_fidhh"]
+[ext_resource type="Script" uid="uid://ks18pjoilf85" path="res://scripts/menus/item_selection.gd" id="1_fidhh"]
 
 [node name="ItemSelection" type="CanvasLayer" unique_id=2141210872]
 process_mode = 3

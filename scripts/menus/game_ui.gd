@@ -1,7 +1,9 @@
 extends CanvasLayer
 
 @onready var xp_bar = $MarginContainer/HBoxContainer/HBoxContainer2/ProgressBar
-@onready var hp_bar = $MarginContainer/HBoxContainer/HBoxContainer/HealthBar
+@onready var hp_bar = $MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer/HealthBar
+@onready var hp_label = $MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer/HealthLabel
+
 @onready var time_left = $MarginContainer/HBoxContainer/TimeLeft
 
 func _ready():
@@ -28,6 +30,7 @@ func _update_xp_bar(amount):
 
 func _update_hp_bar():
 	hp_bar.value = PlayerAttributes.current_health
+	hp_label.text = (str(int(PlayerAttributes.current_health)) + "/" + str(int(PlayerAttributes.max_health)))
 
 func _update_time_left(time):
 	var minutes = int(time / 60)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://e886w33jbyu6"]
 
-[ext_resource type="Script" uid="uid://cc261vvnfqhil" path="res://scripts/basic_grunt.gd" id="1_pk7ar"]
+[ext_resource type="Script" uid="uid://cc261vvnfqhil" path="res://scripts/enemies/basic_grunt.gd" id="1_pk7ar"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_fjbdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7xp6"]

@@ -6,7 +6,9 @@ extends Node
 # Avoid directly changing the player's variables.
 
 var current_weapon = "sword"
-var weapon_damage = 500.0
+var weapon_damage = 50.0
+var weapon_cd = 1.25 # seconds between slashes
+var weapon_size = 1.0
 
 var current_health = 100.0
 var max_health = 100.0
@@ -15,7 +17,7 @@ var regen_rate = 2.0 # seconds between heals once active
 
 var xp_level = 0
 var xp_progress = 0.0
-var xp_gain = 60.0
+var xp_gain = 10.0
 
 var speed = 400.0
 var jump_velocity = -900.0

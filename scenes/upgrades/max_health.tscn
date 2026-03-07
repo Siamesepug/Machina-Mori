@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mlnfjf77krvl"]
 
-[ext_resource type="Script" uid="uid://c6mbc6sij6dpc" path="res://scripts/max_health.gd" id="1_tbn1q"]
+[ext_resource type="Script" uid="uid://c6mbc6sij6dpc" path="res://scripts/upgrades/max_health.gd" id="1_tbn1q"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_0vtcj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]

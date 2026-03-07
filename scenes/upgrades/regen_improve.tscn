@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mk3lry0wtxna"]
 
-[ext_resource type="Script" uid="uid://i7xsgax68rmm" path="res://scripts/regen_improve.gd" id="1_qjwfb"]
+[ext_resource type="Script" uid="uid://i7xsgax68rmm" path="res://scripts/upgrades/regen_improve.gd" id="1_qjwfb"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_eyipe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
