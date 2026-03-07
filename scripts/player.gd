@@ -68,7 +68,9 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, friction)
 		else:
 			velocity.x = move_toward(velocity.x, 0, air_resistance)
-
+	
+	check_oneway_platform()
+	
 	move_and_slide()
 
 	if direction == 1.0:
@@ -101,6 +103,12 @@ func player_jump():
 	velocity.y = jump_velocity
 	jump_sound.play()
 	jump_count += 1
+
+func check_oneway_platform():
+	if Input.is_action_just_pressed("down") and is_on_floor():
+		set_collision_mask_value(4, false)
+		await get_tree().create_timer(0.1).timeout
+		set_collision_mask_value(4, true)
 
 func _slow_from_dash():
 	
