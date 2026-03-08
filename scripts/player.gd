@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player_sprite = $AnimatedSprite2D
 @onready var jump_sound = $JumpSound
 @onready var sword_attack = $SwordAttack
+@onready var dash_attack = $DashAttack
 @onready var camera = $Camera2D
 
 @export var air_resistance = 10.0 # lower means more floating in the air
@@ -17,6 +18,10 @@ var weapon_damage = PlayerAttributes.weapon_damage
 var weapon_cd = PlayerAttributes.weapon_cd
 var on_weapon_cd = false
 var weapon_size = PlayerAttributes.weapon_size
+
+var dash_damage = PlayerAttributes.dash_damage
+var dash_cd = PlayerAttributes.dash_cd
+var dash_size = PlayerAttributes.dash_size
 
 var current_health = PlayerAttributes.current_health
 var max_health = PlayerAttributes.max_health
@@ -109,9 +114,11 @@ func _physics_process(delta):
 
 	if direction == 1.0:
 		sword_attack.global_position.x = global_position.x + (50 * direction)
+		dash_attack.global_position.x = global_position.x + (50 * direction)
 		player_sprite.flip_h = false
 	elif direction == -1.0:
 		sword_attack.global_position.x = global_position.x + (50 * direction)
+		dash_attack.global_position.x = global_position.x + (50 * direction)
 		player_sprite.flip_h = true
 	
 	# Fall death
@@ -137,11 +144,12 @@ func _input(event):
 		if !is_dashing:
 			is_dashing = true
 			
+			dash_attack.is_dashing()
 			dash_speed = PlayerAttributes.dash_speed
 			# LENGTH OF DASH, MIGHT MAKE VARIABLE
 			await get_tree().create_timer(0.1).timeout
 			_slow_from_dash()
-			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(dash_cd).timeout
 			
 			is_dashing = false
 
@@ -196,6 +204,10 @@ func get_attributes():
 	weapon_damage = PlayerAttributes.weapon_damage
 	weapon_cd = PlayerAttributes.weapon_cd
 	weapon_size = PlayerAttributes.weapon_size
+	
+	dash_damage = PlayerAttributes.dash_damage
+	dash_cd = PlayerAttributes.dash_cd
+	dash_size = PlayerAttributes.dash_size
 	
 	current_health = PlayerAttributes.current_health
 	max_health = PlayerAttributes.max_health

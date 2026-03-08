@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cga8tlti7sjq1"]
+
+[ext_resource type="Script" uid="uid://d1u5dpdfhrp86" path="res://scenes/upgrades/sword_damage.gd" id="1_hr6t0"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_bbu1q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
+size = Vector2(64, 64)
+
+[node name="SwordDamage" type="StaticBody2D" unique_id=567444937]
+script = ExtResource("1_hr6t0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
+modulate = Color(0.8235294, 0.7490196, 0, 1)
+texture = ExtResource("2_bbu1q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
+shape = SubResource("RectangleShape2D_e7mu8")

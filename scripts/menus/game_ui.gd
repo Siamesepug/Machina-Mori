@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var xp_bar = $MarginContainer/HBoxContainer/HBoxContainer2/ProgressBar
+@onready var xp_label = $MarginContainer/HBoxContainer/HBoxContainer2/Label
 @onready var hp_bar = $MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer/HealthBar
 @onready var hp_label = $MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer/HealthLabel
 
@@ -12,6 +13,7 @@ func _ready():
 	SignalManager.hp_changed.connect(_update_hp_bar)
 	SignalManager.time_left.connect(_update_time_left)
 	
+	xp_label.text = ("Level: " + str(PlayerAttributes.xp_level))
 	low_health_display.visible = false
 
 # manages levelling up the player, and carries over extra xp
@@ -24,6 +26,8 @@ func _update_xp_bar(amount):
 		PlayerAttributes.xp_level += 1
 		xp_bar.max_value += PlayerAttributes.xp_per_level_increase
 		SignalManager.level_up.emit()
+		xp_label.text = ("Level: " + str(PlayerAttributes.xp_level))
+		
 		xp_bar.value = 0
 		
 		_update_xp_bar(leftover_xp)

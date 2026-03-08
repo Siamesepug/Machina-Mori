@@ -96,7 +96,7 @@ text = "100/100"
 [node name="Control3" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1884542970]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.18
+size_flags_stretch_ratio = 0.44
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1971750707]
 layout_mode = 2
@@ -107,7 +107,7 @@ text = "HEALTH"
 [node name="Control" type="Control" parent="MarginContainer/HBoxContainer" unique_id=322161539]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
+size_flags_stretch_ratio = 0.3
 
 [node name="TimeLeft" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1196523528]
 layout_mode = 2
@@ -125,12 +125,13 @@ size_flags_stretch_ratio = 0.5
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=670483788]
 layout_mode = 2
 theme_override_constants/separation = 18
+alignment = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1281861374]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_font_sizes/font_size = 30
-text = "XP PROGRESS"
+text = "Level: "
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1259207512]
 layout_mode = 2
@@ -140,3 +141,11 @@ theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/background = SubResource("StyleBoxFlat_3quv2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6v45u")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1815852909]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0

@@ -84,7 +84,7 @@ func set_standard():
 	PlayerAttributes.max_health = 100.0
 	PlayerAttributes.current_health = 100.0
 	PlayerAttributes.xp_gain = 10.0
-	PlayerAttributes.level_duration = 300.0
+	PlayerAttributes.level_duration = 10.0
 	
 	# Change enemy stats
 	EnemyStats.enemies_to_spawn = 10
