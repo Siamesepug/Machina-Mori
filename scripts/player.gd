@@ -33,6 +33,8 @@ var jump_count = 0
 
 func _ready():
 	SignalManager.damage_player.connect(_take_damage)
+	#current_health = max_health
+	SignalManager.hp_changed.emit()
 
 func _process(delta):
 	get_attributes()
@@ -170,3 +172,5 @@ func get_attributes():
 	jump_velocity = PlayerAttributes.jump_velocity
 	
 	max_jumps = PlayerAttributes.max_jumps
+	
+	SignalManager.hp_changed.emit()

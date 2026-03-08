@@ -95,18 +95,6 @@ theme_override_styles/normal = ExtResource("4_vudbd")
 theme_override_styles/hover = ExtResource("5_ptv5j")
 text = "QUIT"
 
-[node name="BlackScreen" type="TextureRect" parent="." unique_id=688350265]
-visible = false
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -1280.0
-offset_top = -720.0
-offset_right = 2560.0
-offset_bottom = 1440.0
-pivot_offset = Vector2(1920, 1080)
-texture = ExtResource("1_n17qi")
-stretch_mode = 1
-
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button3" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button4" to="." method="_on_options_pressed"]

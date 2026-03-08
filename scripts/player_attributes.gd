@@ -10,8 +10,8 @@ var weapon_damage = 50.0
 var weapon_cd = 1.25 # seconds between slashes
 var weapon_size = 1.0
 
-var current_health = 100.0
 var max_health = 100.0
+var current_health = 100.0
 var regen_cd = 3.0 # seconds before regen starts
 var regen_rate = 2.0 # seconds between heals once active
 
@@ -22,6 +22,8 @@ var xp_gain = 10.0
 var speed = 400.0
 var jump_velocity = -900.0
 var dash_speed = 4.0
+
+var level_duration = 300.0 # in seconds
 
 # Probably don't change this one, used to reset
 # movement back to default after dash

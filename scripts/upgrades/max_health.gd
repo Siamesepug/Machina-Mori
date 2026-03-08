@@ -6,4 +6,5 @@ var item_desc = "Increases max health"
 
 func activate_item():
 	PlayerAttributes.max_health += 50
+	SignalManager.hp_changed.emit()
 	queue_free()

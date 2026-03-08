@@ -29,6 +29,7 @@ func _update_xp_bar(amount):
 	print("Current Level: " + str(PlayerAttributes.xp_level))
 
 func _update_hp_bar():
+	hp_bar.max_value = PlayerAttributes.max_health
 	hp_bar.value = PlayerAttributes.current_health
 	hp_label.text = (str(int(PlayerAttributes.current_health)) + "/" + str(int(PlayerAttributes.max_health)))
 

@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://mlnfjf77krvl" path="res://scenes/upgrades/max_health.tscn" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://bauw807vljlxp" path="res://scenes/upgrades/weapon_size.tscn" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://crpneaircb67p" path="res://scenes/upgrades/weapon_cd.tscn" id="10_eb6dy"]
+[ext_resource type="Script" uid="uid://cfvhu70p21sql" path="res://scenes/wave_spawner.gd" id="12_eb6dy"]
 
 [node name="Main" type="Node2D" unique_id=687830750]
 position = Vector2(292, -257)
@@ -29,4 +30,13 @@ wait_time = 300.0
 autostart = true
 script = ExtResource("8_85g3d")
 
+[node name="WaveSpawner" type="Node2D" parent="." unique_id=1051497752]
+script = ExtResource("12_eb6dy")
+
+[node name="SpawnTimer" type="Timer" parent="WaveSpawner" unique_id=617225926]
+
+[node name="WaveTimer" type="Timer" parent="WaveSpawner" unique_id=1685904327]
+
 [connection signal="timeout" from="LevelChangeTimer" to="LevelChangeTimer" method="_on_timeout"]
+[connection signal="timeout" from="WaveSpawner/SpawnTimer" to="WaveSpawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="WaveSpawner/WaveTimer" to="WaveSpawner" method="_on_wave_timer_timeout"]

@@ -1,0 +1,313 @@
+[gd_scene format=3 uid="uid://c6m86y1rgc3hg"]
+
+[ext_resource type="Script" uid="uid://cx3gev4lye4kc" path="res://scenes/menus/choose_mode.gd" id="1_oiw77"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_kq770"]
+[ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="3_idliv"]
+[ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="4_xshkk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqhve"]
+bg_color = Color(0.1701296, 0.015360288, 0.05358547, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3348673, 0.030770576, 2.4065375e-08, 1)
+border_blend = true
+corner_detail = 1
+
+[node name="ChooseMode" type="Control" unique_id=293983182]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oiw77")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1263827521]
+modulate = Color(0.08468992, 0.08468992, 0.08468992, 1)
+layout_mode = 0
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+pivot_offset = Vector2(1920, 1080)
+texture = ExtResource("2_kq770")
+stretch_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=948152360]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+alignment = 1
+
+[node name="StandardModes" type="VBoxContainer" parent="HBoxContainer" unique_id=1205255961]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/StandardModes" unique_id=1532669979]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6857328, 3.1044335e-06, 5.7756904e-07, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.3372549)
+theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/outline_size = 35
+theme_override_constants/shadow_outline_size = 29
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 55
+text = "PICK A MODE"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StandardModes" unique_id=1049771111]
+layout_mode = 2
+theme_override_constants/separation = 94
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/StandardModes/HBoxContainer" unique_id=1610053811]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer3" unique_id=1692560443]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+text = "Marathon"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer3" unique_id=766503344]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 16
+text = "Slow, Methodical           
+- Long Times
+- Low Difficulty
+- Low Xp Gain"
+
+[node name="MarathonButton" type="Button" parent="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer3" unique_id=1554619461]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_styles/hover = ExtResource("4_xshkk")
+text = "PLAY"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/StandardModes/HBoxContainer" unique_id=581028614]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer" unique_id=149586586]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+text = "Standard"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer" unique_id=1956518313]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 16
+text = "The Intended Experience
+- Normal Times
+- Normal Difficulty
+- Normal Xp Gain"
+
+[node name="StandardButton" type="Button" parent="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer" unique_id=875554567]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_styles/hover = ExtResource("4_xshkk")
+text = "PLAY"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/StandardModes/HBoxContainer" unique_id=608851918]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer2" unique_id=830158020]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+text = "Blitz"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer2" unique_id=2085133198]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 16
+text = "Difficult, Brutal               
+- Low Times
+- High Difficulty
+- High Xp Gain"
+
+[node name="BlitzButton" type="Button" parent="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer2" unique_id=521214634]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_styles/hover = ExtResource("4_xshkk")
+text = "PLAY"
+
+[node name="ExtraModesButton" type="Button" parent="HBoxContainer/StandardModes" unique_id=423136791]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_styles/hover = ExtResource("4_xshkk")
+text = "  Extra Modes  "
+
+[node name="BackButton" type="Button" parent="HBoxContainer/StandardModes" unique_id=1171239755]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_styles/hover = ExtResource("4_xshkk")
+text = "        Back        "
+
+[node name="ExtraModes" type="VBoxContainer" parent="HBoxContainer" unique_id=1509479744]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/ExtraModes" unique_id=742215442]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6857328, 3.1044335e-06, 5.7756904e-07, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.3372549)
+theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/outline_size = 35
+theme_override_constants/shadow_outline_size = 29
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 55
+text = "Extra Modes"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ExtraModes" unique_id=1063010689]
+layout_mode = 2
+theme_override_constants/separation = 94
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/ExtraModes/HBoxContainer" unique_id=234243666]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer3" unique_id=278462378]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+text = "Glass Cannon"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer3" unique_id=1505993294]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 16
+text = "One Shot, One Kill,
+Both Ways        
+- Extreme Damage
+- One Health
+- Normal XP Gain"
+
+[node name="GlassCannonButton" type="Button" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer3" unique_id=392298343]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_styles/hover = ExtResource("4_xshkk")
+text = "PLAY"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ExtraModes/HBoxContainer" unique_id=973139840]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer" unique_id=8535320]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+text = "Chaos"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer" unique_id=1882528145]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 16
+text = "Good Luck
+- ??? Times
+- ??? Difficulty
+- ??? Xp Gain"
+
+[node name="ChaosButton" type="Button" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer" unique_id=394634982]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_styles/hover = ExtResource("4_xshkk")
+text = "PLAY"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/ExtraModes/HBoxContainer" unique_id=1703476626]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer2" unique_id=909908286]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+text = "TBD"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer2" unique_id=1601198954]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 16
+text = "Difficult, Brutal               
+- Low Times
+- High Difficulty
+- High Xp Gain"
+
+[node name="Button" type="Button" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer2" unique_id=2105157930]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_styles/hover = ExtResource("4_xshkk")
+text = "PLAY"
+
+[node name="Back" type="Button" parent="HBoxContainer/ExtraModes" unique_id=1926857173]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_idliv")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqhve")
+theme_override_styles/hover = ExtResource("4_xshkk")
+text = "  Back  "
+
+[node name="BlackScreen" type="TextureRect" parent="." unique_id=179006601]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+pivot_offset = Vector2(1920, 1080)
+texture = ExtResource("2_kq770")
+stretch_mode = 1
+
+[connection signal="pressed" from="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer3/MarathonButton" to="." method="_on_mode_button_pressed" binds= ["marathon"]]
+[connection signal="pressed" from="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer/StandardButton" to="." method="_on_mode_button_pressed" binds= ["standard"]]
+[connection signal="pressed" from="HBoxContainer/StandardModes/HBoxContainer/VBoxContainer2/BlitzButton" to="." method="_on_mode_button_pressed" binds= ["blitz"]]
+[connection signal="pressed" from="HBoxContainer/StandardModes/ExtraModesButton" to="." method="_on_extra_modes_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/StandardModes/BackButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer3/GlassCannonButton" to="." method="_on_mode_button_pressed" binds= ["glass_cannon"]]
+[connection signal="pressed" from="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer/ChaosButton" to="." method="_on_mode_button_pressed" binds= ["chaos"]]
+[connection signal="pressed" from="HBoxContainer/ExtraModes/Back" to="." method="_on_back_pressed"]

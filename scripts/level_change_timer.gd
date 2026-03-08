@@ -4,7 +4,7 @@ extends Timer
 @onready var lvl01 = $"../Level01"
 @onready var lvl02 = load("res://scenes/levels/level02.tscn")
 
-var level_duration = 300 # seconds before levels change
+var level_duration = PlayerAttributes.level_duration # seconds before levels change
 
 func _ready():
 	wait_time = (level_duration)
