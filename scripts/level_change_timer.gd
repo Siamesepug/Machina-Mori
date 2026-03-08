@@ -1,7 +1,7 @@
 extends Timer
 
-@onready var main = $".."
-@onready var starting_level = $"../Level01"
+@onready var main = $"../Levels"
+@onready var starting_level = $"../Levels/Level01"
 @onready var lvl02 = load("res://scenes/levels/level02.tscn")
 
 var level_duration = PlayerAttributes.level_duration # seconds before levels change

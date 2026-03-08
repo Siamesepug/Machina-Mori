@@ -267,10 +267,10 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_idliv")
 theme_override_font_sizes/font_size = 16
-text = "Difficult, Brutal               
-- Low Times
-- High Difficulty
-- High Xp Gain"
+text = "Unknown             
+- ???
+- ???
+- ???"
 
 [node name="Button" type="Button" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer2" unique_id=2105157930]
 layout_mode = 2

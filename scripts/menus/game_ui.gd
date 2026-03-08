@@ -5,11 +5,14 @@ extends CanvasLayer
 @onready var hp_label = $MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer/HealthLabel
 
 @onready var time_left = $MarginContainer/HBoxContainer/TimeLeft
+@onready var low_health_display = $LowHealth
 
 func _ready():
 	SignalManager.xp_gained.connect(_update_xp_bar)
 	SignalManager.hp_changed.connect(_update_hp_bar)
 	SignalManager.time_left.connect(_update_time_left)
+	
+	low_health_display.visible = false
 
 # manages levelling up the player, and carries over extra xp
 func _update_xp_bar(amount):
@@ -31,10 +34,28 @@ func _update_xp_bar(amount):
 func _update_hp_bar():
 	hp_bar.max_value = PlayerAttributes.max_health
 	hp_bar.value = PlayerAttributes.current_health
+	
 	hp_label.text = (str(int(PlayerAttributes.current_health)) + "/" + str(int(PlayerAttributes.max_health)))
+	
+	if PlayerAttributes.current_health < (PlayerAttributes.max_health * 0.1):
+		_display_low_health(true)
+	else:
+		_display_low_health(false)
 
 func _update_time_left(time):
 	var minutes = int(time / 60)
 	var secs = int(time) % 60
 	
 	time_left.text = ("TIME LEFT\n" + str(minutes) + ":" + str("%02d" % secs))
+
+func _display_low_health(active):
+	if active:
+		low_health_display.visible = true
+		var tween = create_tween()
+		
+		tween.tween_property(low_health_display, "modulate:a", 0.2, 2.0)
+	else:
+		low_health_display.visible = false
+		var tween = create_tween()
+		
+		tween.tween_property(low_health_display, "modulate:a", 0.0, 2.0)

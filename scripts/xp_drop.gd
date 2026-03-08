@@ -4,9 +4,11 @@ extends RigidBody2D
 
 var xp_amount = PlayerAttributes.xp_gain
 
-func _process(delta):
-	#rotation += 0.1
-	pass
+func _physics_process(delta):
+	rotation += 0.1
+	
+	if position.y > 720:
+		queue_free()
 
 func _on_pickup_range_body_entered(body):
 	if body != player:

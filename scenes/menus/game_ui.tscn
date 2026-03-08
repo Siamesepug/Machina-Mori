@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxo641sonttt8" path="res://scripts/menus/game_ui.gd" id="1_7oade"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="2_6v45u"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_030jj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7oade"]
 content_margin_left = 150.0
@@ -43,6 +44,13 @@ border_width_bottom = 2
 
 [node name="GameUI" type="CanvasLayer" unique_id=508800275]
 script = ExtResource("1_7oade")
+
+[node name="LowHealth" type="TextureRect" parent="." unique_id=1722422564]
+modulate = Color(1, 0, 0, 0.14509805)
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_030jj")
+stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=822294785]
 anchors_preset = 10

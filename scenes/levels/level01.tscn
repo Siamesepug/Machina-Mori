@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bnn7us75voip7" path="res://assets/images/tilemap/Terrain (16x16).png" id="1_3n7h2"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="1_g0jr5"]
-[ext_resource type="PackedScene" uid="uid://vjuntkxlfvjv" path="res://scenes/player.tscn" id="2_msin7"]
 [ext_resource type="PackedScene" uid="uid://b5entghbysb6f" path="res://scenes/objects/boost_fan.tscn" id="6_chssp"]
 [ext_resource type="Script" uid="uid://cq65gtptpet6k" path="res://scripts/area_label_fade.gd" id="7_if0f4"]
 [ext_resource type="AudioStream" uid="uid://b4drymgvi7e83" path="res://assets/sounds/level01_music.wav" id="8_qjm5h"]
@@ -295,10 +294,6 @@ modulate = Color(0.3553136, 0.35531354, 0.35531357, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("1_g0jr5")
 
-[node name="Player" parent="." unique_id=131089335 groups=["Player"] instance=ExtResource("2_msin7")]
-position = Vector2(119, 3)
-scale = Vector2(1, 1)
-
 [node name="BoostFan" parent="." unique_id=241240892 instance=ExtResource("6_chssp")]
 position = Vector2(-237.33336, 187.00003)
 scale = Vector2(0.56776524, 0.34712556)
@@ -319,15 +314,25 @@ tile_set = SubResource("TileSet_g0jr5")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1598282173]
 script = ExtResource("7_if0f4")
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=276001599]
-offset_left = 143.0
-offset_top = 146.0
-offset_right = 1110.0
-offset_bottom = 349.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=2116842466]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 450.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=276001599]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("8_ylsda")
-theme_override_font_sizes/font_size = 65
-text = "- NOW ENTERING -
-THE CASE"
+theme_override_font_sizes/font_size = 45
+text = "- NOW ENTERING -"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=20321497]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ylsda")
+theme_override_font_sizes/font_size = 90
+text = "THE CASE"
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1088720843]
