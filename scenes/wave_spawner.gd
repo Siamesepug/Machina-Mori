@@ -40,10 +40,15 @@ func spawn_enemy():
 	var enemy = enemy_type.instantiate()
 	var spawn_pos = get_random_spawn_position()
 	enemy.position = spawn_pos
-	$"..".add_child(enemy)
+	get_parent().add_child(enemy)
 
 func get_random_spawn_position():
 	var player_pos = player.global_position
 	var angle = randf() * 2.0 * PI
 	var offset = Vector2(cos(angle), sin(angle)) * spawn_radius
-	return player_pos + offset
+	var random_point = player_pos + offset
+	
+	var nav_map = get_world_2d().navigation_map
+	var safe_point = NavigationServer2D.map_get_closest_point(nav_map, random_point)
+	
+	return safe_point

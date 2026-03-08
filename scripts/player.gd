@@ -33,7 +33,9 @@ var jump_count = 0
 
 func _ready():
 	SignalManager.damage_player.connect(_take_damage)
-	#current_health = max_health
+	
+	await get_tree().create_timer(0.5).timeout
+	current_health = max_health
 	SignalManager.hp_changed.emit()
 
 func _process(delta):

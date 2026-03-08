@@ -20,7 +20,7 @@ func _on_mode_button_pressed(mode):
 			set_marathon()
 			play()
 		"standard":
-			# Use default stats
+			set_standard()
 			play()
 		"blitz":
 			set_blitz()
@@ -65,6 +65,24 @@ func set_marathon():
 	
 	# Change enemy stats
 	# MAYBE?
+
+func set_standard():
+	# Change player stats
+	PlayerAttributes.max_health = 100.0
+	PlayerAttributes.current_health = 100.0
+	PlayerAttributes.xp_gain = 10.0
+	PlayerAttributes.level_duration = 300.0
+	
+	# Change enemy stats
+	EnemyStats.flyer_max_health = 100.0
+	EnemyStats.flyer_max_xp_drops = 3
+	EnemyStats.flyer_speed = 200.0
+	EnemyStats.flyer_damage = 10.0
+	
+	EnemyStats.grunt_max_health = 100.0
+	EnemyStats.grunt_max_xp_drops = 3
+	EnemyStats.grunt_speed = 300.0
+	EnemyStats.grunt_damage = 10.0
 
 func set_blitz():
 	# Change player stats
