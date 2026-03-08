@@ -287,7 +287,7 @@ scale = Vector2(3, 3)
 texture_filter = 1
 scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(128, 128)
-repeat_times = 60
+repeat_times = 80
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1693137924]
 modulate = Color(0.3553136, 0.35531354, 0.35531357, 1)
