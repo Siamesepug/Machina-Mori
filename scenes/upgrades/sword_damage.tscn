@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cga8tlti7sjq1"]
 
-[ext_resource type="Script" uid="uid://d1u5dpdfhrp86" path="res://scenes/upgrades/sword_damage.gd" id="1_hr6t0"]
+[ext_resource type="Script" uid="uid://d1u5dpdfhrp86" path="res://scripts/upgrades/sword_damage.gd" id="1_hr6t0"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_bbu1q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]

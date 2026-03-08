@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dtrj50kh7hako"]
 
-[ext_resource type="Script" uid="uid://by7tslstjtdix" path="res://scenes/upgrades/dash_damage.gd" id="1_anyga"]
+[ext_resource type="Script" uid="uid://by7tslstjtdix" path="res://scripts/upgrades/dash_damage.gd" id="1_anyga"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_o41ar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]

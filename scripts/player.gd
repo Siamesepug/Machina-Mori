@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var sword_attack = $SwordAttack
 @onready var dash_attack = $DashAttack
 @onready var camera = $Camera2D
+@onready var dash_timer = $DashCD
 
 @export var air_resistance = 10.0 # lower means more floating in the air
 @export var friction = 50.0 # how snappy the turning and stopping is on the ground
@@ -47,6 +48,7 @@ func _ready():
 	
 	await get_tree().create_timer(0.5).timeout
 	current_health = max_health
+	dash_timer.wait_time = dash_cd
 	SignalManager.hp_changed.emit()
 
 func _process(delta):
@@ -134,6 +136,7 @@ func _input(event):
 				on_weapon_cd = true
 				
 				sword_attack.swing_sword()
+				SignalManager.slash_cd_start.emit()
 				await get_tree().create_timer(weapon_cd).timeout
 				
 				print("Sword is restored")
@@ -149,7 +152,11 @@ func _input(event):
 			# LENGTH OF DASH, MIGHT MAKE VARIABLE
 			await get_tree().create_timer(0.1).timeout
 			_slow_from_dash()
-			await get_tree().create_timer(dash_cd).timeout
+			
+			dash_timer.start()
+			SignalManager.dash_cd_start.emit() # Start CD on UI part
+			
+			await dash_timer.timeout
 			
 			is_dashing = false
 
@@ -221,4 +228,5 @@ func get_attributes():
 	
 	max_jumps = PlayerAttributes.max_jumps
 	
+	dash_timer.wait_time = dash_cd
 	SignalManager.hp_changed.emit()

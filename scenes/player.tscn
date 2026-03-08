@@ -9,9 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://cok360m5t6wct" path="res://assets/sounds/jump.wav" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://cycxj1oy1fpd0" path="res://scripts/health_regen.gd" id="7_fjrip"]
 [ext_resource type="Script" uid="uid://cgcgjouhd3b2j" path="res://scripts/player_camera.gd" id="7_y4r1p"]
-[ext_resource type="Script" uid="uid://ctfre087qh7qq" path="res://scripts/sword_attack.gd" id="8_smehm"]
+[ext_resource type="Script" uid="uid://ctfre087qh7qq" path="res://scripts/upgrades/sword_attack.gd" id="8_smehm"]
 [ext_resource type="AudioStream" uid="uid://dtfhmg03yyfve" path="res://assets/sounds/player_spawn.ogg" id="9_ur7pv"]
-[ext_resource type="Script" uid="uid://dgm8ru00cli1d" path="res://scripts/dash_attack.gd" id="11_3v2ag"]
+[ext_resource type="Script" uid="uid://dgm8ru00cli1d" path="res://scripts/upgrades/dash_attack.gd" id="11_3v2ag"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3v2ag"]
 shader = ExtResource("2_d2wvv")
@@ -336,7 +336,11 @@ autoplay = true
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=784514691]
 position = Vector2(1.6666667, 4.3333335)
 color = Color(0.6364722, 0.69446456, 0.83620596, 1)
+energy = 0.5
 texture = SubResource("GradientTexture2D_d2wvv")
+
+[node name="DashCD" type="Timer" parent="." unique_id=1295066517]
+one_shot = true
 
 [connection signal="body_entered" from="SwordAttack" to="SwordAttack" method="_on_sword_attack_body_entered"]
 [connection signal="body_entered" from="DashAttack" to="DashAttack" method="_on_dash_attack_body_entered"]

@@ -2,16 +2,23 @@ extends CanvasLayer
 
 @onready var xp_bar = $MarginContainer/HBoxContainer/HBoxContainer2/ProgressBar
 @onready var xp_label = $MarginContainer/HBoxContainer/HBoxContainer2/Label
-@onready var hp_bar = $MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer/HealthBar
-@onready var hp_label = $MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer/HealthLabel
+@onready var hp_bar = $MarginContainer/HBoxContainer/HealthBar
+@onready var hp_label = $MarginContainer/HBoxContainer/HealthBar/HealthLabel
 
 @onready var time_left = $MarginContainer/HBoxContainer/TimeLeft
 @onready var low_health_display = $LowHealth
+
+@onready var dash_bar = $MarginContainer2/AbilityBar/VBoxContainer/DashProgress
+@onready var dash_cooldown = $MarginContainer2/AbilityBar/VBoxContainer/DashProgress/DashCDLabel
+@onready var slash_bar = $MarginContainer2/AbilityBar/VBoxContainer2/SlashProgress
+@onready var slash_cooldown = $MarginContainer2/AbilityBar/VBoxContainer2/SlashProgress/SlashCDLabel
 
 func _ready():
 	SignalManager.xp_gained.connect(_update_xp_bar)
 	SignalManager.hp_changed.connect(_update_hp_bar)
 	SignalManager.time_left.connect(_update_time_left)
+	SignalManager.dash_cd_start.connect(_update_dash_progress)
+	SignalManager.slash_cd_start.connect(_update_slash_progress)
 	
 	xp_label.text = ("Level: " + str(PlayerAttributes.xp_level))
 	low_health_display.visible = false
@@ -64,3 +71,30 @@ func _display_low_health(active):
 		var tween = create_tween()
 		
 		tween.tween_property(low_health_display, "modulate:a", 0.0, 2.0)
+
+# ABILITY BAR ==================================================================
+func _update_dash_progress():
+	dash_bar.value = 0.0
+	var dash_cd = PlayerAttributes.dash_cd
+	var tween = create_tween().set_parallel(true)
+	
+	tween.tween_property(dash_bar, "value", dash_bar.max_value, dash_cd)
+	
+	tween.tween_method(func(time_passed):
+		var remaining_time = dash_cd - time_passed
+		dash_cooldown.text = str(snapped(remaining_time, 0.1)) + " S", 0.0, dash_cd, dash_cd)
+	
+	tween.chain().tween_callback(func(): dash_cooldown.text = "READY")
+
+func _update_slash_progress():
+	slash_bar.value = 0.0
+	var slash_cd = PlayerAttributes.weapon_cd
+	var tween = create_tween().set_parallel(true)
+	
+	tween.tween_property(slash_bar, "value", slash_bar.max_value, slash_cd)
+	
+	tween.tween_method(func(time_passed):
+		var remaining_time = slash_cd - time_passed
+		slash_cooldown.text = str(snapped(remaining_time, 0.1)) + " S", 0.0, slash_cd, slash_cd)
+	
+	tween.chain().tween_callback(func(): slash_cooldown.text = "READY")

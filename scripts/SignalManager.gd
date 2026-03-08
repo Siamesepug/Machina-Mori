@@ -9,3 +9,5 @@ signal hp_changed()
 
 signal time_left(time)
 signal clear_xp_orbs()
+signal dash_cd_start()
+signal slash_cd_start()
