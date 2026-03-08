@@ -8,3 +8,4 @@ signal damage_player(damage)
 signal hp_changed()
 
 signal time_left(time)
+signal clear_xp_orbs()

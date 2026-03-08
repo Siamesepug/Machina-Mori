@@ -1,6 +1,11 @@
 extends Node
 
 
+## WAVE SPAWNER STATS
+var enemies_to_spawn = 10
+var spawn_mult = 1.25
+var wave_delay = 60.0
+
 ## FLYER STATS
 var flyer_speed = 200.0
 var flyer_damage = 10.0

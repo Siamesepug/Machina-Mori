@@ -12,6 +12,7 @@ radius = 44.0
 
 [node name="BasicFlyer" type="CharacterBody2D" unique_id=494621083]
 modulate = Color(0.6392157, 1, 1, 1)
+scale = Vector2(0.75, 0.75)
 collision_layer = 4
 script = ExtResource("1_orw3q")
 

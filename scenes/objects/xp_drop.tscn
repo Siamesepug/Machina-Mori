@@ -9,6 +9,15 @@ radius = 21.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_iapjk"]
 radius = 71.95678
 
+[sub_resource type="Gradient" id="Gradient_y4r1p"]
+offsets = PackedFloat32Array(0, 0.6632124)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_npw1g"]
+gradient = SubResource("Gradient_y4r1p")
+fill = 1
+fill_from = Vector2(0.4957265, 0.4957265)
+
 [node name="XPDrop" type="RigidBody2D" unique_id=2052740696]
 scale = Vector2(0.3, 0.3)
 collision_layer = 3
@@ -30,5 +39,10 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRange" unique_id=1661787304]
 shape = SubResource("CircleShape2D_iapjk")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1233071864]
+position = Vector2(-1.1920929e-07, 0)
+color = Color(0.12614459, 0.71661526, 0.85261977, 1)
+texture = SubResource("GradientTexture2D_npw1g")
 
 [connection signal="body_entered" from="PickupRange" to="." method="_on_pickup_range_body_entered"]

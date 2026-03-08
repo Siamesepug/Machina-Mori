@@ -14,6 +14,8 @@ func _process(delta):
 	SignalManager.time_left.emit(time_left)
 
 func _on_timeout() -> void:
+	SignalManager.clear_xp_orbs.emit()
+	
 	if starting_level != null && starting_level.visible:
 		starting_level.queue_free()
 		main.add_child(lvl02.instantiate())

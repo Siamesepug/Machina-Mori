@@ -11,6 +11,7 @@ size = Vector2(64, 64)
 radius = 44.0
 
 [node name="BasicGrunt" type="CharacterBody2D" unique_id=494621083]
+scale = Vector2(0.75, 0.75)
 collision_layer = 4
 script = ExtResource("1_pk7ar")
 

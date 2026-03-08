@@ -4,6 +4,9 @@ extends RigidBody2D
 
 var xp_amount = PlayerAttributes.xp_gain
 
+func _ready():
+	SignalManager.clear_xp_orbs.connect(destroy)
+
 func _physics_process(delta):
 	rotation += 0.1
 	
@@ -17,4 +20,7 @@ func _on_pickup_range_body_entered(body):
 	xp_amount = PlayerAttributes.xp_gain
 	
 	SignalManager.xp_gained.emit(xp_amount)
+	queue_free()
+
+func destroy():
 	queue_free()

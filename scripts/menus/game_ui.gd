@@ -22,6 +22,7 @@ func _update_xp_bar(amount):
 		var leftover_xp = added_xp - xp_bar.max_value
 		
 		PlayerAttributes.xp_level += 1
+		xp_bar.max_value += PlayerAttributes.xp_per_level_increase
 		SignalManager.level_up.emit()
 		xp_bar.value = 0
 		

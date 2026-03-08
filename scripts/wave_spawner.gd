@@ -6,10 +6,10 @@ extends Node2D
 @export var spawn_radius = 1600.0 # Space away from player to spawn
 
 var current_wave = 1
-var enemies_to_spawn = 10
-var spawn_mult = (current_wave * 1.25)
-var spawn_interval = 2.0 # seconds between spawns
-var wave_delay = 60.0 # seconds between waves
+var enemies_to_spawn = EnemyStats.enemies_to_spawn
+var spawn_mult = (current_wave * EnemyStats.spawn_mult)
+var wave_delay = EnemyStats.wave_delay # seconds between waves
+var spawn_interval = (wave_delay - 10.0) / enemies_to_spawn # seconds between spawns
 
 @onready var spawn_timer = $SpawnTimer
 @onready var wave_timer = $WaveTimer
@@ -21,7 +21,7 @@ func _ready():
 func spawn_wave():
 	spawn_mult = (current_wave * 1.25)
 	
-	enemies_to_spawn = int(20 * spawn_mult)
+	enemies_to_spawn = int(enemies_to_spawn * spawn_mult)
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.start()
 

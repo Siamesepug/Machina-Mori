@@ -3,9 +3,11 @@ extends CharacterBody2D
 @onready var player_sprite = $AnimatedSprite2D
 @onready var jump_sound = $JumpSound
 @onready var sword_attack = $SwordAttack
+@onready var camera = $Camera2D
 
 @export var air_resistance = 10.0 # lower means more floating in the air
 @export var friction = 50.0 # how snappy the turning and stopping is on the ground
+@export var screenshake_intensity = 50.0
 
 var death_screen_resource = load("res://scenes/menus/death_screen.tscn")
 var death_screen_instance = death_screen_resource.instantiate()
@@ -30,6 +32,10 @@ var jump_velocity = PlayerAttributes.jump_velocity
 
 var max_jumps = PlayerAttributes.max_jumps
 var jump_count = 0
+var jump_cutoff_value = 0.4
+
+var activate_screenshake = false
+var shake_amount : float
 
 func _ready():
 	SignalManager.damage_player.connect(_take_damage)
@@ -49,6 +55,12 @@ func _physics_process(delta):
 	else:
 		player_sprite.animation = "idle"
 	
+	# Check for screenshake based on velocity
+	if not activate_screenshake:
+		if velocity.y > 1000 || (velocity.x > 1500 || velocity.x < -1500):
+			activate_screenshake = true
+			shake_amount = 0.6
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -56,11 +68,21 @@ func _physics_process(delta):
 	else:
 		# Reset total used jumps for multi-jumps
 		jump_count = 0
+	
+	if is_on_floor() || is_on_wall():
+		if activate_screenshake:
+			activate_screenshake = false
+			_screenshake()
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		if jump_count < max_jumps:
 			player_jump()
+	
+	if Input.is_action_just_released("jump"):
+		# decrease jump velocity
+		if !is_on_floor():
+			velocity.y *= jump_cutoff_value
 	
 	if Input.is_action_just_pressed("debug_level_up"):
 		PlayerAttributes.xp_progress += xp_gain
@@ -77,6 +99,7 @@ func _physics_process(delta):
 	else:
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x, 0, friction)
+			activate_screenshake = false
 		else:
 			velocity.x = move_toward(velocity.x, 0, air_resistance)
 	
@@ -92,7 +115,7 @@ func _physics_process(delta):
 		player_sprite.flip_h = true
 	
 	# Fall death
-	if position.y > 720:
+	if position.y > 900:
 		get_tree().current_scene.add_child(death_screen_instance)
 
 func _input(event):
@@ -146,10 +169,21 @@ func _slow_from_dash():
 
 func _take_damage(damage):
 	PlayerAttributes.current_health -= damage
+	damage_shader()
 	current_health = PlayerAttributes.current_health
 	
 	SignalManager.hp_changed.emit()
 	_is_dead()
+
+func damage_shader():
+	player_sprite.material.set_shader_parameter("intensity", 1.0)
+	camera.shake_amount(0.3)
+	await get_tree().create_timer(0.5).timeout
+	
+	player_sprite.material.set_shader_parameter("intensity", 0.0)
+
+func _screenshake():
+	camera.shake_amount(shake_amount)
 
 func _is_dead():
 	if current_health <= 0.0:
