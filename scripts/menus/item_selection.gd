@@ -5,17 +5,16 @@ extends CanvasLayer
 
 @export var item_list: Array[PackedScene] = []
 
-@onready var slot1 = $VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer
-@onready var slot2 = $VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer2
-@onready var slot3 = $VBoxContainer/HBoxContainer/VBoxContainer3/PanelContainer2
+@onready var slot1 = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer
+@onready var slot2 = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer2
+@onready var slot3 = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/PanelContainer2
+@onready var slot1_button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Button
+@onready var slot2_button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Button
+@onready var slot3_button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer/Button
 
-@onready var slot1_button = $VBoxContainer/HBoxContainer/VBoxContainer/Button
-@onready var slot2_button = $VBoxContainer/HBoxContainer/VBoxContainer2/Button
-@onready var slot3_button = $VBoxContainer/HBoxContainer/VBoxContainer3/Button
-
-@onready var slot1_desc = $VBoxContainer/HBoxContainer/VBoxContainer/Item1Label
-@onready var slot2_desc = $VBoxContainer/HBoxContainer/VBoxContainer2/Item2Label
-@onready var slot3_desc = $VBoxContainer/HBoxContainer/VBoxContainer3/Item3Label
+@onready var slot1_desc = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Item1Label
+@onready var slot2_desc = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Item2Label
+@onready var slot3_desc = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer/Item3Label
 
 var item1 = null
 var item2 = null
@@ -75,5 +74,9 @@ func _on_button_pressed(item: String):
 	elif item == "item3":
 		item3.activate_item()
 		hide()
+	
+	item1.queue_free()
+	item2.queue_free()
+	item3.queue_free()
 	
 	get_tree().paused = false

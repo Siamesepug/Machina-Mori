@@ -12,17 +12,16 @@
 [ext_resource type="PackedScene" uid="uid://bauw807vljlxp" path="res://scenes/upgrades/weapon_size.tscn" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://crpneaircb67p" path="res://scenes/upgrades/weapon_cd.tscn" id="10_eb6dy"]
 [ext_resource type="Script" uid="uid://cfvhu70p21sql" path="res://scenes/wave_spawner.gd" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://e886w33jbyu6" path="res://scenes/objects/basic_grunt.tscn" id="13_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://cft4omc85o6i7" path="res://scenes/objects/basic_flyer.tscn" id="14_jkv2x"]
 
 [node name="Main" type="Node2D" unique_id=687830750]
-position = Vector2(292, -257)
 
 [node name="Level01" parent="." unique_id=1082038515 instance=ExtResource("1_o5qli")]
 
 [node name="GameUI" parent="." unique_id=508800275 instance=ExtResource("2_0wfyh")]
 
 [node name="ItemSelection" parent="." unique_id=2141210872 instance=ExtResource("3_sugp2")]
-scale = Vector2(0.285, 0.285)
-transform = Transform2D(0.285, 0, 0, 0.285, 0, 0)
 item_list = Array[PackedScene]([ExtResource("4_tefeu"), ExtResource("5_o6xl0"), ExtResource("6_tipki"), ExtResource("7_85g3d"), ExtResource("8_choun"), ExtResource("9_ya4ey"), ExtResource("10_eb6dy")])
 
 [node name="LevelChangeTimer" type="Timer" parent="." unique_id=1857395138]
@@ -32,6 +31,7 @@ script = ExtResource("8_85g3d")
 
 [node name="WaveSpawner" type="Node2D" parent="." unique_id=1051497752]
 script = ExtResource("12_eb6dy")
+enemy_list = Array[PackedScene]([ExtResource("13_a8y0u"), ExtResource("14_jkv2x")])
 
 [node name="SpawnTimer" type="Timer" parent="WaveSpawner" unique_id=617225926]
 

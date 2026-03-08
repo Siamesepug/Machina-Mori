@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 
-var item_name = "Enhanced Processing"
+var item_name = "  ++Processing  "
 var item_desc = "Increases XP Gain"
 
 func activate_item():

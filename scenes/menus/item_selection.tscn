@@ -1,85 +1,129 @@
 [gd_scene format=3 uid="uid://bakwtt7aavn5t"]
 
 [ext_resource type="Script" uid="uid://ks18pjoilf85" path="res://scripts/menus/item_selection.gd" id="1_fidhh"]
+[ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="2_a57ve"]
+[ext_resource type="StyleBox" uid="uid://c6kxtadbn2l03" path="res://scenes/menus/MenuButtons.tres" id="2_ctfre"]
+[ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="3_fidhh"]
 
 [node name="ItemSelection" type="CanvasLayer" unique_id=2141210872]
 process_mode = 3
 script = ExtResource("1_fidhh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1870979787]
-offset_left = 403.0
-offset_top = -6.0
-offset_right = 1683.0
-offset_bottom = 714.0
-scale = Vector2(3, 3)
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1824166375]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -85.5
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=4437926]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1870979787]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=4437926]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_constants/separation = 125
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=580467274]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=580467274]
 layout_mode = 2
 theme_override_constants/separation = 75
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=785938932]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=785938932]
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=442815230]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=179026019]
 layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=442815230]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_a57ve")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("2_ctfre")
+theme_override_styles/hover = ExtResource("3_fidhh")
 text = "LEFT ITEM"
 
-[node name="Item1Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1104773018]
+[node name="Item1Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1104773018]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_a57ve")
+theme_override_font_sizes/font_size = 20
 text = "ITEM DESC"
 horizontal_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1185360004]
-layout_mode = 2
-theme_override_constants/separation = 364
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1282223215]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1282223215]
 layout_mode = 2
 theme_override_constants/separation = 75
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1305241622]
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1305241622]
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2093471057]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1536955176]
 layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=2093471057]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_a57ve")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("2_ctfre")
+theme_override_styles/hover = ExtResource("3_fidhh")
 text = "RIGHT ITEM"
 
-[node name="Item2Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=279475120]
+[node name="Item2Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=279475120]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_a57ve")
+theme_override_font_sizes/font_size = 20
 text = "ITEM DESC"
 horizontal_alignment = 1
 
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=784626983]
-layout_mode = 2
-theme_override_constants/separation = 364
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1090929821]
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1090929821]
 layout_mode = 2
 theme_override_constants/separation = 75
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=2096746567]
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=2096746567]
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=86613166]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=1222642645]
 layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer" unique_id=86613166]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_a57ve")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("2_ctfre")
+theme_override_styles/hover = ExtResource("3_fidhh")
 text = "RIGHT ITEM"
 
-[node name="Item3Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=309649762]
+[node name="Item3Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer" unique_id=309649762]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_a57ve")
+theme_override_font_sizes/font_size = 20
 text = "ITEM DESC"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed" binds= ["item1"]]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/Button" to="." method="_on_button_pressed" binds= ["item2"]]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer3/Button" to="." method="_on_button_pressed" binds= ["item3"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed" binds= ["item1"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Button" to="." method="_on_button_pressed" binds= ["item2"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer/Button" to="." method="_on_button_pressed" binds= ["item3"]]

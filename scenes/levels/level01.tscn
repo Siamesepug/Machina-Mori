@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://vjuntkxlfvjv" path="res://scenes/player.tscn" id="2_msin7"]
 [ext_resource type="PackedScene" uid="uid://b5entghbysb6f" path="res://scenes/objects/boost_fan.tscn" id="6_chssp"]
 [ext_resource type="Script" uid="uid://cq65gtptpet6k" path="res://scripts/area_label_fade.gd" id="7_if0f4"]
+[ext_resource type="AudioStream" uid="uid://b4drymgvi7e83" path="res://assets/sounds/level01_music.wav" id="8_qjm5h"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="8_ylsda"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qwlqn"]
@@ -328,3 +329,8 @@ theme_override_font_sizes/font_size = 65
 text = "- NOW ENTERING -
 THE CASE"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1088720843]
+stream = ExtResource("8_qjm5h")
+volume_db = -7.37
+autoplay = true

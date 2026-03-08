@@ -17,7 +17,7 @@ var regen_rate = 2.0 # seconds between heals once active
 
 var xp_level = 0
 var xp_progress = 0.0
-var xp_gain = 10.0
+var xp_gain = 100.0
 
 var speed = 400.0
 var jump_velocity = -900.0

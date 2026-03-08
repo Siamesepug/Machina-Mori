@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhnf34l33vk61" path="res://scripts/enemies/basic_flyer.gd" id="1_orw3q"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_6ct5k"]
+[ext_resource type="AudioStream" uid="uid://csog3oqiwvfk3" path="res://assets/sounds/enemy_hurt.ogg" id="3_6ct5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7xp6"]
 size = Vector2(64, 64)
@@ -33,5 +34,8 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1931091940]
 shape = SubResource("CircleShape2D_pk7ar")
+
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="." unique_id=1655247865]
+stream = ExtResource("3_6ct5k")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

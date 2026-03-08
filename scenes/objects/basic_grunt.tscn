@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cc261vvnfqhil" path="res://scripts/enemies/basic_grunt.gd" id="1_pk7ar"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_fjbdy"]
+[ext_resource type="AudioStream" uid="uid://csog3oqiwvfk3" path="res://assets/sounds/enemy_hurt.ogg" id="3_fjbdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7xp6"]
 size = Vector2(64, 64)
@@ -10,7 +11,6 @@ size = Vector2(64, 64)
 radius = 44.0
 
 [node name="BasicGrunt" type="CharacterBody2D" unique_id=494621083]
-scale = Vector2(0.25, 0.25)
 collision_layer = 4
 script = ExtResource("1_pk7ar")
 
@@ -37,6 +37,9 @@ shape = SubResource("CircleShape2D_pk7ar")
 [node name="Timer" type="Timer" parent="." unique_id=1714618657]
 wait_time = 5.0
 autostart = true
+
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="." unique_id=884712243]
+stream = ExtResource("3_fjbdy")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

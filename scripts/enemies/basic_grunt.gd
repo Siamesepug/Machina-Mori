@@ -23,6 +23,7 @@ var is_jumping = false
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var xp_drop = load("res://scenes/objects/xp_drop.tscn")
+@onready var hurt_audio = $HurtAudio
 
 func _physics_process(delta):
 	if player == null || is_knocked_back:
@@ -83,7 +84,7 @@ func _jump(delta):
 
 func take_damage(damage):
 	current_health -= damage
-	print("I TOOK DAMAGE : " + str(damage))
+	hurt_audio.play()
 	
 	if current_health <= 0:
 		max_xp_drops = EnemyStats.grunt_max_xp_drops
