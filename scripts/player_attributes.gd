@@ -25,7 +25,7 @@ var xp_gain = 10.0
 var xp_per_level_increase = 10.0 # the increase in amount of xp needed to level up per level
 
 var speed = 400.0
-var jump_velocity = -900.0
+var jump_velocity = -1200.0
 var dash_speed = 4.0
 
 var level_duration = 300.0 # in seconds
@@ -34,4 +34,4 @@ var level_duration = 300.0 # in seconds
 # movement back to default after dash
 var default_speed = 1.0
 
-var max_jumps = 100
+var max_jumps = 1
