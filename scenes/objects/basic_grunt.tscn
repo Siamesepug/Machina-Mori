@@ -4,6 +4,28 @@
 [ext_resource type="Texture2D" uid="uid://bb6yrlfbtfeau" path="res://assets/images/enemies/grunt/hovergrunt.png" id="2_fjbdy"]
 [ext_resource type="AudioStream" uid="uid://csog3oqiwvfk3" path="res://assets/sounds/enemy_hurt.ogg" id="3_fjbdy"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjbdy"]
+atlas = ExtResource("2_fjbdy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7xp6"]
+atlas = ExtResource("2_fjbdy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t63mh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjbdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7xp6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7xp6"]
 size = Vector2(64, 64)
 
@@ -33,10 +55,19 @@ scale = Vector2(0.75, 0.75)
 collision_layer = 4
 script = ExtResource("1_pk7ar")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1995354147]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_t63mh")
+autoplay = "default"
+frame_progress = 0.013065689
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2091209592]
+visible = false
 texture = ExtResource("2_fjbdy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525793527]
+visible = false
 shape = SubResource("RectangleShape2D_c7xp6")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=354206683]
@@ -47,6 +78,7 @@ path_desired_distance = 1.0
 avoidance_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2072010273]
+visible = false
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1931091940]

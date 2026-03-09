@@ -13,6 +13,8 @@ func _ready():
 
 func swing_sword():
 	size = player.weapon_size
+	damage = player.weapon_damage
+	
 	collision_shape.scale = Vector2(size, size)
 	
 	monitoring = true

@@ -13,6 +13,8 @@ func _ready():
 
 func is_dashing():
 	size = player.dash_size
+	damage = player.dash_damage
+	
 	collision_shape.scale = Vector2(size, size)
 	
 	monitoring = true

@@ -6,7 +6,12 @@ extends CharacterBody2D
 # - ATTACKING
 # - DEAD
 
-var state = "wandering"
+#var state = "wandering"
+
+# Gonna need to do quite an overhaul here ngl
+# Need to have ~2 states where the enemy shoots the player or charges
+# at the player. This way, events can override the states and maybe even setup
+# an adaptive system to see what states are working better than others.
 
 var speed = EnemyStats.flyer_speed
 var damage = EnemyStats.flyer_damage
