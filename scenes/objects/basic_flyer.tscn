@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cft4omc85o6i7"]
 
 [ext_resource type="Script" uid="uid://bhnf34l33vk61" path="res://scripts/enemies/basic_flyer.gd" id="1_orw3q"]
-[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_6ct5k"]
+[ext_resource type="Texture2D" uid="uid://dw2c1fi2uruqq" path="res://assets/images/enemies/flyer/bluediode.png" id="2_6ct5k"]
 [ext_resource type="AudioStream" uid="uid://csog3oqiwvfk3" path="res://assets/sounds/enemy_hurt.ogg" id="3_6ct5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7xp6"]
@@ -35,7 +35,8 @@ collision_layer = 4
 script = ExtResource("1_orw3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2091209592]
-modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+scale = Vector2(3, 3)
 texture = ExtResource("2_6ct5k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525793527]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://e886w33jbyu6"]
 
 [ext_resource type="Script" uid="uid://cc261vvnfqhil" path="res://scripts/enemies/basic_grunt.gd" id="1_pk7ar"]
-[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_fjbdy"]
+[ext_resource type="Texture2D" uid="uid://bb6yrlfbtfeau" path="res://assets/images/enemies/grunt/hovergrunt.png" id="2_fjbdy"]
 [ext_resource type="AudioStream" uid="uid://csog3oqiwvfk3" path="res://assets/sounds/enemy_hurt.ogg" id="3_fjbdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7xp6"]
@@ -34,7 +34,6 @@ collision_layer = 4
 script = ExtResource("1_pk7ar")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2091209592]
-modulate = Color(1, 0, 0, 1)
 texture = ExtResource("2_fjbdy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525793527]
