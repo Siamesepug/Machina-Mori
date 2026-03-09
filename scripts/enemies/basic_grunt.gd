@@ -6,7 +6,7 @@ extends CharacterBody2D
 # - ATTACKING
 # - DEAD
 
-var state = "wandering"
+#var state = "wandering"
 
 var speed = EnemyStats.grunt_speed
 var damage = EnemyStats.grunt_damage
@@ -24,6 +24,11 @@ var is_jumping = false
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var xp_drop = load("res://scenes/objects/xp_drop.tscn")
 @onready var hurt_audio = $HurtAudio
+@onready var health_bar = $HealthBar
+
+func _ready():
+	health_bar.max_value = current_health
+	health_bar.value = current_health
 
 func _physics_process(delta):
 	if player == null || is_knocked_back:
@@ -85,6 +90,8 @@ func _jump(delta):
 func take_damage(damage):
 	current_health -= damage
 	hurt_audio.play()
+	
+	health_bar.value = current_health
 	
 	if current_health <= 0:
 		max_xp_drops = EnemyStats.grunt_max_xp_drops

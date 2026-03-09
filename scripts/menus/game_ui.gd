@@ -84,7 +84,7 @@ func _update_dash_progress():
 		var remaining_time = dash_cd - time_passed
 		dash_cooldown.text = str(snapped(remaining_time, 0.1)) + " S", 0.0, dash_cd, dash_cd)
 	
-	tween.chain().tween_callback(func(): dash_cooldown.text = "READY")
+	tween.chain().tween_callback(func(): dash_cooldown.text = "Ready")
 
 func _update_slash_progress():
 	slash_bar.value = 0.0
@@ -97,4 +97,4 @@ func _update_slash_progress():
 		var remaining_time = slash_cd - time_passed
 		slash_cooldown.text = str(snapped(remaining_time, 0.1)) + " S", 0.0, slash_cd, slash_cd)
 	
-	tween.chain().tween_callback(func(): slash_cooldown.text = "READY")
+	tween.chain().tween_callback(func(): slash_cooldown.text = "Ready")

@@ -10,6 +10,24 @@ size = Vector2(64, 64)
 [sub_resource type="CircleShape2D" id="CircleShape2D_pk7ar"]
 radius = 44.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjbdy"]
+bg_color = Color(0.20392157, 0.20392157, 0.20392157, 0)
+skew = Vector2(0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4117647, 0, 0.08235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7xp6"]
+bg_color = Color(0.7367291, 0, 0.11374422, 1)
+skew = Vector2(0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.41274655, 0, 0.082475044, 1)
+
 [node name="BasicGrunt" type="CharacterBody2D" unique_id=494621083]
 scale = Vector2(0.75, 0.75)
 collision_layer = 4
@@ -41,6 +59,18 @@ autostart = true
 
 [node name="HurtAudio" type="AudioStreamPlayer2D" parent="." unique_id=884712243]
 stream = ExtResource("3_fjbdy")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1711589670]
+custom_minimum_size = Vector2(60, 0)
+offset_left = -26.66667
+offset_top = -53.33333
+offset_right = 33.33333
+offset_bottom = -26.333328
+scale = Vector2(0.9466666, 0.4666634)
+theme_override_styles/background = SubResource("StyleBoxFlat_fjbdy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c7xp6")
+value = 72.73
+show_percentage = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
