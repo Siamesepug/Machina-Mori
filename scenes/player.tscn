@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://ctfre087qh7qq" path="res://scripts/upgrades/sword_attack.gd" id="8_smehm"]
 [ext_resource type="AudioStream" uid="uid://dtfhmg03yyfve" path="res://assets/sounds/player_spawn.ogg" id="9_ur7pv"]
 [ext_resource type="Script" uid="uid://dgm8ru00cli1d" path="res://scripts/upgrades/dash_attack.gd" id="11_3v2ag"]
+[ext_resource type="Shader" uid="uid://v2eqsaem5fen" path="res://scenes/beam.gdshader" id="12_f1ej7"]
+[ext_resource type="Script" uid="uid://btixi7qq5whdv" path="res://scenes/beam_attack.gd" id="12_oprun"]
+[ext_resource type="Texture2D" uid="uid://dnq7uogt40wfi" path="res://assets/images/background/Empty.png" id="13_oprun"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3v2ag"]
 shader = ExtResource("2_d2wvv")
@@ -266,6 +269,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
 size = Vector2(15.666668, 20.666834)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3v2ag"]
+random_pitch = 1.1553527
+streams_count = 1
+stream_0/stream = ExtResource("6_tuyoq")
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y4r1p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ur7pv"]
@@ -273,6 +281,28 @@ size = Vector2(47, 34.166668)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jej6c"]
 size = Vector2(65.333336, 9.666667)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfm1y"]
+shader = ExtResource("12_f1ej7")
+shader_parameter/beams = 1
+shader_parameter/energy = 2.83
+shader_parameter/roughness = 3
+shader_parameter/frequency = 16
+shader_parameter/speed = 1.0
+shader_parameter/thickness = 0.10000000149012
+shader_parameter/outline_thickness = 0.07600000361
+shader_parameter/beam_difference = 0.0
+shader_parameter/glow = 1.00400004769
+shader_parameter/outline_glow = 0.934000044365
+shader_parameter/color = Color(0.3372549, 1, 1, 1)
+shader_parameter/outline_color = Color(3.85046e-07, 0.65522414, 0.62449706, 1)
+shader_parameter/progress = 1.0
+shader_parameter/y_offset = 0.0
+shader_parameter/fixed_edge_size = 0.05
+shader_parameter/noise_scale = Vector2(13.96, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ls1"]
+size = Vector2(495.33337, 11)
 
 [sub_resource type="Gradient" id="Gradient_y4r1p"]
 offsets = PackedFloat32Array(0, 0.6632124)
@@ -301,7 +331,7 @@ position = Vector2(0.50000024, 5.333416)
 shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=933953504]
-stream = ExtResource("6_tuyoq")
+stream = SubResource("AudioStreamRandomizer_3v2ag")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1003100336]
 zoom = Vector2(0.6, 0.6)
@@ -329,6 +359,23 @@ script = ExtResource("11_3v2ag")
 position = Vector2(1, 5.3333335)
 shape = SubResource("RectangleShape2D_jej6c")
 
+[node name="BeamAttackNode" type="Node2D" parent="." unique_id=1958730333]
+
+[node name="BeamAttack" type="Area2D" parent="BeamAttackNode" unique_id=1976309637]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("12_oprun")
+
+[node name="Sprite2D" type="Sprite2D" parent="BeamAttackNode/BeamAttack" unique_id=1281326654]
+material = SubResource("ShaderMaterial_qfm1y")
+position = Vector2(-2.5331974e-06, 4.166665)
+scale = Vector2(0.70363617, 0.07996632)
+texture = ExtResource("13_oprun")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeamAttackNode/BeamAttack" unique_id=630458179]
+position = Vector2(1.0172526e-05, 3.9999979)
+shape = SubResource("RectangleShape2D_a8ls1")
+
 [node name="PlayerSpawnAudio" type="AudioStreamPlayer2D" parent="." unique_id=1385689446]
 stream = ExtResource("9_ur7pv")
 autoplay = true
@@ -344,3 +391,4 @@ one_shot = true
 
 [connection signal="body_entered" from="SwordAttack" to="SwordAttack" method="_on_sword_attack_body_entered"]
 [connection signal="body_entered" from="DashAttack" to="DashAttack" method="_on_dash_attack_body_entered"]
+[connection signal="body_entered" from="BeamAttackNode/BeamAttack" to="BeamAttackNode/BeamAttack" method="_on_dash_attack_body_entered"]

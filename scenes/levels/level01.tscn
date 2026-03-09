@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="1_g0jr5"]
 [ext_resource type="PackedScene" uid="uid://b5entghbysb6f" path="res://scenes/objects/boost_fan.tscn" id="6_chssp"]
 [ext_resource type="Script" uid="uid://cq65gtptpet6k" path="res://scripts/area_label_fade.gd" id="7_if0f4"]
+[ext_resource type="Shader" uid="uid://daw4otcesyvwd" path="res://scenes/levels/snowfall.gdshader" id="7_ylsda"]
 [ext_resource type="AudioStream" uid="uid://b4drymgvi7e83" path="res://assets/sounds/level01_music.wav" id="8_qjm5h"]
+[ext_resource type="Texture2D" uid="uid://dnq7uogt40wfi" path="res://assets/images/background/Empty.png" id="8_y32f7"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="8_ylsda"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qwlqn"]
@@ -597,6 +599,16 @@ gradient = SubResource("Gradient_y4r1p")
 fill = 2
 fill_from = Vector2(0.4957265, 0.4957265)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cd15k"]
+shader = ExtResource("7_ylsda")
+shader_parameter/spread = 0.26000001235
+shader_parameter/size = 0.05000000167648
+shader_parameter/snow_color = Color(0, 0, 0, 1)
+shader_parameter/snow_transparency = 0.13500003016249995
+shader_parameter/speed = 0.5
+shader_parameter/wind = 1.1920001516199998
+shader_parameter/num_of_layers = 15
+
 [node name="LevelRoot" type="Node2D" unique_id=1082038515]
 scale = Vector2(3, 3)
 
@@ -663,3 +675,10 @@ scale = Vector2(7.2812495, 12.713541)
 color = Color(0.7101111, 0.61906916, 0.44699478, 1)
 energy = 1.45
 texture = SubResource("GradientTexture2D_chssp")
+
+[node name="SnowfallBG2" type="Sprite2D" parent="." unique_id=1183789307]
+modulate = Color(1, 1, 1, 0.5176471)
+material = SubResource("ShaderMaterial_cd15k")
+position = Vector2(259.99982, -1546.8699)
+scale = Vector2(7.690341, 10.67406)
+texture = ExtResource("8_y32f7")

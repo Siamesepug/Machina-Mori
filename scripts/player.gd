@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var jump_sound = $JumpSound
 @onready var sword_attack = $SwordAttack
 @onready var dash_attack = $DashAttack
+@onready var beam_attack = $BeamAttackNode/BeamAttack
 @onready var camera = $Camera2D
 @onready var dash_timer = $DashCD
 
@@ -117,10 +118,12 @@ func _physics_process(delta):
 	if direction == 1.0:
 		sword_attack.global_position.x = global_position.x + (50 * direction)
 		dash_attack.global_position.x = global_position.x + (50 * direction)
+		beam_attack.global_position.x = global_position.x + (770 * direction)
 		player_sprite.flip_h = false
 	elif direction == -1.0:
 		sword_attack.global_position.x = global_position.x + (50 * direction)
 		dash_attack.global_position.x = global_position.x + (50 * direction)
+		beam_attack.global_position.x = global_position.x + (770 * direction)
 		player_sprite.flip_h = true
 	
 	# Fall death
@@ -148,6 +151,7 @@ func _input(event):
 			is_dashing = true
 			
 			dash_attack.is_dashing()
+			beam_attack.is_firing()
 			dash_speed = PlayerAttributes.dash_speed
 			# LENGTH OF DASH, MIGHT MAKE VARIABLE
 			await get_tree().create_timer(0.1).timeout
