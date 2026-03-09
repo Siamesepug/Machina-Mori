@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxo641sonttt8" path="res://scripts/menus/game_ui.gd" id="1_7oade"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="2_6v45u"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_030jj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7oade"]
 content_margin_left = 150.0
@@ -41,8 +42,43 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8aso"]
+bg_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.31764707, 0.32941177, 0.32156864, 1)
+shadow_color = Color(0.31764707, 0.32941177, 0.32156864, 1)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pc18a"]
+bg_color = Color(0.53333336, 0.11764706, 0.16862746, 1)
+border_width_left = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.31761986, 0.32900247, 0.32141456, 1)
+shadow_color = Color(0.53333336, 0.11764706, 0.16862746, 0.44705883)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivene"]
+bg_color = Color(0.15397793, 0.21626157, 0.4484225, 1)
+border_width_left = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.31761986, 0.32900247, 0.32141456, 1)
+shadow_color = Color(0.28627452, 0.27450982, 1, 0.38039216)
+shadow_size = 4
+
 [node name="GameUI" type="CanvasLayer" unique_id=508800275]
 script = ExtResource("1_7oade")
+
+[node name="LowHealth" type="TextureRect" parent="." unique_id=1722422564]
+modulate = Color(1, 0, 0, 0.14509805)
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_030jj")
+stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=822294785]
 anchors_preset = 10
@@ -59,15 +95,7 @@ theme_override_constants/margin_right = 25
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=850477651]
-layout_mode = 2
-theme_override_constants/separation = 105
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1758178731]
-layout_mode = 2
-theme_override_constants/separation = -235
-
-[node name="HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer" unique_id=1060559538]
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer" unique_id=1060559538]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/outline_size = 7
@@ -78,8 +106,19 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_030jj")
 value = 100.0
 show_percentage = false
 
-[node name="HealthLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer" unique_id=1212220371]
-layout_mode = 2
+[node name="HealthLabel" type="Label" parent="MarginContainer/HBoxContainer/HealthBar" unique_id=1212220371]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -17.5
+offset_right = 71.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_font_sizes/font_size = 35
@@ -88,7 +127,7 @@ text = "100/100"
 [node name="Control3" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1884542970]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.18
+size_flags_stretch_ratio = 0.07
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1971750707]
 layout_mode = 2
@@ -99,7 +138,7 @@ text = "HEALTH"
 [node name="Control" type="Control" parent="MarginContainer/HBoxContainer" unique_id=322161539]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
+size_flags_stretch_ratio = 0.3
 
 [node name="TimeLeft" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1196523528]
 layout_mode = 2
@@ -117,12 +156,13 @@ size_flags_stretch_ratio = 0.5
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=670483788]
 layout_mode = 2
 theme_override_constants/separation = 18
+alignment = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1281861374]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_font_sizes/font_size = 30
-text = "XP PROGRESS"
+text = "Level: "
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1259207512]
 layout_mode = 2
@@ -132,3 +172,90 @@ theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/background = SubResource("StyleBoxFlat_3quv2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6v45u")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1815852909]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="AbilityBar" type="HBoxContainer" parent="MarginContainer2" unique_id=104540854]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer2/AbilityBar" unique_id=223013491]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/AbilityBar/VBoxContainer2" unique_id=1594425341]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6v45u")
+theme_override_font_sizes/font_size = 20
+text = "Slash"
+horizontal_alignment = 1
+
+[node name="SlashProgress" type="ProgressBar" parent="MarginContainer2/AbilityBar/VBoxContainer2" unique_id=412753511]
+custom_minimum_size = Vector2(90, 100)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_h8aso")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pc18a")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="SlashCDLabel" type="Label" parent="MarginContainer2/AbilityBar/VBoxContainer2/SlashProgress" unique_id=1505763124]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6v45u")
+theme_override_font_sizes/font_size = 20
+text = "Ready"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/AbilityBar" unique_id=1239367279]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/AbilityBar/VBoxContainer" unique_id=2121979729]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6v45u")
+theme_override_font_sizes/font_size = 20
+text = "DASH"
+horizontal_alignment = 1
+
+[node name="DashProgress" type="ProgressBar" parent="MarginContainer2/AbilityBar/VBoxContainer" unique_id=235828596]
+custom_minimum_size = Vector2(90, 100)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_h8aso")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ivene")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="DashCDLabel" type="Label" parent="MarginContainer2/AbilityBar/VBoxContainer/DashProgress" unique_id=2102264655]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6v45u")
+theme_override_font_sizes/font_size = 20
+text = "Ready"
+horizontal_alignment = 1

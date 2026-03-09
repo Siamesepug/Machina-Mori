@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 
-var item_name = "Move Speed"
+var item_name = "  Move Speed  "
 var item_desc = "Increases move speed"
 
 func activate_item():

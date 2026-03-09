@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var item_name = "Double Jump"
+var item_name = "  Double Jump  "
 var item_desc = "Jump one additional time"
 
 func activate_item():

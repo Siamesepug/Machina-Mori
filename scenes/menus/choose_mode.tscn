@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6m86y1rgc3hg"]
 
-[ext_resource type="Script" uid="uid://cx3gev4lye4kc" path="res://scenes/menus/choose_mode.gd" id="1_oiw77"]
+[ext_resource type="Script" uid="uid://cx3gev4lye4kc" path="res://scripts/menus/choose_mode.gd" id="1_oiw77"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_kq770"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="3_idliv"]
 [ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="4_xshkk"]
@@ -42,6 +42,7 @@ offset_bottom = 720.0
 alignment = 1
 
 [node name="StandardModes" type="VBoxContainer" parent="HBoxContainer" unique_id=1205255961]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
@@ -171,7 +172,6 @@ theme_override_styles/hover = ExtResource("4_xshkk")
 text = "        Back        "
 
 [node name="ExtraModes" type="VBoxContainer" parent="HBoxContainer" unique_id=1509479744]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
@@ -260,19 +260,19 @@ size_flags_horizontal = 8
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_idliv")
 theme_override_font_sizes/font_size = 32
-text = "TBD"
+text = "Rip And Tear"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer2" unique_id=1601198954]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_idliv")
 theme_override_font_sizes/font_size = 16
-text = "Difficult, Brutal               
-- Low Times
-- High Difficulty
-- High Xp Gain"
+text = "Face The Horde
+- Many, Many, enemies
+- Lots, And Lots Of Health
+- Tanked Performance"
 
-[node name="Button" type="Button" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer2" unique_id=2105157930]
+[node name="RipAndTearButton" type="Button" parent="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer2" unique_id=2105157930]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_idliv")
@@ -310,4 +310,5 @@ stretch_mode = 1
 [connection signal="pressed" from="HBoxContainer/StandardModes/BackButton" to="." method="_on_back_to_menu_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer3/GlassCannonButton" to="." method="_on_mode_button_pressed" binds= ["glass_cannon"]]
 [connection signal="pressed" from="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer/ChaosButton" to="." method="_on_mode_button_pressed" binds= ["chaos"]]
+[connection signal="pressed" from="HBoxContainer/ExtraModes/HBoxContainer/VBoxContainer2/RipAndTearButton" to="." method="_on_mode_button_pressed" binds= ["rip_and_tear"]]
 [connection signal="pressed" from="HBoxContainer/ExtraModes/Back" to="." method="_on_back_pressed"]

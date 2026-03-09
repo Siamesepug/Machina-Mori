@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var label = $Label
+@onready var label = $VBoxContainer
 
 func _ready():
 	label.modulate.a = 0.0
@@ -8,7 +8,7 @@ func _ready():
 	var tween = create_tween()
 	
 	# FADE IN
-	tween.tween_property(label, "modulate:a", 1.0, 4.0)
+	tween.tween_property(label, "modulate:a", 1.0, 3.0)
 	
 	tween.tween_interval(2.0)
 	

@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 
-var item_name = "Power Supply"
+var item_name = "  Power Supply  "
 var item_desc = "Increases regen rate"
 
 func activate_item():

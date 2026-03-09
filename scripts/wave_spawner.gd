@@ -1,14 +1,15 @@
 extends Node2D
 
 # MAKE THIS A LIST TO INCLUDE ALL ENEMY TYPES
-@export var enemy_type = load("res://scenes/objects/basic_flyer.tscn")
-@export var spawn_radius = 800.0 # Space away from player to spawn
+#@export var enemy_type = load("res://scenes/objects/basic_flyer.tscn")
+@export var enemy_list : Array[PackedScene] = []
+@export var spawn_radius = 1600.0 # Space away from player to spawn
 
 var current_wave = 1
-var enemies_to_spawn = 15
-var spawn_mult = (current_wave * 1.25)
-var spawn_interval = 0.5 # seconds between spawns
-var wave_delay = 60.0 # seconds between waves
+var enemies_to_spawn = EnemyStats.enemies_to_spawn
+var spawn_mult = (current_wave * EnemyStats.spawn_mult)
+var wave_delay = EnemyStats.wave_delay # seconds between waves
+var spawn_interval = (wave_delay - 10.0) / enemies_to_spawn # seconds between spawns
 
 @onready var spawn_timer = $SpawnTimer
 @onready var wave_timer = $WaveTimer
@@ -20,7 +21,7 @@ func _ready():
 func spawn_wave():
 	spawn_mult = (current_wave * 1.25)
 	
-	enemies_to_spawn = int(20 * spawn_mult)
+	enemies_to_spawn = int(enemies_to_spawn * spawn_mult)
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.start()
 
@@ -37,7 +38,9 @@ func _on_wave_timer_timeout():
 	spawn_wave()
 
 func spawn_enemy():
-	var enemy = enemy_type.instantiate()
+	# I know this line is awful and long, but hey it works
+	# (it chooses a random enemy to spawn from the given enemy list)
+	var enemy = enemy_list[(randi_range(0, (enemy_list.size() - 1)))].instantiate()
 	var spawn_pos = get_random_spawn_position()
 	enemy.position = spawn_pos
 	get_parent().add_child(enemy)
