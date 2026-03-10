@@ -12,6 +12,9 @@ extends CanvasLayer
 @onready var dash_cooldown = $MarginContainer2/AbilityBar/VBoxContainer/DashProgress/DashCDLabel
 @onready var slash_bar = $MarginContainer2/AbilityBar/VBoxContainer2/SlashProgress
 @onready var slash_cooldown = $MarginContainer2/AbilityBar/VBoxContainer2/SlashProgress/SlashCDLabel
+@onready var beam_bar = $MarginContainer2/AbilityBar/VBoxContainer3/BeamProgress
+@onready var beam_cooldown = $MarginContainer2/AbilityBar/VBoxContainer3/BeamProgress/BeamCDLabel
+@onready var beam_icon = $MarginContainer2/AbilityBar/VBoxContainer3
 
 func _ready():
 	SignalManager.xp_gained.connect(_update_xp_bar)
@@ -19,9 +22,11 @@ func _ready():
 	SignalManager.time_left.connect(_update_time_left)
 	SignalManager.dash_cd_start.connect(_update_dash_progress)
 	SignalManager.slash_cd_start.connect(_update_slash_progress)
+	SignalManager.beam_cd_start.connect(_update_beam_progress)
 	
 	xp_label.text = ("Level: " + str(PlayerAttributes.xp_level))
 	low_health_display.visible = false
+	beam_icon.visible = false
 
 # manages levelling up the player, and carries over extra xp
 func _update_xp_bar(amount):
@@ -98,3 +103,20 @@ func _update_slash_progress():
 		slash_cooldown.text = str(snapped(remaining_time, 0.1)) + " S", 0.0, slash_cd, slash_cd)
 	
 	tween.chain().tween_callback(func(): slash_cooldown.text = "Ready")
+
+func _update_beam_progress():
+	if beam_icon.visible == false:
+		beam_icon.visible = true
+	
+	if beam_bar.value == beam_bar.max_value: # only activate when full
+		beam_bar.value = 0.0
+		var beam_cd = PlayerAttributes.beam_cd
+		var tween = create_tween().set_parallel(true)
+		
+		tween.tween_property(beam_bar, "value", beam_bar.max_value, beam_cd)
+		
+		tween.tween_method(func(time_passed):
+			var remaining_time = beam_cd - time_passed
+			beam_cooldown.text = str(snapped(remaining_time, 0.1)) + " S", 0.0, beam_cd, beam_cd)
+		
+		tween.chain().tween_callback(func(): beam_cooldown.text = "Ready")

@@ -70,6 +70,15 @@ border_color = Color(0.31761986, 0.32900247, 0.32141456, 1)
 shadow_color = Color(0.28627452, 0.27450982, 1, 0.38039216)
 shadow_size = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v144c"]
+bg_color = Color(0.4570744, 0.8813501, 0.99999994, 1)
+border_width_left = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.31761986, 0.32900247, 0.32141456, 1)
+shadow_color = Color(0.45882353, 0.88235295, 1, 1)
+shadow_size = 4
+
 [node name="GameUI" type="CanvasLayer" unique_id=508800275]
 script = ExtResource("1_7oade")
 
@@ -257,5 +266,41 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_font_sizes/font_size = 20
+text = "Ready"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer2/AbilityBar" unique_id=1661144894]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/AbilityBar/VBoxContainer3" unique_id=1909005200]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6v45u")
+theme_override_font_sizes/font_size = 13
+text = "BEAM"
+horizontal_alignment = 1
+
+[node name="BeamProgress" type="ProgressBar" parent="MarginContainer2/AbilityBar/VBoxContainer3" unique_id=881252420]
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_h8aso")
+theme_override_styles/fill = SubResource("StyleBoxFlat_v144c")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="BeamCDLabel" type="Label" parent="MarginContainer2/AbilityBar/VBoxContainer3/BeamProgress" unique_id=879993152]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6v45u")
+theme_override_font_sizes/font_size = 10
 text = "Ready"
 horizontal_alignment = 1

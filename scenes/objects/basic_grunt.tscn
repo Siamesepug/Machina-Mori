@@ -60,7 +60,7 @@ texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_t63mh")
 autoplay = "default"
-frame_progress = 0.013065689
+frame_progress = 0.6879524
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2091209592]
 visible = false
@@ -93,10 +93,10 @@ stream = ExtResource("3_fjbdy")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1711589670]
 custom_minimum_size = Vector2(60, 0)
-offset_left = -26.66667
-offset_top = -53.33333
-offset_right = 33.33333
-offset_bottom = -26.333328
+offset_left = -26.666668
+offset_top = -65.333336
+offset_right = 33.333332
+offset_bottom = -38.333336
 scale = Vector2(0.9466666, 0.4666634)
 theme_override_styles/background = SubResource("StyleBoxFlat_fjbdy")
 theme_override_styles/fill = SubResource("StyleBoxFlat_c7xp6")

@@ -143,6 +143,12 @@ func _input(event):
 				on_weapon_cd = true
 				
 				sword_attack.swing_sword()
+				
+				# if you have the beam item, fire it
+				if PlayerAttributes.has_beam:
+					beam_attack.is_firing()
+					SignalManager.beam_cd_start.emit()
+				
 				SignalManager.slash_cd_start.emit()
 				await get_tree().create_timer(weapon_cd).timeout
 				
@@ -155,7 +161,6 @@ func _input(event):
 			is_dashing = true
 			
 			dash_attack.is_dashing()
-			beam_attack.is_firing()
 			dash_speed = PlayerAttributes.dash_speed
 			# LENGTH OF DASH, MIGHT MAKE VARIABLE
 			await get_tree().create_timer(0.1).timeout

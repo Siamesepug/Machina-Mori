@@ -1,15 +1,17 @@
 extends Node
 
-var has_element : bool = false
-var element_count = 0 # amount of elements the player currently has
+var has_element : bool = true
+var element_count = 1 # amount of elements the player currently has
 
-var has_fire : bool = false
+var has_fire : bool = true
 var has_frost : bool = false
 var has_acid : bool = false
 var has_electric : bool = false
 var has_bleed : bool = false
 
-func get_element():
+var fire_decay : float = 1.0 # how fast elements "burn"
+
+func get_element(body: CharacterBody2D):
 	if has_element:
 		while has_element:
 			var element_select = randi_range(1, element_count)
@@ -19,7 +21,7 @@ func get_element():
 				1:
 					# FIRE
 					if has_fire:
-						trigger_fire()
+						trigger_fire(body)
 					else:
 						continue
 				2:
@@ -51,7 +53,9 @@ func gain_element():
 	has_element = true
 	element_count += 1
 
-func trigger_fire():
+func trigger_fire(body: CharacterBody2D):
 	# Check the current level of fire item, for multiplier of damage, etc.
 	# then tell the attacking zone to apply the element, or maybe do it here?
-	pass
+	var fire_stacks = PlayerAttributes.fire_level * PlayerAttributes.fire_mult
+	var fire_damage = PlayerAttributes.fire_level * PlayerAttributes.fire_mult
+	#body.on_fire(fire_stacks, fire_damage)

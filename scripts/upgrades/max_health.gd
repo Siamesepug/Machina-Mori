@@ -1,10 +1,10 @@
 extends StaticBody2D
 
 
-var item_name = "  Durable Casing  "
-var item_desc = "Increases max health"
+var item_name = "  Fire Coating  "
+var item_desc = "Chance to ignite enemies on hit"
 
 func activate_item():
-	PlayerAttributes.max_health += 50
-	SignalManager.hp_changed.emit()
+	Elements.has_fire = true
+	PlayerAttributes.fire_level += 1
 	queue_free()

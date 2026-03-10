@@ -32,6 +32,21 @@ var dash_speed = 4.0
 
 var level_duration = 300.0 # in seconds
 
+## UNIQUE ITEM VARS
+var has_beam = true
+var beam_cd = 10.0 # seconds
+var beam_duration = 2.5 # seconds
+
+## ELEMENT TIERS
+var fire_level = 1
+var fire_mult = 10
+var fire_damage = 5 # 5 damage over 10 stacks , 50 total
+var frost_level = 0
+var acid_level = 0
+var electric_level = 0
+var bleed_level = 0
+
+
 # Probably don't change this one, used to reset
 # movement back to default after dash
 var default_speed = 1.0

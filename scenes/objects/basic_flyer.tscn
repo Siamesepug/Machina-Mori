@@ -40,6 +40,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_6ct5k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525793527]
+visible = false
 shape = SubResource("RectangleShape2D_c7xp6")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=354206683]
@@ -50,6 +51,7 @@ path_desired_distance = 40.0
 avoidance_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2072010273]
+visible = false
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1931091940]
@@ -60,10 +62,10 @@ stream = ExtResource("3_6ct5k")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1614885842]
 custom_minimum_size = Vector2(60, 0)
-offset_left = -26.66667
-offset_top = -53.33333
-offset_right = 33.33333
-offset_bottom = -26.333328
+offset_left = -26.666668
+offset_top = -64.0
+offset_right = 33.333332
+offset_bottom = -37.0
 scale = Vector2(0.9466666, 0.4666634)
 theme_override_styles/background = SubResource("StyleBoxFlat_6ct5k")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nir26")
