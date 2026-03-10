@@ -10,4 +10,5 @@ var one_time = false
 func activate_item():
 	Elements.has_fire = true
 	PlayerAttributes.fire_level += 1
+	Elements.gain_element()
 	queue_free()

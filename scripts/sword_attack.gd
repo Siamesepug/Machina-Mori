@@ -9,12 +9,15 @@ extends Area2D
 @onready var slash_sprite = $"../SwordSprite"
 @onready var facing_left : bool = false
 
+var slash_style = true # false for down swing, true for side swing, swap between these
+
 func _ready():
 	monitoring = false
 	visible = false
 	slash_sprite.visible = false
 	slash_sprite.scale = Vector2(size, size)
 	slash_sprite.modulate = PlayerAttributes.default_slash_color
+	slash_sprite.animation = "idle"
 
 func swing_sword():
 	size = player.weapon_size
@@ -23,12 +26,16 @@ func swing_sword():
 	collision_shape.scale = Vector2(size, size)
 	
 	# swing up and down, swapping each time
-	slash_sprite.flip_v = !slash_sprite.flip_v
+	slash_style = !slash_style
+	if slash_style:
+		slash_sprite.animation = "swing_side"
+	else:
+		slash_sprite.animation = "swing_down"
 	
 	if facing_left:
-		slash_sprite.flip_h = false
-	else:
 		slash_sprite.flip_h = true
+	else:
+		slash_sprite.flip_h = false
 		
 	slash_sprite.play()
 	

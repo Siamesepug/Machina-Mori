@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b6m1tg6nhmr0m"]
+
+[ext_resource type="Script" uid="uid://jvtfxowr5lww" path="res://scripts/upgrades/frost_element.gd" id="1_qcnlw"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_p1wn2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
+size = Vector2(64, 64)
+
+[node name="FrostElement" type="StaticBody2D" unique_id=567444937]
+script = ExtResource("1_qcnlw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
+modulate = Color(0.80757797, 0, 0.12833506, 1)
+texture = ExtResource("2_p1wn2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
+shape = SubResource("RectangleShape2D_e7mu8")

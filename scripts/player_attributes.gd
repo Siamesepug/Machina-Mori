@@ -10,7 +10,7 @@ var weapon_damage = 50.0
 var weapon_cd = 1.25 # seconds between slashes
 var weapon_size = 1.0
 
-var default_slash_color = Color8(123, 0, 0)
+var default_slash_color = Color.WHITE
 
 var dash_damage = 80.0
 var dash_cd = 3.0 # seconds
@@ -46,16 +46,16 @@ var fire_level = 1
 var fire_mult = 10
 var fire_damage = 5 # 5 damage over 10 stacks , 50 total
 
-var frost_level = 0
+var frost_level = 1
 var frost_mult = 30
 var frost_damage = 1 # 1 damage over 40 stacks, 30 total
-var frost_slow = 100 # movement penalty to enemies
+var frost_slow = 3 # slow duration
 
-var acid_level = 0
+var acid_level = 1
 var acid_mult = 15
 var acid_damage = 3 # 3 damage over 15 stacks, 45 total
 
-var electric_level = 0
+var electric_level = 1
 var electric_mult = 3
 var electric_damage = 15 # 15 damage over 3 stacks, 45 total
 var electric_stun = 3 # stun duration

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://begrhi4ntdrhi"]
+
+[ext_resource type="Script" uid="uid://yicxjtae0063" path="res://scenes/upgrades/acid_element.gd" id="1_qj0ul"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_2hd4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
+size = Vector2(64, 64)
+
+[node name="AcidElement" type="StaticBody2D" unique_id=567444937]
+script = ExtResource("1_qj0ul")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
+modulate = Color(0.80757797, 0, 0.12833506, 1)
+texture = ExtResource("2_2hd4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
+shape = SubResource("RectangleShape2D_e7mu8")

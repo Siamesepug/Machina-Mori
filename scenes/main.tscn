@@ -64,7 +64,7 @@ enemy_list = Array[PackedScene]([ExtResource("13_a8y0u"), ExtResource("14_jkv2x"
 
 [node name="Player" parent="." unique_id=131089335 groups=["Player"] instance=ExtResource("15_jkv2x")]
 visibility_layer = 3
-position = Vector2(350, 14)
+position = Vector2(398.99988, -71)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=638121522]
 environment = SubResource("Environment_jkv2x")

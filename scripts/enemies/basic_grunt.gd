@@ -23,6 +23,18 @@ var is_jumping = false
 var is_on_fire = false
 var fire_stacks = 0
 
+var is_on_frost = false
+var frost_stacks = 0
+
+var is_on_acid = false
+var acid_stacks = 0
+
+var is_on_electric = false
+var electric_stacks = 0
+
+var is_on_bleed = false
+var bleed_stacks = 0
+
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var xp_drop = load("res://scenes/objects/xp_drop.tscn")
@@ -137,3 +149,68 @@ func on_fire(stacks: int, fire_damage: float):
 		
 		await get_tree().create_timer(Elements.fire_decay).timeout
 	is_on_fire = false
+
+func on_frost(stacks: int, frost_damage: float, slow_duration: float):
+	if is_on_frost:
+		frost_stacks += stacks
+		return # already on frost, just increase the stacks
+	
+	is_on_frost = true
+	sprite.modulate = Color.DEEP_SKY_BLUE
+	frost_stacks = stacks
+	
+	var temp_speed = speed
+	speed = speed / 3
+	await get_tree().create_timer(slow_duration).timeout
+	speed = temp_speed * 0.75
+	
+	for count in range(frost_stacks): # Deal one tick of damage per interval of frost damage, until all frost stacks are gone
+		current_health -= frost_damage
+		health_bar.value = current_health
+		frost_stacks -= 1
+		is_dead()
+		
+		await get_tree().create_timer(Elements.frost_decay).timeout
+	is_on_frost = false
+
+func on_acid(stacks: int, acid_damage: float):
+	if is_on_acid:
+		acid_stacks += stacks
+		return # already on acid, just increase the stacks
+	
+	is_on_acid = true
+	sprite.modulate = Color.GREEN
+	acid_stacks = stacks
+	print(acid_stacks)
+	
+	for count in range(acid_stacks): # Deal one tick of damage per interval of acid damage, until all acid stacks are gone
+		current_health -= acid_damage
+		health_bar.value = current_health
+		acid_stacks -= 1
+		is_dead()
+		
+		await get_tree().create_timer(Elements.acid_decay).timeout
+	is_on_acid = false
+
+func on_electric(stacks: int, electric_damage: float, stun_duration: float):
+	if is_on_electric:
+		electric_stacks += stacks
+		return # already on electric, just increase the stacks
+	
+	is_on_electric = true
+	sprite.modulate = Color.DARK_BLUE
+	electric_stacks = stacks
+	
+	var temp_speed = speed
+	speed = 0
+	await get_tree().create_timer(stun_duration).timeout
+	speed = temp_speed
+	
+	for count in range(electric_stacks): # Deal one tick of damage per interval of electric damage, until all electric stacks are gone
+		current_health -= electric_damage
+		health_bar.value = current_health
+		electric_stacks -= 1
+		is_dead()
+		
+		await get_tree().create_timer(Elements.electric_decay).timeout
+	is_on_electric = false

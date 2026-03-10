@@ -107,13 +107,12 @@ func is_dead():
 			queue_free()
 
 func on_fire(stacks: int, fire_damage: float):
-	print("ON FIRE!!!")
+	sprite.modulate = Color.RED
 	if is_on_fire:
 		fire_stacks += stacks
 		return # already on fire, just increase the stacks
 	
 	is_on_fire = true
-	sprite.modulate = Color.RED
 	fire_stacks = stacks
 	print(fire_stacks)
 	
@@ -125,3 +124,72 @@ func on_fire(stacks: int, fire_damage: float):
 		
 		await get_tree().create_timer(Elements.fire_decay).timeout
 	is_on_fire = false
+	sprite.modulate = Color.WHITE
+
+func on_frost(stacks: int, frost_damage: float, slow_duration: float):
+	sprite.modulate = Color.DEEP_SKY_BLUE
+	if is_on_frost:
+		frost_stacks += stacks
+		return # already on frost, just increase the stacks
+	
+	is_on_frost = true
+	frost_stacks = stacks
+	
+	var temp_speed = speed
+	speed = speed / 3
+	await get_tree().create_timer(slow_duration).timeout
+	speed = temp_speed * 0.75
+	
+	for count in range(frost_stacks): # Deal one tick of damage per interval of frost damage, until all frost stacks are gone
+		current_health -= frost_damage
+		health_bar.value = current_health
+		frost_stacks -= 1
+		is_dead()
+		
+		await get_tree().create_timer(Elements.frost_decay).timeout
+	is_on_frost = false
+	sprite.modulate = Color.WHITE
+
+func on_acid(stacks: int, acid_damage: float):
+	sprite.modulate = Color.GREEN
+	if is_on_acid:
+		acid_stacks += stacks
+		return # already on acid, just increase the stacks
+	
+	is_on_acid = true
+	acid_stacks = stacks
+	print(acid_stacks)
+	
+	for count in range(acid_stacks): # Deal one tick of damage per interval of acid damage, until all acid stacks are gone
+		current_health -= acid_damage
+		health_bar.value = current_health
+		acid_stacks -= 1
+		is_dead()
+		
+		await get_tree().create_timer(Elements.acid_decay).timeout
+	is_on_acid = false
+	sprite.modulate = Color.WHITE
+
+func on_electric(stacks: int, electric_damage: float, stun_duration: float):
+	sprite.modulate = Color.DARK_BLUE
+	if is_on_electric:
+		electric_stacks += stacks
+		return # already on electric, just increase the stacks
+	
+	is_on_electric = true
+	electric_stacks = stacks
+	
+	var temp_speed = speed
+	speed = 0
+	await get_tree().create_timer(stun_duration).timeout
+	speed = temp_speed
+	
+	for count in range(electric_stacks): # Deal one tick of damage per interval of electric damage, until all electric stacks are gone
+		current_health -= electric_damage
+		health_bar.value = current_health
+		electric_stacks -= 1
+		is_dead()
+		
+		await get_tree().create_timer(Elements.electric_decay).timeout
+	is_on_electric = false
+	sprite.modulate = Color.WHITE

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cru1nbdoppm05"]
 
-[ext_resource type="Script" uid="uid://dkerrlmwwvb1k" path="res://scenes/objects/charge_flyer.gd" id="1_d4vpa"]
+[ext_resource type="Script" uid="uid://dkerrlmwwvb1k" path="res://scripts/enemies/charge_flyer.gd" id="1_d4vpa"]
 [ext_resource type="Texture2D" uid="uid://dw2c1fi2uruqq" path="res://assets/images/enemies/flyer/bluediode.png" id="2_girm6"]
 [ext_resource type="AudioStream" uid="uid://csog3oqiwvfk3" path="res://assets/sounds/enemy_hurt.ogg" id="3_j4syf"]
 
