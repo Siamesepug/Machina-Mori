@@ -20,6 +20,8 @@ var item1 = null
 var item2 = null
 var item3 = null
 
+var taken_one_time_items : Array[String] = []
+
 func _ready():
 	hide()
 	SignalManager.level_up.connect(show_menu)
@@ -33,11 +35,21 @@ func generate_random_items():
 	# Takes the list of items, makes a copy, shuffles the copy,
 	# and chooses the first few items in the new list
 	
-	var item_pool = item_list.duplicate()
-	item_pool.shuffle()
+	var item_pool = []
+	
+	for scene in item_list:
+		var item = scene.instantiate()
+		
+		if item.one_time and item.item_name in taken_one_time_items:
+			item.queue_free()
+			continue
+		
+		item_pool.append(scene)
+		item.queue_free()
 	
 	# SLOT 1 ==========================================
-	var selected_item = item_pool[0]
+	var selected_item = get_weighted_item(item_pool)
+	item_pool.erase(selected_item)
 	item1 = selected_item.instantiate()
 	slot1.add_child(item1)
 	
@@ -45,7 +57,8 @@ func generate_random_items():
 	slot1_desc.text = item1.item_desc
 	
 	# SLOT 2 ==========================================
-	selected_item = item_pool[1]
+	selected_item = get_weighted_item(item_pool)
+	item_pool.erase(selected_item)
 	item2 = selected_item.instantiate()
 	slot2.add_child(item2)
 	
@@ -53,26 +66,60 @@ func generate_random_items():
 	slot2_desc.text = item2.item_desc
 	
 	# SLOT 3 ==========================================
-	selected_item = item_pool[2]
+	selected_item = get_weighted_item(item_pool)
+	item_pool.erase(selected_item)
 	item3 = selected_item.instantiate()
 	slot3.add_child(item3)
 	
 	slot3_button.text = item3.item_name
 	slot3_desc.text = item3.item_desc
 
+func get_weighted_item(pool):
+	var total_weight = 0
+	
+	for scene in pool:
+		var item = scene.instantiate()
+		total_weight += item.rarity_weight
+		item.queue_free()
+	
+	var roll = randi() % total_weight
+	var sum = 0
+	
+	for scene in pool:
+		var item = scene.instantiate()
+		sum += item.rarity_weight
+		
+		if roll < sum:
+			item.queue_free()
+			return scene
+		
+		item.queue_free()
+	return pool[0]
 
 func _on_button_pressed(item: String):
 	
 	if item == "item1":
 		item1.activate_item()
+		
+		if item1.one_time:
+			taken_one_time_items.append(item1.item_name)
+		
 		hide()
 	
 	elif item == "item2":
 		item2.activate_item()
+		
+		if item2.one_time:
+			taken_one_time_items.append(item2.item_name)
+		
 		hide()
 	
 	elif item == "item3":
 		item3.activate_item()
+		
+		if item3.one_time:
+			taken_one_time_items.append(item3.item_name)
+		
 		hide()
 	
 	item1.queue_free()

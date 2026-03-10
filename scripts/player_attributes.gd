@@ -33,9 +33,11 @@ var dash_speed = 4.0
 var level_duration = 300.0 # in seconds
 
 ## UNIQUE ITEM VARS
-var has_beam = true
+var has_beam = false
 var beam_cd = 10.0 # seconds
-var beam_duration = 2.5 # seconds
+var beam_duration = 2.5 # seconds , dont really change this, breaks audio timing
+
+var has_double_attack = false
 
 ## ELEMENT TIERS
 var fire_level = 1

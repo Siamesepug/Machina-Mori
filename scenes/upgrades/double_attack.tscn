@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://3x4jmvk3jkhj"]
+
+[ext_resource type="Script" uid="uid://dqro2xthvls4j" path="res://scripts/upgrades/double_attack.gd" id="1_ukh1d"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_vgio8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
+size = Vector2(64, 64)
+
+[node name="DoubleAttack" type="StaticBody2D" unique_id=567444937]
+script = ExtResource("1_ukh1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
+modulate = Color(1, 0.32156864, 1, 1)
+texture = ExtResource("2_vgio8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
+shape = SubResource("RectangleShape2D_e7mu8")

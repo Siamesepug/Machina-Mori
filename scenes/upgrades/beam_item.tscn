@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ckpc6b2fhxys5"]
 
-[ext_resource type="Script" uid="uid://cm6jswvxq61v3" path="res://scenes/upgrades/beam_item.gd" id="1_wpsbj"]
+[ext_resource type="Script" uid="uid://cm6jswvxq61v3" path="res://scripts/upgrades/beam_item.gd" id="1_wpsbj"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_ne5lc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]

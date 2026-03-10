@@ -144,6 +144,10 @@ func _input(event):
 				
 				sword_attack.swing_sword()
 				
+				if PlayerAttributes.has_double_attack:
+					await get_tree().create_timer(0.4).timeout
+					sword_attack.swing_sword()
+				
 				# if you have the beam item, fire it
 				if PlayerAttributes.has_beam:
 					beam_attack.is_firing()
