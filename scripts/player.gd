@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var player_sprite = $AnimatedSprite2D
 @onready var jump_sound = $JumpSound
-@onready var sword_attack = $SwordAttack
+@onready var sword_attack = $SwordAttackNode/SwordAttack
 @onready var dash_attack = $DashAttack
 @onready var beam_attack = $BeamAttackNode/BeamAttack
 @onready var camera = $Camera2D
@@ -117,11 +117,15 @@ func _physics_process(delta):
 
 	if direction == 1.0:
 		sword_attack.global_position.x = global_position.x + (50 * direction)
+		sword_attack.slash_sprite.global_position.x = global_position.x + (80 * direction)
+		sword_attack.facing_left = false
 		dash_attack.global_position.x = global_position.x + (50 * direction)
 		beam_attack.global_position.x = global_position.x + (770 * direction)
 		player_sprite.flip_h = false
 	elif direction == -1.0:
 		sword_attack.global_position.x = global_position.x + (50 * direction)
+		sword_attack.slash_sprite.global_position.x = global_position.x + (80 * direction)
+		sword_attack.facing_left = true
 		dash_attack.global_position.x = global_position.x + (50 * direction)
 		beam_attack.global_position.x = global_position.x + (770 * direction)
 		player_sprite.flip_h = true

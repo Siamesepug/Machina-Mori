@@ -10,6 +10,8 @@ var weapon_damage = 50.0
 var weapon_cd = 1.25 # seconds between slashes
 var weapon_size = 1.0
 
+var default_slash_color = Color8(123, 0, 0)
+
 var dash_damage = 80.0
 var dash_cd = 3.0 # seconds
 var dash_size = 1.0
