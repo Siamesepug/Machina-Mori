@@ -2,7 +2,8 @@ extends StaticBody2D
 
 
 var item_name = "  Durable Casing  "
-var item_desc = "Increases max health"
+var item_desc = "Increases max health\n
+\"Nothing we used even dented it.\""
 var rarity_weight = 20
 var one_time = false
 

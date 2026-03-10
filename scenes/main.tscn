@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://3x4jmvk3jkhj" path="res://scenes/upgrades/double_attack.tscn" id="25_og1vs"]
 [ext_resource type="PackedScene" uid="uid://bwook4wnx0rby" path="res://scenes/upgrades/jump_height.tscn" id="26_2wyq8"]
 [ext_resource type="PackedScene" uid="uid://bwxs6gutuvucb" path="res://scenes/upgrades/overclock.tscn" id="27_vxglm"]
+[ext_resource type="PackedScene" uid="uid://bovuqifnubrcw" path="res://scenes/upgrades/nuke_item.tscn" id="28_2f3dj"]
 
 [sub_resource type="Environment" id="Environment_jkv2x"]
 background_mode = 3
@@ -91,7 +92,7 @@ offset_bottom = 720.0
 texture = ExtResource("18_dp3eg")
 
 [node name="ItemSelection" parent="." unique_id=2141210872 instance=ExtResource("3_sugp2")]
-item_list = Array[PackedScene]([ExtResource("23_pm3ni"), ExtResource("19_gqmmt"), ExtResource("21_jscy8"), ExtResource("20_yc10j"), ExtResource("4_tefeu"), ExtResource("17_y6deb"), ExtResource("8_choun"), ExtResource("5_o6xl0"), ExtResource("7_85g3d"), ExtResource("10_eb6dy"), ExtResource("22_pm3ni"), ExtResource("9_ya4ey"), ExtResource("6_tipki"), ExtResource("25_og1vs"), ExtResource("26_2wyq8"), ExtResource("27_vxglm")])
+item_list = Array[PackedScene]([ExtResource("23_pm3ni"), ExtResource("19_gqmmt"), ExtResource("21_jscy8"), ExtResource("20_yc10j"), ExtResource("4_tefeu"), ExtResource("17_y6deb"), ExtResource("8_choun"), ExtResource("5_o6xl0"), ExtResource("7_85g3d"), ExtResource("10_eb6dy"), ExtResource("22_pm3ni"), ExtResource("9_ya4ey"), ExtResource("6_tipki"), ExtResource("25_og1vs"), ExtResource("26_2wyq8"), ExtResource("27_vxglm"), ExtResource("28_2f3dj")])
 
 [connection signal="timeout" from="LevelChangeTimer" to="LevelChangeTimer" method="_on_timeout"]
 [connection signal="timeout" from="LevelChangeTimer" to="DirectionalLight2D" method="_on_level_change_timer_timeout"]

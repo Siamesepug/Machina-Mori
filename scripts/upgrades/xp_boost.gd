@@ -1,8 +1,9 @@
 extends StaticBody2D
 
 
-var item_name = "  ++Processing  "
-var item_desc = "Increases XP Gain"
+var item_name = "  [color=light_blue]++Processing  "
+var item_desc = "Increases XP Gain\n
+\"It was smart. Smarter than us. That was the problem.\""
 var rarity_weight = 15
 var one_time = false
 

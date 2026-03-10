@@ -8,13 +8,19 @@ extends CanvasLayer
 @onready var slot1 = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer
 @onready var slot2 = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer2
 @onready var slot3 = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/PanelContainer2
-@onready var slot1_button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Button
-@onready var slot2_button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Button
-@onready var slot3_button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer/Button
 
-@onready var slot1_desc = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Item1Label
-@onready var slot2_desc = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Item2Label
-@onready var slot3_desc = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer/Item3Label
+@onready var slot1_button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Button
+@onready var slot1_name = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Button/Item1Label2
+
+@onready var slot2_button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Button
+@onready var slot2_name = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Button/Item1Label2
+
+@onready var slot3_button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer/Button
+@onready var slot3_name = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer/Button/Item1Label2
+
+@onready var slot1_desc = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Item1Label2
+@onready var slot2_desc = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Item1Label2
+@onready var slot3_desc = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer/Item1Label2
 
 var item1 = null
 var item2 = null
@@ -53,7 +59,7 @@ func generate_random_items():
 	item1 = selected_item.instantiate()
 	slot1.add_child(item1)
 	
-	slot1_button.text = item1.item_name
+	slot1_name.text = item1.item_name
 	slot1_desc.text = item1.item_desc
 	
 	# SLOT 2 ==========================================
@@ -62,7 +68,7 @@ func generate_random_items():
 	item2 = selected_item.instantiate()
 	slot2.add_child(item2)
 	
-	slot2_button.text = item2.item_name
+	slot2_name.text = item2.item_name
 	slot2_desc.text = item2.item_desc
 	
 	# SLOT 3 ==========================================
@@ -71,7 +77,7 @@ func generate_random_items():
 	item3 = selected_item.instantiate()
 	slot3.add_child(item3)
 	
-	slot3_button.text = item3.item_name
+	slot3_name.text = item3.item_name
 	slot3_desc.text = item3.item_desc
 
 func get_weighted_item(pool):

@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="2_a57ve"]
 [ext_resource type="StyleBox" uid="uid://c6kxtadbn2l03" path="res://scenes/menus/MenuButtons.tres" id="2_ctfre"]
 [ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="3_fidhh"]
+[ext_resource type="StyleBox" uid="uid://cxr7hpxbf63no" path="res://assets/fonts/item_desc_style.tres" id="5_k5f0l"]
 
 [node name="ItemSelection" type="CanvasLayer" unique_id=2141210872]
 process_mode = 3
@@ -20,9 +21,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 25
+theme_override_constants/margin_left = 75
 theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 25
+theme_override_constants/margin_right = 75
 theme_override_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1870979787]
@@ -36,6 +37,7 @@ alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=580467274]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 75
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=785938932]
@@ -47,25 +49,55 @@ layout_mode = 2
 theme_override_constants/separation = 12
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=442815230]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_a57ve")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = ExtResource("2_ctfre")
 theme_override_styles/hover = ExtResource("3_fidhh")
-text = "LEFT ITEM"
 
-[node name="Item1Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1104773018]
-layout_mode = 2
-size_flags_vertical = 1
+[node name="Item1Label2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Button" unique_id=2096844151]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -33.5
+offset_right = 161.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.627451, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_a57ve")
-theme_override_font_sizes/font_size = 20
-text = "ITEM DESC"
+theme_override_fonts/normal_font = ExtResource("2_a57ve")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "LEFT ITEM"
+fit_content = true
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item1Label2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=286312216]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.627451, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("2_a57ve")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = ExtResource("5_k5f0l")
+bbcode_enabled = true
+text = "LEFT ITEM"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1282223215]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 75
 
 [node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1305241622]
@@ -77,25 +109,55 @@ layout_mode = 2
 theme_override_constants/separation = 12
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=2093471057]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_a57ve")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = ExtResource("2_ctfre")
 theme_override_styles/hover = ExtResource("3_fidhh")
-text = "RIGHT ITEM"
 
-[node name="Item2Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=279475120]
-layout_mode = 2
-size_flags_vertical = 1
+[node name="Item1Label2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Button" unique_id=1635471473]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = -34.5
+offset_right = 161.5
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.627451, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_a57ve")
-theme_override_font_sizes/font_size = 20
-text = "ITEM DESC"
+theme_override_fonts/normal_font = ExtResource("2_a57ve")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "MID ITEM"
+fit_content = true
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item1Label2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=24395734]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.627451, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("2_a57ve")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = ExtResource("5_k5f0l")
+bbcode_enabled = true
+text = "LEFT ITEM"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1090929821]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 75
 
 [node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=2096746567]
@@ -107,22 +169,51 @@ layout_mode = 2
 theme_override_constants/separation = 12
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer" unique_id=86613166]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_a57ve")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = ExtResource("2_ctfre")
 theme_override_styles/hover = ExtResource("3_fidhh")
-text = "RIGHT ITEM"
 
-[node name="Item3Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer" unique_id=309649762]
-layout_mode = 2
-size_flags_vertical = 1
+[node name="Item1Label2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer/Button" unique_id=194091302]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = -34.5
+offset_right = 160.5
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.627451, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_a57ve")
-theme_override_font_sizes/font_size = 20
-text = "ITEM DESC"
+theme_override_fonts/normal_font = ExtResource("2_a57ve")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "RIGHT ITEM"
+fit_content = true
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item1Label2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer" unique_id=759888419]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.627451, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("2_a57ve")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = ExtResource("5_k5f0l")
+bbcode_enabled = true
+text = "LEFT ITEM"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed" binds= ["item1"]]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Button" to="." method="_on_button_pressed" binds= ["item2"]]

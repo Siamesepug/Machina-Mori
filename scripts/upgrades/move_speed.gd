@@ -1,8 +1,9 @@
 extends StaticBody2D
 
 
-var item_name = "  Move Speed  "
-var item_desc = "Increases move speed"
+var item_name = "  Accelerated Capacity  "
+var item_desc = "Increases move speed\n
+\"Get a pep in your step.\""
 var rarity_weight = 20
 var one_time = false
 

@@ -1,7 +1,8 @@
 extends StaticBody2D
 
-var item_name = "  Jump Boost  "
-var item_desc = "Jump higher"
+var item_name = "  Pressure Boots  "
+var item_desc = "Jump higher\n
+\"Get up to where you need to get up to.\""
 var rarity_weight = 20
 var one_time = false
 

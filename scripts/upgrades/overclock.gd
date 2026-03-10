@@ -1,7 +1,8 @@
 extends StaticBody2D
 
-var item_name = "  Overclock  "
-var item_desc = "Higher enemy spawn rate,\nenemy health, and XP gain"
+var item_name = "  [color=red]Overclock  "
+var item_desc = "[color=red]Higher enemy spawn\nrate, enemy health, [/color]and[color=lime] XP gain\n
+[/color] \"No matter how many charged at it, nothing changed.\""
 var rarity_weight = 10
 var one_time = false
 

@@ -1,7 +1,8 @@
 extends StaticBody2D
 
-var item_name = "  Double Jump  "
-var item_desc = "Jump one additional time"
+var item_name = "  [color=purple]Extra Thrust[/color]  "
+var item_desc = "Jump one additional time\n
+\"It soared over entire circuits in a single leap.\""
 var rarity_weight = 10
 var one_time = false
 

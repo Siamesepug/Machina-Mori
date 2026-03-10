@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var sword_attack = $SwordAttackNode/SwordAttack
 @onready var dash_attack = $DashAttack
 @onready var beam_attack = $BeamAttackNode/BeamAttack
+@onready var nuke_attack = $NukeAttackNode/NukeAttack
 @onready var camera = $Camera2D
 @onready var dash_timer = $DashCD
 
@@ -219,6 +220,12 @@ func _screenshake():
 
 func _is_dead():
 	if current_health <= 0.0:
+		if PlayerAttributes.has_nuke:
+			nuke_attack.activate_nuke()
+			current_health = max_health
+			PlayerAttributes.has_nuke = false
+			return
+		
 		get_tree().current_scene.add_child(death_screen_instance)
 		get_tree().paused = true
 

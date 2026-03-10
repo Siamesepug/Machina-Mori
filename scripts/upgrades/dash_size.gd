@@ -1,6 +1,5 @@
 extends StaticBody2D
 
-
 var item_name = "  Dash Size  "
 var item_desc = "Increases dash attack size"
 var rarity_weight = 20

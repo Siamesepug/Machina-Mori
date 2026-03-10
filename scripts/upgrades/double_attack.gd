@@ -1,7 +1,8 @@
 extends StaticBody2D
 
-var item_name = "  Dual Process  "
-var item_desc = "Attack an additional time,\nbut deal less damage per swing"
+var item_name = "  [color=purple]Dual Process[/color]  "
+var item_desc = "Attack an additional time,\nbut deal less damage per swing\n
+\"It cleaved through hundreds in the blink of an eye.\""
 var rarity_weight = 10
 var one_time = true
 

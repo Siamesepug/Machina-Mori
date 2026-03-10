@@ -1,8 +1,8 @@
 extends StaticBody2D
 
-
-var item_name = "  Dash CD  "
-var item_desc = "Decreases dash cooldown"
+var item_name = "  Ventilated Thrusters  "
+var item_desc = "Decreases dash cooldown\n
+\"Get from here to there, but faster!\""
 var rarity_weight = 20
 var one_time = false
 

@@ -16,8 +16,8 @@ var dash_damage = 80.0
 var dash_cd = 3.0 # seconds
 var dash_size = 1.0
 
-var max_health = 1000000.0
-var current_health = 1000000.0
+var max_health = 10000.0
+var current_health = 10000.0
 var regen_cd = 3.0 # seconds before regen starts
 var regen_rate = 2.0 # seconds between heals once active
 
@@ -38,6 +38,8 @@ var beam_cd = 10.0 # seconds
 var beam_duration = 2.5 # seconds , dont really change this, breaks audio timing
 
 var has_double_attack = false
+
+var has_nuke = false
 
 ## ELEMENT TIERS
 var fire_level = 1

@@ -1,8 +1,8 @@
 extends StaticBody2D
 
-
-var item_name = "  Dash Damage  "
-var item_desc = "Increases dash damage"
+var item_name = "  Trauma Applicator  "
+var item_desc = "Increases dash damage\n
+\"They won't even see it coming.\""
 var rarity_weight = 20
 var one_time = false
 

@@ -16,6 +16,7 @@
 [ext_resource type="Shader" uid="uid://v2eqsaem5fen" path="res://scenes/beam.gdshader" id="12_f1ej7"]
 [ext_resource type="Script" uid="uid://btixi7qq5whdv" path="res://scripts/beam_attack.gd" id="12_oprun"]
 [ext_resource type="Texture2D" uid="uid://dnq7uogt40wfi" path="res://assets/images/background/Empty.png" id="13_oprun"]
+[ext_resource type="Script" uid="uid://dlfdu3e1gke6w" path="res://scenes/nuke_attack.gd" id="16_fulsm"]
 [ext_resource type="AudioStream" uid="uid://cra1xpukrnlba" path="res://assets/sounds/gregorquendel-laser-charge_edited.mp3" id="16_qfm1y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3v2ag"]
@@ -320,20 +321,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jej6c"]
 size = Vector2(65.333336, 9.666667)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfm1y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fulsm"]
 shader = ExtResource("12_f1ej7")
 shader_parameter/beams = 1
-shader_parameter/energy = 2.83
-shader_parameter/roughness = 3
+shader_parameter/energy = 3.495
+shader_parameter/roughness = 10
 shader_parameter/frequency = 16
 shader_parameter/speed = 1.0
 shader_parameter/thickness = 0.10000000149012
-shader_parameter/outline_thickness = 0.07600000361
+shader_parameter/outline_thickness = 0.0570000027075
 shader_parameter/beam_difference = 0.0
-shader_parameter/glow = 1.00400004769
-shader_parameter/outline_glow = 0.934000044365
-shader_parameter/color = Color(0.3372549, 1, 1, 1)
-shader_parameter/outline_color = Color(3.85046e-07, 0.65522414, 0.62449706, 1)
+shader_parameter/glow = 0.92400004389
+shader_parameter/outline_glow = 0.4590000218025
+shader_parameter/color = Color(0.05156699, 0.56489384, 0.9151154, 1)
+shader_parameter/outline_color = Color(0.3306966, 0.64278144, 0.9627573, 1)
 shader_parameter/progress = 1.0
 shader_parameter/y_offset = 0.0
 shader_parameter/fixed_edge_size = 0.05
@@ -355,6 +356,25 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_a8ls1")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfm1y"]
+shader = ExtResource("12_f1ej7")
+shader_parameter/beams = 1
+shader_parameter/energy = 4.145
+shader_parameter/roughness = 10
+shader_parameter/frequency = 16
+shader_parameter/speed = 1.0
+shader_parameter/thickness = 0.10000000149012
+shader_parameter/outline_thickness = 0.07600000361
+shader_parameter/beam_difference = 0.0
+shader_parameter/glow = 2.5910001230725
+shader_parameter/outline_glow = 0.934000044365
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/outline_color = Color(1, 0, 0, 1)
+shader_parameter/progress = 1.0
+shader_parameter/y_offset = 0.0
+shader_parameter/fixed_edge_size = 0.05
+shader_parameter/noise_scale = Vector2(13.96, 1)
 
 [sub_resource type="Gradient" id="Gradient_y4r1p"]
 offsets = PackedFloat32Array(0, 0.6632124)
@@ -429,7 +449,7 @@ collision_mask = 4
 script = ExtResource("12_oprun")
 
 [node name="Sprite2D" type="Sprite2D" parent="BeamAttackNode/BeamAttack" unique_id=1281326654]
-material = SubResource("ShaderMaterial_qfm1y")
+material = SubResource("ShaderMaterial_fulsm")
 position = Vector2(-2.5331974e-06, 4.166665)
 scale = Vector2(0.70363617, 0.11996637)
 texture = ExtResource("13_oprun")
@@ -445,6 +465,36 @@ wait_time = 10.0
 stream = SubResource("AudioStreamRandomizer_qfm1y")
 
 [node name="BeamLight" type="PointLight2D" parent="BeamAttackNode" unique_id=1509191172]
+color = Color(0.2953924, 0.9999997, 0.9985518, 1)
+energy = 3.0
+texture = SubResource("GradientTexture2D_qfm1y")
+
+[node name="NukeAttackNode" type="Node2D" parent="." unique_id=1155101979]
+
+[node name="NukeAttack" type="Area2D" parent="NukeAttackNode" unique_id=78467768]
+position = Vector2(0, -126.66667)
+scale = Vector2(2.0266666, 31.840002)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("16_fulsm")
+
+[node name="Sprite2D" type="Sprite2D" parent="NukeAttackNode/NukeAttack" unique_id=2114767329]
+material = SubResource("ShaderMaterial_qfm1y")
+position = Vector2(-2.5331974e-06, 4.166665)
+scale = Vector2(0.70363617, 0.11996637)
+texture = ExtResource("13_oprun")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NukeAttackNode/NukeAttack" unique_id=294435882]
+position = Vector2(1.0172526e-05, 3.9999979)
+shape = SubResource("RectangleShape2D_a8ls1")
+
+[node name="NukeCD" type="Timer" parent="NukeAttackNode/NukeAttack" unique_id=1037058566]
+wait_time = 10.0
+
+[node name="NukeAudio" type="AudioStreamPlayer2D" parent="NukeAttackNode" unique_id=491766822]
+stream = SubResource("AudioStreamRandomizer_qfm1y")
+
+[node name="NukeLight" type="PointLight2D" parent="NukeAttackNode" unique_id=861919340]
 color = Color(0.2953924, 0.9999997, 0.9985518, 1)
 energy = 3.0
 texture = SubResource("GradientTexture2D_qfm1y")
@@ -466,3 +516,5 @@ one_shot = true
 [connection signal="body_entered" from="DashAttack" to="DashAttack" method="_on_dash_attack_body_entered"]
 [connection signal="body_entered" from="BeamAttackNode/BeamAttack" to="BeamAttackNode/BeamAttack" method="_on_dash_attack_body_entered"]
 [connection signal="timeout" from="BeamAttackNode/BeamAttack/BeamCD" to="BeamAttackNode/BeamAttack" method="_on_beam_cd_timeout"]
+[connection signal="body_entered" from="NukeAttackNode/NukeAttack" to="NukeAttackNode/NukeAttack" method="_on_dash_attack_body_entered"]
+[connection signal="timeout" from="NukeAttackNode/NukeAttack/NukeCD" to="NukeAttackNode/NukeAttack" method="_on_beam_cd_timeout"]

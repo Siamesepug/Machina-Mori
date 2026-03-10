@@ -24,6 +24,7 @@ func spawn_wave():
 	enemies_to_spawn = int(enemies_to_spawn * spawn_mult)
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.start()
+	wave_timer.start(wave_delay)
 
 func _on_spawn_timer_timeout():
 	if enemies_to_spawn > 0:
@@ -31,7 +32,6 @@ func _on_spawn_timer_timeout():
 		enemies_to_spawn -= 1
 	else:
 		spawn_timer.stop()
-		wave_timer.start(wave_delay)
 
 func _on_wave_timer_timeout():
 	current_wave += 1

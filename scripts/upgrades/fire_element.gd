@@ -1,8 +1,9 @@
 extends StaticBody2D
 
 
-var item_name = "  Fire Coating  "
-var item_desc = "Chance to ignite enemies on hit"
+var item_name = "  Superheated Steel  "
+var item_desc = "Chance to ignite enemies on hit\n
+\"It burned our home. Nothing was left but ash.\""
 var rarity_weight = 10
 var one_time = false
 
