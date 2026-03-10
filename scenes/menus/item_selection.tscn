@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="2_a57ve"]
 [ext_resource type="StyleBox" uid="uid://c6kxtadbn2l03" path="res://scenes/menus/MenuButtons.tres" id="2_ctfre"]
 [ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="3_fidhh"]
+[ext_resource type="FontFile" uid="uid://cfmwhwa5k786n" path="res://assets/fonts/OtherFont.ttf" id="5_0e21o"]
 [ext_resource type="StyleBox" uid="uid://cxr7hpxbf63no" path="res://assets/fonts/item_desc_style.tres" id="5_k5f0l"]
 
 [node name="ItemSelection" type="CanvasLayer" unique_id=2141210872]
@@ -86,7 +87,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.627451, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("2_a57ve")
+theme_override_fonts/normal_font = ExtResource("5_0e21o")
 theme_override_font_sizes/normal_font_size = 20
 theme_override_styles/normal = ExtResource("5_k5f0l")
 bbcode_enabled = true
@@ -146,7 +147,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.627451, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("2_a57ve")
+theme_override_fonts/normal_font = ExtResource("5_0e21o")
 theme_override_font_sizes/normal_font_size = 20
 theme_override_styles/normal = ExtResource("5_k5f0l")
 bbcode_enabled = true
@@ -206,7 +207,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.627451, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("2_a57ve")
+theme_override_fonts/normal_font = ExtResource("5_0e21o")
 theme_override_font_sizes/normal_font_size = 20
 theme_override_styles/normal = ExtResource("5_k5f0l")
 bbcode_enabled = true

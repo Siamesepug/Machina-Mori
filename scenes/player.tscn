@@ -450,8 +450,7 @@ script = ExtResource("12_oprun")
 
 [node name="Sprite2D" type="Sprite2D" parent="BeamAttackNode/BeamAttack" unique_id=1281326654]
 material = SubResource("ShaderMaterial_fulsm")
-position = Vector2(-2.5331974e-06, 4.166665)
-scale = Vector2(0.70363617, 0.11996637)
+scale = Vector2(0.7983143, 0.11996637)
 texture = ExtResource("13_oprun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeamAttackNode/BeamAttack" unique_id=630458179]

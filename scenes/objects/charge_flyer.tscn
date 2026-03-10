@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cru1nbdoppm05"]
+
+[ext_resource type="Script" uid="uid://dkerrlmwwvb1k" path="res://scenes/objects/charge_flyer.gd" id="1_d4vpa"]
+[ext_resource type="Texture2D" uid="uid://dw2c1fi2uruqq" path="res://assets/images/enemies/flyer/bluediode.png" id="2_girm6"]
+[ext_resource type="AudioStream" uid="uid://csog3oqiwvfk3" path="res://assets/sounds/enemy_hurt.ogg" id="3_j4syf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7xp6"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pk7ar"]
+radius = 44.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ct5k"]
+bg_color = Color(0.20392157, 0.20392157, 0.20392157, 0)
+skew = Vector2(0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4117647, 0, 0.08235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nir26"]
+bg_color = Color(0.7367291, 0, 0.11374422, 1)
+skew = Vector2(0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.41274655, 0, 0.082475044, 1)
+
+[node name="ChargeFlyer" type="CharacterBody2D" unique_id=494621083]
+modulate = Color(0.6392157, 1, 1, 1)
+scale = Vector2(0.75, 0.75)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_d4vpa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2091209592]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_girm6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525793527]
+visible = false
+shape = SubResource("RectangleShape2D_c7xp6")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=354206683]
+target_position = Vector2(-120, 0)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=675640495]
+path_desired_distance = 40.0
+avoidance_enabled = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2072010273]
+visible = false
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1931091940]
+shape = SubResource("CircleShape2D_pk7ar")
+
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="." unique_id=1655247865]
+stream = ExtResource("3_j4syf")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1614885842]
+custom_minimum_size = Vector2(60, 0)
+offset_left = -26.666668
+offset_top = -64.0
+offset_right = 33.333332
+offset_bottom = -37.0
+scale = Vector2(0.9466666, 0.4666634)
+theme_override_styles/background = SubResource("StyleBoxFlat_6ct5k")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nir26")
+value = 72.73
+show_percentage = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

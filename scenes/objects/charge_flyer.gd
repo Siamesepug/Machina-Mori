@@ -8,17 +8,17 @@ extends CharacterBody2D
 
 #var state = "wandering"
 
-var speed = EnemyStats.grunt_speed
-var damage = EnemyStats.grunt_damage
-var damage_cd = EnemyStats.grunt_damage_cd
+# this one likes to charge at the player, not really shooting much
 
-var current_health = EnemyStats.grunt_max_health
+var speed = EnemyStats.flyer_speed
+var damage = EnemyStats.flyer_damage
+var damage_cd = EnemyStats.flyer_damage_cd
 
-var max_xp_drops = EnemyStats.grunt_max_xp_drops
+var current_health = EnemyStats.flyer_max_health
 
+var max_xp_drops = EnemyStats.flyer_max_xp_drops
 var can_damage = true # Is able to attack player (not on damage_cd)
 var is_knocked_back = false
-var is_jumping = false
 
 var is_on_fire = false
 var fire_stacks = 0
@@ -28,7 +28,6 @@ var fire_stacks = 0
 @onready var xp_drop = load("res://scenes/objects/xp_drop.tscn")
 @onready var hurt_audio = $HurtAudio
 @onready var health_bar = $HealthBar
-@onready var sprite = $AnimatedSprite2D
 
 func _ready():
 	health_bar.max_value = current_health
@@ -52,15 +51,8 @@ func _physics_process(delta):
 	
 	velocity = direction * speed
 	
-	if !is_jumping:
-		velocity += (get_gravity() * 3.5) * delta
-	else:
-		_jump(delta)
-	
-	
-	
 	move_and_slide()
-	
+
 
 func _on_area_2d_body_entered(body: CharacterBody2D):
 	if body == player && can_damage:
@@ -79,37 +71,17 @@ func _on_area_2d_body_entered(body: CharacterBody2D):
 		await get_tree().create_timer(damage_cd).timeout
 		can_damage = true
 
-
-func _on_timer_timeout() -> void:
-	if is_on_floor():
-		is_jumping = true
-		await get_tree().create_timer(0.1).timeout
-		is_jumping = false
-
-func _jump(delta):
-	print("JUMPING NOW")
-	velocity -= (get_gravity() * 5) * delta
-	move_and_slide()
-
 func take_damage(damage):
 	current_health -= damage
 	hurt_audio.play()
 	
 	health_bar.value = current_health
 	
-	if current_health <= 0:
-		max_xp_drops = EnemyStats.grunt_max_xp_drops
-		var xp_drops = randi_range(1, max_xp_drops)
-		
-		for orb in range(xp_drops):
-			var xp_orb = xp_drop.instantiate()
-			$"..".add_child(xp_orb)
-			xp_orb.global_position = global_position
-			queue_free()
+	is_dead()
 
 func is_dead():
 	if current_health <= 0:
-		max_xp_drops = EnemyStats.grunt_max_xp_drops
+		max_xp_drops = EnemyStats.flyer_max_xp_drops
 		var xp_drops = randi_range(1, max_xp_drops)
 		
 		for orb in range(xp_drops):
@@ -120,20 +92,15 @@ func is_dead():
 
 func on_fire(stacks: int, fire_damage: float):
 	print("ON FIRE!!!")
-	if is_on_fire:
-		fire_stacks += stacks
-		return # already on fire, just increase the stacks
-	
-	is_on_fire = true
-	sprite.modulate = Color.RED
-	fire_stacks = stacks
-	print(fire_stacks)
-	
-	for count in range(fire_stacks): # Deal one tick of damage per interval of fire damage, until all fire stacks are gone
-		current_health -= fire_damage
-		health_bar.value = current_health
-		fire_stacks -= 1
-		is_dead()
-		
-		await get_tree().create_timer(Elements.fire_decay).timeout
-	is_on_fire = false
+	#if is_on_fire:
+	#	fire_stacks += stacks
+	#	return # already on fire, just increase the stacks
+	#
+	#is_on_fire = true
+	#for count in range(fire_stacks): # Deal one tick of damage per interval of fire damage, until all fire stacks are gone
+	#	current_health -= fire_damage
+	#	fire_stacks -= 1
+	#	is_dead()
+	#	
+	#	await get_tree().create_timer(Elements.fire_decay).timeout
+	#is_on_fire = false

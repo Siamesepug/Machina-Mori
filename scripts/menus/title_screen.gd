@@ -14,13 +14,15 @@ func _process(delta):
 
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://scenes/menus/choose_mode.tscn")
-	
 
 func _on_credits_pressed():
 	get_tree().change_scene_to_file("res://scenes/menus/credits.tscn")
 
 func _on_options_pressed():
 	get_tree().change_scene_to_file("res://scenes/menus/options.tscn")
+
+func _on_how_to_play_pressed():
+	get_tree().change_scene_to_file("res://scenes/menus/how_to_play.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()

@@ -22,6 +22,7 @@ func get_element(body: CharacterBody2D):
 					# FIRE
 					if has_fire:
 						trigger_fire(body)
+						break
 					else:
 						continue
 				2:
@@ -58,4 +59,4 @@ func trigger_fire(body: CharacterBody2D):
 	# then tell the attacking zone to apply the element, or maybe do it here?
 	var fire_stacks = PlayerAttributes.fire_level * PlayerAttributes.fire_mult
 	var fire_damage = PlayerAttributes.fire_level * PlayerAttributes.fire_mult
-	#body.on_fire(fire_stacks, fire_damage)
+	body.on_fire(fire_stacks, fire_damage)

@@ -6,8 +6,9 @@ extends Node2D
 @export var spawn_radius = 1600.0 # Space away from player to spawn
 
 var current_wave = 1
-var enemies_to_spawn = EnemyStats.enemies_to_spawn
-var spawn_mult = (current_wave * EnemyStats.spawn_mult)
+var base_enemies = EnemyStats.enemies_to_spawn # num of enemies to scale off of
+var enemies_to_spawn = base_enemies # the actual number to spawn after scaling
+var spawn_mult = pow(EnemyStats.spawn_mult, current_wave)
 var wave_delay = EnemyStats.wave_delay # seconds between waves
 var spawn_interval = (wave_delay - 10.0) / enemies_to_spawn # seconds between spawns
 
@@ -19,9 +20,10 @@ func _ready():
 	spawn_wave()
 
 func spawn_wave():
-	spawn_mult = (current_wave * 1.25)
+	spawn_mult = pow(EnemyStats.spawn_mult, current_wave)
+	enemies_to_spawn = int(base_enemies * spawn_mult)
+	spawn_interval = (wave_delay - 10.0) / enemies_to_spawn
 	
-	enemies_to_spawn = int(enemies_to_spawn * spawn_mult)
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.start()
 	wave_timer.start(wave_delay)
@@ -38,11 +40,10 @@ func _on_wave_timer_timeout():
 	spawn_wave()
 
 func spawn_enemy():
-	# I know this line is awful and long, but hey it works
-	# (it chooses a random enemy to spawn from the given enemy list)
-	var enemy = enemy_list[(randi_range(0, (enemy_list.size() - 1)))].instantiate()
+	# chooses a random enemy to spawn from the given enemy list
+	var enemy = enemy_list.pick_random().instantiate()
 	var spawn_pos = get_random_spawn_position()
-	enemy.position = spawn_pos
+	enemy.global_position = spawn_pos
 	get_parent().add_child(enemy)
 
 func get_random_spawn_position():

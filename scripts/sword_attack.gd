@@ -45,4 +45,4 @@ func swing_sword():
 
 func _on_sword_attack_body_entered(body: CharacterBody2D) -> void:
 	body.take_damage(damage)
-	#Elements.get_element(body)
+	Elements.get_element(body)

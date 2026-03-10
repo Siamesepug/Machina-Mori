@@ -26,11 +26,24 @@ var is_knocked_back = false
 var is_on_fire = false
 var fire_stacks = 0
 
+var is_on_frost = false
+var frost_stacks = 0
+
+var is_on_acid = false
+var acid_stacks = 0
+
+var is_on_electric = false
+var electric_stacks = 0
+
+var is_on_bleed = false
+var bleed_stacks = 0
+
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var xp_drop = load("res://scenes/objects/xp_drop.tscn")
 @onready var hurt_audio = $HurtAudio
 @onready var health_bar = $HealthBar
+@onready var sprite = $Sprite2D
 
 func _ready():
 	health_bar.max_value = current_health
@@ -95,15 +108,20 @@ func is_dead():
 
 func on_fire(stacks: int, fire_damage: float):
 	print("ON FIRE!!!")
-	#if is_on_fire:
-	#	fire_stacks += stacks
-	#	return # already on fire, just increase the stacks
-	#
-	#is_on_fire = true
-	#for count in range(fire_stacks): # Deal one tick of damage per interval of fire damage, until all fire stacks are gone
-	#	current_health -= fire_damage
-	#	fire_stacks -= 1
-	#	is_dead()
-	#	
-	#	await get_tree().create_timer(Elements.fire_decay).timeout
-	#is_on_fire = false
+	if is_on_fire:
+		fire_stacks += stacks
+		return # already on fire, just increase the stacks
+	
+	is_on_fire = true
+	sprite.modulate = Color.RED
+	fire_stacks = stacks
+	print(fire_stacks)
+	
+	for count in range(fire_stacks): # Deal one tick of damage per interval of fire damage, until all fire stacks are gone
+		current_health -= fire_damage
+		health_bar.value = current_health
+		fire_stacks -= 1
+		is_dead()
+		
+		await get_tree().create_timer(Elements.fire_decay).timeout
+	is_on_fire = false

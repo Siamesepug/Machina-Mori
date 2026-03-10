@@ -23,7 +23,7 @@ var regen_rate = 2.0 # seconds between heals once active
 
 var xp_level = 0
 var xp_progress = 0.0
-var xp_gain = 10.0
+var xp_gain = 1000.0
 var xp_per_level_increase = 10.0 # the increase in amount of xp needed to level up per level
 
 var speed = 400.0
@@ -45,11 +45,22 @@ var has_nuke = false
 var fire_level = 1
 var fire_mult = 10
 var fire_damage = 5 # 5 damage over 10 stacks , 50 total
-var frost_level = 0
-var acid_level = 0
-var electric_level = 0
-var bleed_level = 0
 
+var frost_level = 0
+var frost_mult = 30
+var frost_damage = 1 # 1 damage over 40 stacks, 30 total
+var frost_slow = 100 # movement penalty to enemies
+
+var acid_level = 0
+var acid_mult = 15
+var acid_damage = 3 # 3 damage over 15 stacks, 45 total
+
+var electric_level = 0
+var electric_mult = 3
+var electric_damage = 15 # 15 damage over 3 stacks, 45 total
+var electric_stun = 3 # stun duration
+
+var bleed_level = 0
 
 # Probably don't change this one, used to reset
 # movement back to default after dash
