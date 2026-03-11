@@ -68,4 +68,72 @@ var bleed_level = 0
 # movement back to default after dash
 var default_speed = 1.0
 
+var glass_cannon = false
+
 var max_jumps = 1
+
+func reset_to_base():
+	current_weapon = BaseAttributes.current_weapon
+	weapon_damage = BaseAttributes.weapon_damage
+	weapon_cd = BaseAttributes.weapon_cd
+	weapon_size = BaseAttributes.weapon_size
+
+	default_slash_color = BaseAttributes.default_slash_color
+
+	dash_damage = BaseAttributes.dash_damage
+	dash_cd = BaseAttributes.dash_cd
+	dash_size = BaseAttributes.dash_size
+
+	max_health = BaseAttributes.max_health
+	current_health = BaseAttributes.current_health
+	regen_cd = BaseAttributes.regen_cd
+	regen_rate = BaseAttributes.regen_rate
+
+	xp_level = BaseAttributes.xp_level
+	xp_progress = BaseAttributes.xp_progress
+	xp_gain = BaseAttributes.xp_gain
+	xp_per_level_increase = BaseAttributes.xp_per_level_increase
+
+	speed = BaseAttributes.speed
+	jump_velocity = BaseAttributes.jump_velocity
+	dash_speed = BaseAttributes.dash_speed
+
+	level_duration = BaseAttributes.level_duration
+
+	## UNIQUE ITEM VARS
+	has_beam = BaseAttributes.has_beam
+	beam_cd = BaseAttributes.beam_cd
+	beam_duration = BaseAttributes.beam_duration
+
+	has_double_attack = BaseAttributes.has_double_attack
+
+	has_nuke = BaseAttributes.has_nuke
+
+	## ELEMENT TIERS
+	element_chance = BaseAttributes.element_chance
+
+	fire_level = BaseAttributes.fire_level
+	fire_mult = BaseAttributes.fire_mult
+	fire_damage = BaseAttributes.fire_damage
+
+	frost_level = BaseAttributes.frost_level
+	frost_mult = BaseAttributes.frost_mult
+	frost_damage = BaseAttributes.frost_damage
+	frost_slow = BaseAttributes.frost_slow
+
+	acid_level = BaseAttributes.acid_level
+	acid_mult = BaseAttributes.acid_mult
+	acid_damage = BaseAttributes.acid_damage
+
+	electric_level = BaseAttributes.electric_level
+	electric_mult = BaseAttributes.electric_mult
+	electric_damage = BaseAttributes.electric_damage
+	electric_stun = BaseAttributes.electric_stun
+
+	bleed_level = BaseAttributes.bleed_level
+
+	# Probably don't change this one, used to reset
+	# movement back to default after dash
+	default_speed = BaseAttributes.default_speed
+
+	max_jumps = BaseAttributes.max_jumps

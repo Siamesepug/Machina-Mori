@@ -24,6 +24,7 @@ SignalManager="*uid://4b20uqiu53rd"
 MainMenuMusic="*uid://bsq626y0lmqhc"
 EnemyStats="*uid://2x7kt5qlamlw"
 Elements="*uid://spr2koqr2661"
+BaseAttributes="*uid://b0gj6rdcp11cr"
 
 [display]
 

@@ -43,11 +43,13 @@ func _on_wave_timer_timeout():
 func level_up_enemy_stats():
 	EnemyStats.flyer_damage += 2
 	EnemyStats.flyer_speed += 10
-	EnemyStats.flyer_max_health += 10
 	
 	EnemyStats.grunt_damage += 2
 	EnemyStats.grunt_speed += 10
-	EnemyStats.grunt_max_health += 10
+	
+	if !PlayerAttributes.glass_cannon:
+		EnemyStats.flyer_max_health += 10
+		EnemyStats.grunt_max_health += 10
 
 func spawn_enemy():
 	# chooses a random enemy to spawn from the given enemy list

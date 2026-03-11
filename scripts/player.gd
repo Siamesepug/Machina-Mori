@@ -52,6 +52,14 @@ func _ready():
 	current_health = max_health
 	dash_timer.wait_time = dash_cd
 	SignalManager.hp_changed.emit()
+	
+	# set attacks to be offset on start
+	sword_attack.global_position.x = global_position.x + (50)
+	sword_attack.slash_sprite.global_position.x = global_position.x + (80)
+	sword_attack.facing_left = false
+	dash_attack.global_position.x = global_position.x + (50)
+	beam_attack.global_position.x = global_position.x + (850)
+	player_sprite.flip_h = false
 
 func _process(delta):
 	get_attributes()
@@ -222,7 +230,8 @@ func _is_dead():
 	if current_health <= 0.0:
 		if PlayerAttributes.has_nuke:
 			nuke_attack.activate_nuke()
-			current_health = max_health
+			current_health = PlayerAttributes.max_health
+			PlayerAttributes.current_health = PlayerAttributes.max_health
 			PlayerAttributes.has_nuke = false
 			return
 		
@@ -252,5 +261,13 @@ func get_attributes():
 	
 	max_jumps = PlayerAttributes.max_jumps
 	
+	# if in glass cannon mode, reset hp to 1
+	set_glass_cannon()
+	
 	dash_timer.wait_time = dash_cd
 	SignalManager.hp_changed.emit()
+
+func set_glass_cannon():
+	if PlayerAttributes.glass_cannon:
+		PlayerAttributes.max_health = 1.0
+		PlayerAttributes.current_health = 1.0

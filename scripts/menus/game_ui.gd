@@ -50,7 +50,8 @@ func _update_xp_bar(amount):
 	print("Current Level: " + str(PlayerAttributes.xp_level))
 
 func level_up_stats():
-	PlayerAttributes.max_health += 5
+	if !PlayerAttributes.glass_cannon:
+		PlayerAttributes.max_health += 5
 	PlayerAttributes.weapon_damage += 2
 	PlayerAttributes.dash_damage += 2
 	PlayerAttributes.jump_velocity -= 10

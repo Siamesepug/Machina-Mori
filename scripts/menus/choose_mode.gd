@@ -58,6 +58,8 @@ func play():
 	get_tree().change_scene_to_file("res://scenes/menus/loading_screen.tscn")
 
 func set_marathon():
+	PlayerAttributes.reset_to_base()
+	
 	# Change player stats
 	PlayerAttributes.max_health = 200.0
 	PlayerAttributes.current_health = 200.0
@@ -80,6 +82,8 @@ func set_marathon():
 	EnemyStats.grunt_damage = 10.0
 
 func set_standard():
+	PlayerAttributes.reset_to_base()
+	
 	# Change player stats
 	PlayerAttributes.max_health = 100.0
 	PlayerAttributes.current_health = 100.0
@@ -102,6 +106,8 @@ func set_standard():
 	EnemyStats.grunt_damage = 10.0
 
 func set_blitz():
+	PlayerAttributes.reset_to_base()
+	
 	# Change player stats
 	PlayerAttributes.max_health = 75.0
 	PlayerAttributes.current_health = 75.0
@@ -124,6 +130,8 @@ func set_blitz():
 	EnemyStats.grunt_damage = 10.0
 
 func set_glass_cannon():
+	PlayerAttributes.reset_to_base()
+	
 	# Change player stats
 	PlayerAttributes.max_health = 1.0
 	PlayerAttributes.current_health = 1.0
@@ -142,8 +150,12 @@ func set_glass_cannon():
 	EnemyStats.grunt_max_xp_drops = 3
 	EnemyStats.grunt_speed = 300.0
 	EnemyStats.grunt_damage = 10.0
+	
+	PlayerAttributes.glass_cannon = true
 
 func set_chaos():
+	PlayerAttributes.reset_to_base()
+	
 	# Change player stats
 	PlayerAttributes.max_health = randi_range(1, 300)
 	PlayerAttributes.current_health = randi_range(1, 300)
@@ -166,6 +178,8 @@ func set_chaos():
 	EnemyStats.grunt_damage = randi_range(1, 50)
 
 func set_rip_and_tear():
+	PlayerAttributes.reset_to_base()
+	
 	# Change player stats
 	PlayerAttributes.max_health = 1000.0
 	PlayerAttributes.current_health = 1000.0

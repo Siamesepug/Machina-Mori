@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://qb3mqf1awsw" path="res://scenes/player.gdshader" id="2_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://cmpefcobtj7vr" path="res://assets/images/player/Idle (32x32).png" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://dp3ugnfrrd40f" path="res://assets/images/player/Jump (32x32).png" id="3_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://d3chfbf5cfkek" path="res://assets/images/player/Playersprite.png" id="4_60mlk"]
 [ext_resource type="Texture2D" uid="uid://c6sh66he14syx" path="res://assets/images/player/Run (32x32).png" id="4_fjrip"]
 [ext_resource type="AudioStream" uid="uid://cok360m5t6wct" path="res://assets/sounds/jump.wav" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://cycxj1oy1fpd0" path="res://scripts/health_regen.gd" id="7_fjrip"]
@@ -61,6 +62,26 @@ region = Rect2(160, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
 atlas = ExtResource("1_dqkch")
 region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx1m4"]
+atlas = ExtResource("4_60mlk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gjji"]
+atlas = ExtResource("4_60mlk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2ulf"]
+atlas = ExtResource("4_60mlk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6e8lb"]
+atlas = ExtResource("4_60mlk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gdjj"]
+atlas = ExtResource("4_60mlk")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
 atlas = ExtResource("2_qlg0r")
@@ -184,6 +205,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mx1m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gjji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2ulf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6e8lb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gdjj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tuyoq")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_oprun")
 }, {
 "duration": 1.0,
@@ -217,15 +266,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ke2ow")
 }],
 "loop": true,
-"name": &"idle",
-"speed": 20.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_tuyoq")
-}],
-"loop": true,
-"name": &"jump",
+"name": &"old_idle",
 "speed": 20.0
 }, {
 "frames": [{
@@ -444,6 +485,7 @@ material = SubResource("ShaderMaterial_3v2ag")
 sprite_frames = SubResource("SpriteFrames_t4otl")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.65147877
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1797972652]
 position = Vector2(0.50000024, 5.333416)
@@ -507,6 +549,7 @@ wait_time = 10.0
 
 [node name="BeamAudio" type="AudioStreamPlayer2D" parent="BeamAttackNode" unique_id=146954040]
 stream = SubResource("AudioStreamRandomizer_qfm1y")
+volume_db = -16.122
 
 [node name="BeamLight" type="PointLight2D" parent="BeamAttackNode" unique_id=1509191172]
 color = Color(0.2953924, 0.9999997, 0.9985518, 1)
@@ -537,6 +580,7 @@ wait_time = 10.0
 
 [node name="NukeAudio" type="AudioStreamPlayer2D" parent="NukeAttackNode" unique_id=491766822]
 stream = SubResource("AudioStreamRandomizer_qfm1y")
+volume_db = -10.055
 
 [node name="NukeLight" type="PointLight2D" parent="NukeAttackNode" unique_id=861919340]
 color = Color(0.2953924, 0.9999997, 0.9985518, 1)

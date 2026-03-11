@@ -20,6 +20,12 @@ func _ready():
 	visible = false
 	beam_light.visible = false
 
+func _physics_process(delta):
+	if visible:
+		monitoring = !monitoring
+	else:
+		monitoring = false
+
 func is_firing():
 	if !can_fire:
 		return # still on cooldown
@@ -31,7 +37,7 @@ func is_firing():
 	beam_sprite.material.set_shader_parameter("progress", 0.0)
 	
 	size = player.weapon_size
-	damage = player.weapon_damage
+	damage = player.weapon_damage * 0.1
 	beam_duration = PlayerAttributes.beam_duration
 	
 	collision_shape.scale = Vector2(size, size)
