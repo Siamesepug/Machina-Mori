@@ -45,6 +45,7 @@ var bleed_stacks = 0
 func _ready():
 	health_bar.max_value = current_health
 	health_bar.value = current_health
+	SignalManager.level_change.connect(destroy)
 
 func _physics_process(delta):
 	if player == null || is_knocked_back:
@@ -214,3 +215,6 @@ func on_electric(stacks: int, electric_damage: float, stun_duration: float):
 		
 		await get_tree().create_timer(Elements.electric_decay).timeout
 	is_on_electric = false
+
+func destroy(): # destroy enemy when level changes
+	queue_free()

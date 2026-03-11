@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bakwtt7aavn5t"]
 
 [ext_resource type="Script" uid="uid://ks18pjoilf85" path="res://scripts/menus/item_selection.gd" id="1_fidhh"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_8p5di"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="2_a57ve"]
 [ext_resource type="StyleBox" uid="uid://c6kxtadbn2l03" path="res://scenes/menus/MenuButtons.tres" id="2_ctfre"]
 [ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="3_fidhh"]
@@ -10,6 +11,13 @@
 [node name="ItemSelection" type="CanvasLayer" unique_id=2141210872]
 process_mode = 3
 script = ExtResource("1_fidhh")
+
+[node name="LowHealth" type="TextureRect" parent="." unique_id=770611097]
+modulate = Color(0.17254902, 0.16078432, 0.14117648, 0.6039216)
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_8p5di")
+stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1824166375]
 anchors_preset = 14

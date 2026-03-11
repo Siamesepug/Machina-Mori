@@ -121,14 +121,14 @@ func _physics_process(delta):
 		sword_attack.slash_sprite.global_position.x = global_position.x + (80 * direction)
 		sword_attack.facing_left = false
 		dash_attack.global_position.x = global_position.x + (50 * direction)
-		beam_attack.global_position.x = global_position.x + (770 * direction)
+		beam_attack.global_position.x = global_position.x + (850 * direction)
 		player_sprite.flip_h = false
 	elif direction == -1.0:
 		sword_attack.global_position.x = global_position.x + (50 * direction)
 		sword_attack.slash_sprite.global_position.x = global_position.x + (80 * direction)
 		sword_attack.facing_left = true
 		dash_attack.global_position.x = global_position.x + (50 * direction)
-		beam_attack.global_position.x = global_position.x + (770 * direction)
+		beam_attack.global_position.x = global_position.x + (850 * direction)
 		player_sprite.flip_h = true
 	
 	# Fall death

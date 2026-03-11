@@ -21,7 +21,8 @@ const mat3 NOISE_MATRIX = mat3(
 // Helper function to generate snowflake pattern
 vec3 generate_snowflake(vec2 coord, float layer_index, float time, float wind_strength) {
     // Scale coordinates based on layer depth
-    float layer_scale = 1.0 + layer_index * 0.5 / (max(size, 0.01) * 2.0);
+	float layer_scale = clamp(1.5 + layer_index * 0.35, 1.5, 8.0) / max(size, 0.2);
+    //float layer_scale = 1.0 + layer_index * 0.5 / (max(size, 0.01) * 2.0);
     vec2 scaled_coord = coord * layer_scale;
 
     // Apply movement (falling + wind)

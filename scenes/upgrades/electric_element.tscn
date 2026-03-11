@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://coxp5tljxj3ss"]
 
-[ext_resource type="Script" uid="uid://105n7iacydee" path="res://scenes/upgrades/electric_element.gd" id="1_27gh0"]
+[ext_resource type="Script" uid="uid://105n7iacydee" path="res://scripts/upgrades/electric_element.gd" id="1_27gh0"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_001gd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]

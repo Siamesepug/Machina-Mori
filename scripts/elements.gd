@@ -1,12 +1,12 @@
 extends Node
 
-var has_element : bool = true
+var has_element : bool = false
 var element_count = 5 # amount of elements the player could have
 
-var has_fire : bool = true
-var has_frost : bool = true
-var has_acid : bool = true
-var has_electric : bool = true
+var has_fire : bool = false
+var has_frost : bool = false
+var has_acid : bool = false
+var has_electric : bool = false
 var has_bleed : bool = false
 
 var fire_decay : float = 1.0 # how fast elements "burn"

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://begrhi4ntdrhi"]
 
-[ext_resource type="Script" uid="uid://yicxjtae0063" path="res://scenes/upgrades/acid_element.gd" id="1_qj0ul"]
+[ext_resource type="Script" uid="uid://yicxjtae0063" path="res://scripts/upgrades/acid_element.gd" id="1_qj0ul"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_2hd4k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]

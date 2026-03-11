@@ -10,6 +10,7 @@ extends Area2D
 @onready var facing_left : bool = false
 
 var slash_style = true # false for down swing, true for side swing, swap between these
+var element_chance = PlayerAttributes.element_chance # a 1 in 4 chance of triggering elements
 
 func _ready():
 	monitoring = false
@@ -52,4 +53,6 @@ func swing_sword():
 
 func _on_sword_attack_body_entered(body: CharacterBody2D) -> void:
 	body.take_damage(damage)
-	Elements.get_element(body)
+	
+	if randi_range(1, element_chance) == 1:
+		Elements.get_element(body)

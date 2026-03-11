@@ -35,6 +35,7 @@ func _update_xp_bar(amount):
 	if added_xp >= xp_bar.max_value:
 		var leftover_xp = added_xp - xp_bar.max_value
 		
+		level_up_stats()
 		PlayerAttributes.xp_level += 1
 		xp_bar.max_value += PlayerAttributes.xp_per_level_increase
 		SignalManager.level_up.emit()
@@ -47,6 +48,13 @@ func _update_xp_bar(amount):
 		xp_bar.value += amount
 	
 	print("Current Level: " + str(PlayerAttributes.xp_level))
+
+func level_up_stats():
+	PlayerAttributes.max_health += 5
+	PlayerAttributes.weapon_damage += 2
+	PlayerAttributes.dash_damage += 2
+	PlayerAttributes.jump_velocity -= 10
+	PlayerAttributes.speed += 10
 
 func _update_hp_bar():
 	hp_bar.max_value = PlayerAttributes.max_health

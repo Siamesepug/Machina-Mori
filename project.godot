@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="RobotWaveGame"
-run/main_scene="uid://djwfx56p33qfi"
+config/name="Artificial Purge"
+run/main_scene="uid://bg8ouupge2wwc"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://icon.svg"

@@ -16,14 +16,14 @@ var dash_damage = 80.0
 var dash_cd = 3.0 # seconds
 var dash_size = 1.0
 
-var max_health = 10000.0
-var current_health = 10000.0
+var max_health = 100.0
+var current_health = 100.0
 var regen_cd = 3.0 # seconds before regen starts
 var regen_rate = 2.0 # seconds between heals once active
 
 var xp_level = 0
 var xp_progress = 0.0
-var xp_gain = 1000.0
+var xp_gain = 10.0
 var xp_per_level_increase = 10.0 # the increase in amount of xp needed to level up per level
 
 var speed = 400.0
@@ -42,6 +42,8 @@ var has_double_attack = false
 var has_nuke = false
 
 ## ELEMENT TIERS
+var element_chance = 4 # a 1 in 4 chance of triggering an element
+
 var fire_level = 1
 var fire_mult = 10
 var fire_damage = 5 # 5 damage over 10 stacks , 50 total

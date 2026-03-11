@@ -8,7 +8,7 @@ var rarity_weight = 10
 var one_time = false
 
 func activate_item():
-	Elements.electric_fire = true
+	Elements.has_electric = true
 	PlayerAttributes.electric_level += 1
 	Elements.gain_element()
 	queue_free()
