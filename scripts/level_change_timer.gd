@@ -5,10 +5,12 @@ extends Timer
 @onready var lvl02 = load("res://scenes/levels/level02V2.tscn")
 @onready var lvl03 = load("res://scenes/levels/level03.tscn")
 @onready var lvl04 = load("res://scenes/levels/level04.tscn")
+@onready var lvl05 = load("res://scenes/levels/level05.tscn")
 
 var lvl02_instance = null
 var lvl03_instance = null
 var lvl04_instance = null
+var lvl05_instance = null
 
 @onready var player = $"../Player"
 @onready var level_transition_screen = $"../LevelTransition/TextureRect"
@@ -53,6 +55,11 @@ func _on_timeout() -> void:
 		lvl04_instance = lvl04.instantiate()
 		main.add_child(lvl04.instantiate())
 		_teleport_player(lvl04)
+	elif lvl04_instance != null:
+		lvl04_instance.queue_free()
+		lvl05_instance = lvl05.instantiate()
+		main.add_child(lvl05.instantiate())
+		_teleport_player(lvl05)
 
 func _teleport_player(lvl):
 	if lvl == lvl02:
@@ -71,6 +78,11 @@ func _teleport_player(lvl):
 		wave_spawner.enemy_list.append(cube01) # add new enemy
 		wave_spawner.enemy_list.append(cube02)
 		wave_spawner.enemy_list.append(cube03)
+	
+	elif lvl == lvl05:
+		player.global_position.x = 282.0
+		player.global_position.y = -2269.0
+		wave_spawner.enemy_list.clear()
 
 func _level_transition_shader():
 	transition_audio.play()

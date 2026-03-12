@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://kn5of84611jg"]
+
+[ext_resource type="Script" uid="uid://brahwpascbtip" path="res://scenes/menus/final_prompt.gd" id="1_kub5e"]
+[ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="2_ndjrq"]
+
+[node name="FinalPrompt" type="CanvasLayer" unique_id=2020511158]
+script = ExtResource("1_kub5e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1405336367]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 450.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2099681546]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ndjrq")
+theme_override_font_sizes/font_size = 45
+text = "- PRESS THE BUTTON -"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=135830412]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ndjrq")
+theme_override_font_sizes/font_size = 90
+text = "Purge the System"
+horizontal_alignment = 1

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://pg1p0cums4u5"]
+
+[ext_resource type="Script" uid="uid://c37j2acimj3ky" path="res://scripts/menus/ending_screen.gd" id="1_lry1r"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_hf3a1"]
+[ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="3_0xy1a"]
+[ext_resource type="StyleBox" uid="uid://c6kxtadbn2l03" path="res://scenes/menus/MenuButtons.tres" id="4_ighji"]
+[ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="5_t8m4c"]
+[ext_resource type="AudioStream" uid="uid://b1k8cxwatlbs2" path="res://assets/sounds/Error.mp3" id="6_0vt5c"]
+[ext_resource type="AudioStream" uid="uid://dy8k1i7s8kp1s" path="res://assets/sounds/glitch.mp3" id="7_ojo6g"]
+[ext_resource type="AudioStream" uid="uid://bjy4v4cke6sln" path="res://assets/sounds/music/Ending.mp3" id="8_hf3a1"]
+
+[node name="EndingScreen" type="Control" unique_id=293983182]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lry1r")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=866428598]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+pivot_offset = Vector2(1920, 1080)
+texture = ExtResource("2_hf3a1")
+stretch_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=948152360]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1205255961]
+layout_mode = 2
+theme_override_constants/separation = 47
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1532669979]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6857328, 3.1044335e-06, 5.7756904e-07, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.3372549)
+theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
+theme_override_constants/outline_size = 22
+theme_override_constants/shadow_outline_size = 16
+theme_override_font_sizes/font_size = 64
+text = "- WARNING -
+ROGUE AI TAKEOVER
+IMMINENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=12593080]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_0xy1a")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_ighji")
+theme_override_styles/hover = ExtResource("5_t8m4c")
+text = "PLAY"
+
+[node name="ErrorAudio" type="AudioStreamPlayer" parent="." unique_id=1527674284]
+stream = ExtResource("6_0vt5c")
+volume_db = -8.258
+
+[node name="GlitchAudio" type="AudioStreamPlayer" parent="." unique_id=1581000939]
+stream = ExtResource("7_ojo6g")
+volume_db = -19.882
+
+[node name="EndingAudio" type="AudioStreamPlayer" parent="." unique_id=1175507094]
+stream = ExtResource("8_hf3a1")
+volume_db = -19.882
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_play_pressed"]

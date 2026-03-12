@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cn6eirwbvjsjx" path="res://assets/images/tilemap/GameJam2026Level4.png" id="3_63ajt"]
 [ext_resource type="Shader" uid="uid://daw4otcesyvwd" path="res://scenes/levels/snowfall.gdshader" id="3_qqxap"]
 [ext_resource type="Texture2D" uid="uid://dnq7uogt40wfi" path="res://assets/images/background/Empty.png" id="4_wjpam"]
-[ext_resource type="AudioStream" uid="uid://b4drymgvi7e83" path="res://assets/sounds/music/level01_music.wav" id="5_qlctk"]
 [ext_resource type="Script" uid="uid://cq65gtptpet6k" path="res://scripts/area_label_fade.gd" id="6_0mxsm"]
+[ext_resource type="AudioStream" uid="uid://cgkjt66gqajyw" path="res://assets/sounds/music/level04_music.mp3" id="6_63ajt"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="7_trri8"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1jlcu"]
@@ -837,7 +837,7 @@ texture_scale = 9.75
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2115128888]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=627530305]
-stream = ExtResource("5_qlctk")
+stream = ExtResource("6_63ajt")
 volume_db = -17.197
 autoplay = true
 
