@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://876kk7ckrgst"]
+
+[ext_resource type="Script" uid="uid://b7hv5tgifcyiw" path="res://scripts/enemies/wireball.gd" id="1_pqvyb"]
+[ext_resource type="Texture2D" uid="uid://ov0g2ojtsfe2" path="res://assets/images/enemies/wireball/Wireball.png" id="2_pqvyb"]
+[ext_resource type="AudioStream" uid="uid://csog3oqiwvfk3" path="res://assets/sounds/enemy_hurt.ogg" id="3_kciov"]
+[ext_resource type="AudioStream" uid="uid://cgab4at48r7c4" path="res://assets/sounds/grunt_death.wav" id="4_07vkg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pl3x"]
+atlas = ExtResource("2_pqvyb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kciov"]
+atlas = ExtResource("2_pqvyb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07vkg"]
+atlas = ExtResource("2_pqvyb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdpmf"]
+atlas = ExtResource("2_pqvyb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n15sh"]
+atlas = ExtResource("2_pqvyb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcac3"]
+atlas = ExtResource("2_pqvyb")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mehtn"]
+atlas = ExtResource("2_pqvyb")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_foyd1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pl3x")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_kciov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07vkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdpmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n15sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcac3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mehtn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7xp6"]
+size = Vector2(96, 74.66667)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pk7ar"]
+radius = 44.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ct5k"]
+bg_color = Color(0.20392157, 0.20392157, 0.20392157, 0)
+skew = Vector2(0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4117647, 0, 0.08235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nir26"]
+bg_color = Color(0.7367291, 0, 0.11374422, 1)
+skew = Vector2(0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.41274655, 0, 0.082475044, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_foyd1"]
+random_pitch = 1.1892071
+streams_count = 1
+stream_0/stream = ExtResource("4_07vkg")
+
+[node name="Wireball" type="CharacterBody2D" unique_id=494621083]
+modulate = Color(0.6392157, 1, 1, 1)
+scale = Vector2(0.75, 0.75)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_pqvyb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1943053839]
+texture_filter = 1
+position = Vector2(6.666667, -25.333334)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_foyd1")
+autoplay = "default"
+frame_progress = 0.2646508
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525793527]
+position = Vector2(10.666667, 1.3333353)
+shape = SubResource("RectangleShape2D_c7xp6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=675640495]
+avoidance_enabled = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2072010273]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1931091940]
+shape = SubResource("CircleShape2D_pk7ar")
+
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="." unique_id=1655247865]
+stream = ExtResource("3_kciov")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1614885842]
+custom_minimum_size = Vector2(60, 0)
+offset_left = -26.666668
+offset_top = -64.0
+offset_right = 33.333332
+offset_bottom = -37.0
+scale = Vector2(0.9466666, 0.4666634)
+theme_override_styles/background = SubResource("StyleBoxFlat_6ct5k")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nir26")
+value = 72.73
+show_percentage = false
+
+[node name="ChargeTime" type="Timer" parent="." unique_id=816578940]
+wait_time = 0.4
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1680579402]
+one_shot = true
+
+[node name="JumpTimer" type="Timer" parent="." unique_id=1473314588]
+wait_time = 5.0
+autostart = true
+
+[node name="DeathAudio" type="AudioStreamPlayer2D" parent="." unique_id=150253730]
+stream = SubResource("AudioStreamRandomizer_foyd1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="ChargeTime" to="." method="_on_charge_time_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

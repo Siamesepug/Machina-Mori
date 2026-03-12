@@ -5,6 +5,8 @@ extends CanvasLayer
 
 @export var item_list: Array[PackedScene] = []
 
+@onready var level_up_audio = $LevelUpAudio
+
 @onready var slot1 = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer
 @onready var slot2 = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer2
 @onready var slot3 = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/PanelContainer2
@@ -38,6 +40,7 @@ func show_menu():
 	generate_random_items()
 
 func generate_random_items():
+	level_up_audio.play()
 	# Takes the list of items, makes a copy, shuffles the copy,
 	# and chooses the first few items in the new list
 	

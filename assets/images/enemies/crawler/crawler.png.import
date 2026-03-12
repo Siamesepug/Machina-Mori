@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0gvw6afp04qa"
-path="res://.godot/imported/Hexbug.png-9996114650715e66a3f50347d62571a8.ctex"
+path="res://.godot/imported/crawler.png-4b46e2d8ba410e6e4be68fe1f73e88a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/hexbug/Hexbug.png"
-dest_files=["res://.godot/imported/Hexbug.png-9996114650715e66a3f50347d62571a8.ctex"]
+source_file="res://assets/images/enemies/crawler/crawler.png"
+dest_files=["res://.godot/imported/crawler.png-4b46e2d8ba410e6e4be68fe1f73e88a2.ctex"]
 
 [params]
 

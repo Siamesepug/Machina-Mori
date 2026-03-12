@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dnq7uogt40wfi" path="res://assets/images/background/Empty.png" id="5_k3qli"]
 [ext_resource type="PackedScene" uid="uid://b5entghbysb6f" path="res://scenes/objects/boost_fan.tscn" id="5_rqca6"]
 [ext_resource type="Script" uid="uid://cq65gtptpet6k" path="res://scripts/area_label_fade.gd" id="6_fn08i"]
-[ext_resource type="AudioStream" uid="uid://b4drymgvi7e83" path="res://assets/sounds/level01_music.wav" id="6_rqca6"]
+[ext_resource type="AudioStream" uid="uid://b4drymgvi7e83" path="res://assets/sounds/music/level01_music.wav" id="6_rqca6"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="7_6sffp"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1jlcu"]

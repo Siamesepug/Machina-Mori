@@ -20,6 +20,10 @@ func _on_pickup_range_body_entered(body):
 	xp_amount = PlayerAttributes.xp_gain
 	
 	SignalManager.xp_gained.emit(xp_amount)
+	
+	if PlayerAttributes.xp_healing > 0:
+		PlayerAttributes.current_health += PlayerAttributes.xp_healing
+		SignalManager.hp_changed.emit()
 	queue_free()
 
 func destroy():

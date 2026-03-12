@@ -14,16 +14,16 @@ var state_start = false
 
 var projectile_scene = load("res://scenes/objects/projectile.tscn")
 
-var speed = EnemyStats.flyer_speed
-var damage = EnemyStats.flyer_damage
-var damage_cd = EnemyStats.flyer_damage_cd
+var speed = EnemyStats.grunt_speed
+var damage = EnemyStats.grunt_damage
+var damage_cd = EnemyStats.grunt_damage_cd
 
-var current_health = EnemyStats.flyer_max_health
+var current_health = EnemyStats.grunt_max_health
 
 var charge_chance = EnemyStats.grunt_charge_chance / 4
 var fire_chance = EnemyStats.grunt_fire_chance * 4
 
-var max_xp_drops = EnemyStats.flyer_max_xp_drops
+var max_xp_drops = EnemyStats.grunt_max_xp_drops
 var can_damage = true # Is able to attack player (not on damage_cd)
 var is_knocked_back = false
 var is_jumping = false
@@ -51,6 +51,7 @@ var bleed_stacks = 0
 @onready var sprite = $AnimatedSprite2D
 @onready var charge_time = $ChargeTime
 @onready var cooldown_timer = $CooldownTimer
+@onready var death_audio = $DeathAudio
 
 func _ready():
 	health_bar.max_value = current_health
@@ -69,23 +70,27 @@ func _physics_process(delta):
 		State.CHARGE:
 			if !state_start:
 				state_start = true
-				print("CHARGING")
 				charge_player()
 			move_and_slide()
 		State.FIRE:
 			if !state_start:
 				state_start = true
-				print("FIRING")
 				fire_at_player()
 		State.KNOCKBACK:
-			print("KNOCKED BACK")
 			move_and_slide()
 		State.COOLDOWN:
 			if cooldown_timer.is_stopped():
 				cooldown_timer.start()
 			hunt_player(delta)
 		State.DEAD:
-			print("DEAD")
+			sprite.animation = "dead"
+			velocity += get_gravity() * delta
+			move_and_slide()
+			
+			cooldown_timer.stop()
+			charge_time.stop()
+			health_bar.visible = false
+			
 			return
 
 func hunt_player(delta):
@@ -182,18 +187,20 @@ func take_knockback():
 
 func is_dead():
 	if current_health <= 0:
+		death_audio.play()
 		state = State.DEAD
-		max_xp_drops = EnemyStats.flyer_max_xp_drops
+		await death_audio.finished
+		max_xp_drops = EnemyStats.grunt_max_xp_drops
 		var xp_drops = randi_range(1, max_xp_drops)
 		
 		for orb in range(xp_drops):
 			var xp_orb = xp_drop.instantiate()
 			$"..".add_child(xp_orb)
 			xp_orb.global_position = global_position
-			queue_free()
+		queue_free()
 
 func _jump(delta):
-	velocity -= (get_gravity() * 5) * delta
+	velocity -= (get_gravity() * 7) * delta
 	move_and_slide()
 
 func _on_jump_timer_timeout() -> void:

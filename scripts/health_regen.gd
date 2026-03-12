@@ -2,6 +2,7 @@ extends Node
 
 var regen_cd = PlayerAttributes.regen_cd
 var regen_rate = PlayerAttributes.regen_rate
+var regen_amount = PlayerAttributes.regen_amount
 var heal_timer = 0.0
 
 
@@ -22,8 +23,9 @@ func _process(delta):
 
 func _heal_player():
 	regen_rate = PlayerAttributes.regen_rate
+	regen_amount = PlayerAttributes.regen_amount
 	
-	PlayerAttributes.current_health += 1.0
+	PlayerAttributes.current_health += regen_amount
 	SignalManager.hp_changed.emit()
 
 func _took_damage():

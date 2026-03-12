@@ -7,6 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="3_fidhh"]
 [ext_resource type="FontFile" uid="uid://cfmwhwa5k786n" path="res://assets/fonts/OtherFont.ttf" id="5_0e21o"]
 [ext_resource type="StyleBox" uid="uid://cxr7hpxbf63no" path="res://assets/fonts/item_desc_style.tres" id="5_k5f0l"]
+[ext_resource type="AudioStream" uid="uid://brnchuphwy67u" path="res://assets/sounds/player/level_up.wav" id="8_4lbqf"]
 
 [node name="ItemSelection" type="CanvasLayer" unique_id=2141210872]
 process_mode = 3
@@ -223,6 +224,9 @@ text = "LEFT ITEM"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LevelUpAudio" type="AudioStreamPlayer" parent="." unique_id=512344782]
+stream = ExtResource("8_4lbqf")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed" binds= ["item1"]]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Button" to="." method="_on_button_pressed" binds= ["item2"]]

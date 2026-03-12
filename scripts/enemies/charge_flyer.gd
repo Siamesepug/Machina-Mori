@@ -47,44 +47,60 @@ var bleed_stacks = 0
 @onready var xp_drop = load("res://scenes/objects/xp_drop.tscn")
 @onready var hurt_audio = $HurtAudio
 @onready var health_bar = $HealthBar
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 @onready var charge_time = $ChargeTime
 @onready var cooldown_timer = $CooldownTimer
+@onready var death_audio = $DeathAudio
 
 func _ready():
 	health_bar.max_value = current_health
 	health_bar.value = current_health
 	SignalManager.level_change.connect(destroy)
+	sprite.animation = "default"
 
 func _physics_process(delta):
 	if player == null:
 		player = get_tree().get_first_node_in_group("Player")
 		return
 	
+	sprite.animation = "default"
+	
 	match state:
 		State.HUNT: # Decide if enemy should charge/fire
 			state_start = false
 			hunt_player()
 		State.CHARGE:
+			sprite.animation = "attacking"
 			if !state_start:
 				state_start = true
-				print("CHARGING")
 				charge_player()
 			move_and_slide()
 		State.FIRE:
+			sprite.animation = "attacking"
 			if !state_start:
 				state_start = true
-				print("FIRING")
 				fire_at_player()
+			
+			# Rotate towards player
+			var player_direction = global_position.direction_to(player.global_position)
+			sprite.rotation = lerp_angle(sprite.rotation, (player_direction.angle() + deg_to_rad(90)), 0.05)
+			
 		State.KNOCKBACK:
-			print("KNOCKED BACK")
 			move_and_slide()
 		State.COOLDOWN:
 			if cooldown_timer.is_stopped():
 				cooldown_timer.start()
+			sprite.animation = "attacking"
 			hunt_player()
 		State.DEAD:
-			print("DEAD")
+			sprite.animation = "dead"
+			velocity += get_gravity() * delta
+			move_and_slide()
+			
+			cooldown_timer.stop()
+			charge_time.stop()
+			health_bar.visible = false
+			
 			return
 
 func hunt_player():
@@ -92,6 +108,10 @@ func hunt_player():
 	
 	var next_path_pos = nav_agent.get_next_path_position()
 	var direction = global_position.direction_to(next_path_pos)
+	var player_direction = global_position.direction_to(player.global_position)
+	
+	# Rotate towards player
+	sprite.rotation = lerp_angle(sprite.rotation, (player_direction.angle() + deg_to_rad(90)), 0.05)
 	
 	velocity = direction * speed
 	move_and_slide()
@@ -175,7 +195,9 @@ func take_knockback():
 
 func is_dead():
 	if current_health <= 0:
+		death_audio.play()
 		state = State.DEAD
+		await death_audio.finished
 		max_xp_drops = EnemyStats.flyer_max_xp_drops
 		var xp_drops = randi_range(1, max_xp_drops)
 		
@@ -183,7 +205,7 @@ func is_dead():
 			var xp_orb = xp_drop.instantiate()
 			$"..".add_child(xp_orb)
 			xp_orb.global_position = global_position
-			queue_free()
+		queue_free()
 
 func on_fire(stacks: int, fire_damage: float):
 	sprite.modulate = Color.RED

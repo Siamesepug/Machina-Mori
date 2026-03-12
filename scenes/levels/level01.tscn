@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b5entghbysb6f" path="res://scenes/objects/boost_fan.tscn" id="6_chssp"]
 [ext_resource type="Script" uid="uid://cq65gtptpet6k" path="res://scripts/area_label_fade.gd" id="7_if0f4"]
 [ext_resource type="Shader" uid="uid://daw4otcesyvwd" path="res://scenes/levels/snowfall.gdshader" id="7_ylsda"]
-[ext_resource type="AudioStream" uid="uid://b4drymgvi7e83" path="res://assets/sounds/level01_music.wav" id="8_qjm5h"]
+[ext_resource type="AudioStream" uid="uid://b4drymgvi7e83" path="res://assets/sounds/music/level01_music.wav" id="8_qjm5h"]
 [ext_resource type="Texture2D" uid="uid://dnq7uogt40wfi" path="res://assets/images/background/Empty.png" id="8_y32f7"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="8_ylsda"]
 

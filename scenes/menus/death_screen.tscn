@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="3_omtrp"]
 [ext_resource type="StyleBox" uid="uid://c6kxtadbn2l03" path="res://scenes/menus/MenuButtons.tres" id="4_yx70j"]
 [ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="5_cwqsg"]
-[ext_resource type="AudioStream" uid="uid://chjvnst4r3154" path="res://assets/sounds/death_theme_sky_city.mp3" id="6_yx70j"]
+[ext_resource type="AudioStream" uid="uid://chjvnst4r3154" path="res://assets/sounds/music/death_theme_sky_city.mp3" id="6_yx70j"]
 
 [node name="DeathScreen" type="CanvasLayer" unique_id=1695263281]
 process_mode = 3

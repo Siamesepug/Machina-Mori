@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://i8qtndi3dny" path="res://scripts/enemies/charge_grunt.gd" id="1_pdw5t"]
 [ext_resource type="Texture2D" uid="uid://bb6yrlfbtfeau" path="res://assets/images/enemies/grunt/hovergrunt.png" id="2_bjm1s"]
 [ext_resource type="AudioStream" uid="uid://csog3oqiwvfk3" path="res://assets/sounds/enemy_hurt.ogg" id="3_foyd1"]
+[ext_resource type="AudioStream" uid="uid://cgab4at48r7c4" path="res://assets/sounds/grunt_death.wav" id="4_bjm1s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yewa7"]
+atlas = ExtResource("2_bjm1s")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pdw5t"]
 atlas = ExtResource("2_bjm1s")
@@ -22,6 +27,14 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_foyd1"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yewa7")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pdw5t")
@@ -64,6 +77,11 @@ border_width_right = 1
 border_width_bottom = 2
 border_color = Color(0.41274655, 0, 0.082475044, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_foyd1"]
+random_pitch = 1.1892071
+streams_count = 1
+stream_0/stream = ExtResource("4_bjm1s")
+
 [node name="ChargeGrunt" type="CharacterBody2D" unique_id=494621083]
 modulate = Color(0.6392157, 1, 1, 1)
 scale = Vector2(0.75, 0.75)
@@ -75,8 +93,8 @@ script = ExtResource("1_pdw5t")
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_foyd1")
+animation = &"dead"
 autoplay = "default"
-frame_progress = 0.6906059
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525793527]
 position = Vector2(6.6666656, 1.3333353)
@@ -86,7 +104,6 @@ shape = SubResource("RectangleShape2D_c7xp6")
 target_position = Vector2(-120, 0)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=675640495]
-path_desired_distance = 40.0
 avoidance_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2072010273]
@@ -122,6 +139,9 @@ one_shot = true
 [node name="JumpTimer" type="Timer" parent="." unique_id=1473314588]
 wait_time = 5.0
 autostart = true
+
+[node name="DeathAudio" type="AudioStreamPlayer2D" parent="." unique_id=150253730]
+stream = SubResource("AudioStreamRandomizer_foyd1")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="ChargeTime" to="." method="_on_charge_time_timeout"]

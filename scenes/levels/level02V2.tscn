@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dnq7uogt40wfi" path="res://assets/images/background/Empty.png" id="4_e7a2c"]
 [ext_resource type="Script" uid="uid://cq65gtptpet6k" path="res://scripts/area_label_fade.gd" id="6_w3bhg"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="7_ptrbu"]
-[ext_resource type="AudioStream" uid="uid://b4drymgvi7e83" path="res://assets/sounds/level01_music.wav" id="8_hcxq4"]
+[ext_resource type="AudioStream" uid="uid://b4drymgvi7e83" path="res://assets/sounds/music/level01_music.wav" id="8_hcxq4"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1jlcu"]
 polygon = PackedVector2Array(-16, -10, 16, -10, 16, 16, -16, 16)
@@ -397,7 +397,8 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_rqca6"]
 tile_size = Vector2i(32, 32)
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 17
+physics_layer_0/collision_mask = 17
 physics_layer_1/collision_layer = 8
 physics_layer_1/collision_mask = 8
 sources/0 = SubResource("TileSetAtlasSource_1jlcu")

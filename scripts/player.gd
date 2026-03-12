@@ -8,6 +8,9 @@ extends CharacterBody2D
 @onready var nuke_attack = $NukeAttackNode/NukeAttack
 @onready var camera = $Camera2D
 @onready var dash_timer = $DashCD
+@onready var hurt_audio = $HurtAudio
+@onready var attack_audio = $AttackAudio
+@onready var dash_audio = $DashAudio
 
 @export var air_resistance = 10.0 # lower means more floating in the air
 @export var friction = 50.0 # how snappy the turning and stopping is on the ground
@@ -121,6 +124,7 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, air_resistance)
 	
 	check_oneway_platform()
+	check_map_hazard()
 	
 	move_and_slide()
 
@@ -151,6 +155,7 @@ func _input(event):
 			if !on_weapon_cd:
 				on_weapon_cd = true
 				
+				attack_audio.play()
 				sword_attack.swing_sword()
 				
 				if PlayerAttributes.has_double_attack:
@@ -173,6 +178,7 @@ func _input(event):
 		if !is_dashing:
 			is_dashing = true
 			
+			dash_audio.play()
 			dash_attack.is_dashing()
 			dash_speed = PlayerAttributes.dash_speed
 			# LENGTH OF DASH, MIGHT MAKE VARIABLE
@@ -197,6 +203,16 @@ func check_oneway_platform():
 		await get_tree().create_timer(0.1).timeout
 		set_collision_mask_value(4, true)
 
+func check_map_hazard():
+	pass
+	#for i in get_slide_collision_count():
+	#	var collision = get_slide_collision(i)
+	#	var danger = get_parent().get_node("Water")
+	#	if collision.collider == danger:
+	#		PlayerAttributes.current_health -= 1
+	#		current_health -= 1
+	#		SignalManager.hp_changed.emit()
+
 func _slow_from_dash():
 	
 	# Gradual slow from dash, not instant back to normal speed
@@ -209,6 +225,7 @@ func _slow_from_dash():
 		return
 
 func _take_damage(damage):
+	hurt_audio.play()
 	PlayerAttributes.current_health -= damage
 	damage_shader()
 	current_health = PlayerAttributes.current_health
