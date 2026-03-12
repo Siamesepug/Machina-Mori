@@ -7,16 +7,21 @@
 size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m72dh"]
-size = Vector2(132, 135.99998)
+size = Vector2(101, 95.999985)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxao0"]
 size = Vector2(70, 69.99999)
 
 [node name="Projectile" type="CharacterBody2D" unique_id=1220401333]
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_m72dh")
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=363748298]
+modulate = Color(0.16924527, 0.1692453, 0.16924527, 1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_hxao0")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1813388936]
-modulate = Color(1, 1, 0, 1)
 scale = Vector2(1, 1.0000001)
 texture = ExtResource("2_hxao0")
 
@@ -30,7 +35,6 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1975912177]
-position = Vector2(1, -3.9999995)
 shape = SubResource("RectangleShape2D_m72dh")
 
 [node name="DestroySelf" type="Area2D" parent="." unique_id=34983289]

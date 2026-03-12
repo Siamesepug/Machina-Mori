@@ -20,12 +20,13 @@ var damage_cd = EnemyStats.flyer_damage_cd
 
 var current_health = EnemyStats.flyer_max_health
 
-var charge_chance = EnemyStats.flyer_charge_chance * 4
-var fire_chance = EnemyStats.flyer_fire_chance / 4
+var charge_chance = EnemyStats.grunt_charge_chance / 4
+var fire_chance = EnemyStats.grunt_fire_chance * 4
 
 var max_xp_drops = EnemyStats.flyer_max_xp_drops
 var can_damage = true # Is able to attack player (not on damage_cd)
 var is_knocked_back = false
+var is_jumping = false
 
 var is_on_fire = false
 var fire_stacks = 0
@@ -47,7 +48,7 @@ var bleed_stacks = 0
 @onready var xp_drop = load("res://scenes/objects/xp_drop.tscn")
 @onready var hurt_audio = $HurtAudio
 @onready var health_bar = $HealthBar
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 @onready var charge_time = $ChargeTime
 @onready var cooldown_timer = $CooldownTimer
 
@@ -64,7 +65,7 @@ func _physics_process(delta):
 	match state:
 		State.HUNT: # Decide if enemy should charge/fire
 			state_start = false
-			hunt_player()
+			hunt_player(delta)
 		State.CHARGE:
 			if !state_start:
 				state_start = true
@@ -82,18 +83,24 @@ func _physics_process(delta):
 		State.COOLDOWN:
 			if cooldown_timer.is_stopped():
 				cooldown_timer.start()
-			hunt_player()
+			hunt_player(delta)
 		State.DEAD:
 			print("DEAD")
 			return
 
-func hunt_player():
+func hunt_player(delta):
 	nav_agent.target_position = player.global_position
 	
 	var next_path_pos = nav_agent.get_next_path_position()
 	var direction = global_position.direction_to(next_path_pos)
 	
 	velocity = direction * speed
+	
+	if !is_jumping:
+		velocity += (get_gravity() * 3) * delta
+	else:
+		_jump(delta)
+	
 	move_and_slide()
 	
 	# decide what attack to use
@@ -186,6 +193,16 @@ func is_dead():
 			$"..".add_child(xp_orb)
 			xp_orb.global_position = global_position
 			queue_free()
+
+func _jump(delta):
+	velocity -= (get_gravity() * 5) * delta
+	move_and_slide()
+
+func _on_jump_timer_timeout() -> void:
+	if is_on_floor():
+		is_jumping = true
+		await get_tree().create_timer(0.1).timeout
+		is_jumping = false
 
 func on_fire(stacks: int, fire_damage: float):
 	sprite.modulate = Color.RED

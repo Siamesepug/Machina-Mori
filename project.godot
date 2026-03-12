@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Artificial Purge"
+config/name="Machina Mori"
 run/main_scene="uid://bg8ouupge2wwc"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/show_image=false
@@ -30,6 +30,7 @@ BaseAttributes="*uid://b0gj6rdcp11cr"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

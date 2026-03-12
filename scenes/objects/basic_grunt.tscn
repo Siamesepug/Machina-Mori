@@ -68,7 +68,6 @@ visible = false
 texture = ExtResource("2_fjbdy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525793527]
-visible = false
 shape = SubResource("RectangleShape2D_c7xp6")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=354206683]

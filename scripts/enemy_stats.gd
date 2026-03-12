@@ -26,3 +26,6 @@ var grunt_damage_cd = 1.5 # seconds
 var grunt_max_health = 100.0
 
 var grunt_max_xp_drops = 3 # max total xp drops per kill
+
+var grunt_charge_chance = 0.7 # chances on what to do
+var grunt_fire_chance = 0.3

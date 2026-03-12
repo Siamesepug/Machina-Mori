@@ -20,8 +20,8 @@ var damage_cd = EnemyStats.flyer_damage_cd
 
 var current_health = EnemyStats.flyer_max_health
 
-var charge_chance = EnemyStats.flyer_charge_chance * 4
-var fire_chance = EnemyStats.flyer_fire_chance / 4
+var charge_chance = EnemyStats.flyer_charge_chance / 4
+var fire_chance = EnemyStats.flyer_fire_chance * 4
 
 var max_xp_drops = EnemyStats.flyer_max_xp_drops
 var can_damage = true # Is able to attack player (not on damage_cd)

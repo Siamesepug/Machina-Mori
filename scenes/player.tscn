@@ -491,7 +491,6 @@ energy = 3.0
 texture = SubResource("GradientTexture2D_qfm1y")
 
 [node name="NukeAttackNode" type="Node2D" parent="." unique_id=1155101979]
-visible = false
 
 [node name="NukeAttack" type="Area2D" parent="NukeAttackNode" unique_id=78467768]
 position = Vector2(0, -126.66667)

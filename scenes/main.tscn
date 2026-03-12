@@ -6,10 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bakwtt7aavn5t" path="res://scenes/menus/item_selection.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bhikrrw4lhvmb" path="res://scenes/upgrades/double_jump.tscn" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://daxfttal8sqc1" path="res://scenes/upgrades/move_speed.tscn" id="5_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cbv7ob7app2wj" path="res://scenes/objects/charge_grunt.tscn" id="6_tel4y"]
 [ext_resource type="PackedScene" uid="uid://cyl8tofu4bsb6" path="res://scenes/upgrades/xp_boost.tscn" id="6_tipki"]
+[ext_resource type="PackedScene" uid="uid://di6i35jrn3um6" path="res://scenes/objects/fire_flyer.tscn" id="7_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://mk3lry0wtxna" path="res://scenes/upgrades/regen_improve.tscn" id="7_85g3d"]
 [ext_resource type="Script" uid="uid://g2y70bi570ye" path="res://scripts/level_change_timer.gd" id="8_85g3d"]
 [ext_resource type="PackedScene" uid="uid://mlnfjf77krvl" path="res://scenes/upgrades/max_health.tscn" id="8_choun"]
+[ext_resource type="PackedScene" uid="uid://dngy4k4dmawri" path="res://scenes/objects/fire_grunt.tscn" id="8_dgi5k"]
 [ext_resource type="PackedScene" uid="uid://bauw807vljlxp" path="res://scenes/upgrades/weapon_size.tscn" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://crpneaircb67p" path="res://scenes/upgrades/weapon_cd.tscn" id="10_eb6dy"]
 [ext_resource type="Script" uid="uid://cfvhu70p21sql" path="res://scripts/wave_spawner.gd" id="12_eb6dy"]
@@ -58,7 +61,7 @@ script = ExtResource("8_85g3d")
 
 [node name="WaveSpawner" type="Node2D" parent="." unique_id=1051497752]
 script = ExtResource("12_eb6dy")
-enemy_list = Array[PackedScene]([ExtResource("32_qkpxi")])
+enemy_list = Array[PackedScene]([ExtResource("32_qkpxi"), ExtResource("6_tel4y"), ExtResource("7_5q0nq"), ExtResource("8_dgi5k")])
 
 [node name="SpawnTimer" type="Timer" parent="WaveSpawner" unique_id=617225926]
 
@@ -95,9 +98,6 @@ texture = ExtResource("18_dp3eg")
 
 [node name="ItemSelection" parent="." unique_id=2141210872 instance=ExtResource("3_sugp2")]
 item_list = Array[PackedScene]([ExtResource("12_tel4y"), ExtResource("23_pm3ni"), ExtResource("19_gqmmt"), ExtResource("21_jscy8"), ExtResource("20_yc10j"), ExtResource("25_og1vs"), ExtResource("4_tefeu"), ExtResource("19_qkpxi"), ExtResource("17_y6deb"), ExtResource("21_5q0nq"), ExtResource("26_2wyq8"), ExtResource("8_choun"), ExtResource("5_o6xl0"), ExtResource("28_2f3dj"), ExtResource("27_vxglm"), ExtResource("7_85g3d"), ExtResource("10_eb6dy"), ExtResource("22_pm3ni"), ExtResource("9_ya4ey"), ExtResource("6_tipki")])
-
-[node name="ChargeFlyer" parent="." unique_id=494621083 instance=ExtResource("32_qkpxi")]
-position = Vector2(1370, -168)
 
 [connection signal="timeout" from="LevelChangeTimer" to="LevelChangeTimer" method="_on_timeout"]
 [connection signal="timeout" from="LevelChangeTimer" to="DirectionalLight2D" method="_on_level_change_timer_timeout"]

@@ -7,8 +7,8 @@ var direction : Vector2
 var damage : float
 
 func _on_area_2d_body_entered(body: CharacterBody2D):
-	if body == player:
-		SignalManager.damage_player.emit(damage)
+	if body == player: # NOTE : Bullets do 33% of normal damage
+		SignalManager.damage_player.emit(damage * 0.33)
 
 func _physics_process(delta):
 	velocity = direction * speed
