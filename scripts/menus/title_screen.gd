@@ -5,6 +5,7 @@ extends Control
 @onready var black_screen = $BlackScreen
 
 func _ready():
+	get_tree().paused = false
 	if !MainMenuMusic.playing:
 		MainMenuMusic.play()
 

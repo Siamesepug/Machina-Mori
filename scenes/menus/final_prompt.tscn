@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://kn5of84611jg"]
 
-[ext_resource type="Script" uid="uid://brahwpascbtip" path="res://scenes/menus/final_prompt.gd" id="1_kub5e"]
+[ext_resource type="Script" uid="uid://brahwpascbtip" path="res://scripts/menus/final_prompt.gd" id="1_kub5e"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="2_ndjrq"]
 
 [node name="FinalPrompt" type="CanvasLayer" unique_id=2020511158]

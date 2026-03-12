@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://djwfx56p33qfi"]
 
-[ext_resource type="PackedScene" uid="uid://bt54rqllhduvr" path="res://scenes/levels/level05.tscn" id="1_dgi5k"]
 [ext_resource type="Shader" uid="uid://mbf0ns0iaxa2" path="res://scenes/level_transition.gdshader" id="1_muem4"]
+[ext_resource type="PackedScene" uid="uid://br4i6o847nyvh" path="res://scenes/levels/level01V2.tscn" id="1_y6deb"]
 [ext_resource type="PackedScene" uid="uid://biu73v5dp2dfk" path="res://scenes/menus/game_ui.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bakwtt7aavn5t" path="res://scenes/menus/item_selection.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bhikrrw4lhvmb" path="res://scenes/upgrades/double_jump.tscn" id="4_tefeu"]
@@ -52,7 +52,7 @@ shader_parameter/diamondPixelSize = 10.0
 
 [node name="Levels" type="Node2D" parent="." unique_id=986628131]
 
-[node name="LevelRoot" parent="Levels" unique_id=1082038515 instance=ExtResource("1_dgi5k")]
+[node name="LevelRoot" parent="Levels" unique_id=1082038515 instance=ExtResource("1_y6deb")]
 
 [node name="GameUI" parent="." unique_id=508800275 instance=ExtResource("2_0wfyh")]
 
@@ -70,7 +70,7 @@ enemy_list = Array[PackedScene]([ExtResource("32_qkpxi"), ExtResource("6_tel4y")
 [node name="WaveTimer" type="Timer" parent="WaveSpawner" unique_id=1685904327]
 
 [node name="Player" parent="." unique_id=131089335 groups=["Player"] instance=ExtResource("15_jkv2x")]
-position = Vector2(-3894, -2189)
+position = Vector2(434, 46)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=638121522]
 environment = SubResource("Environment_jkv2x")

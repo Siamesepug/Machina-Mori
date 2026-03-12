@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://cyt7pybhauju"]
+
+[ext_resource type="Script" uid="uid://ch4tuhq1jrlpr" path="res://scenes/menus/pause_menu.gd" id="1_eyfc8"]
+[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_dgi6y"]
+[ext_resource type="Shader" uid="uid://bhvbras4xd3mt" path="res://scenes/menus/title_glitch.gdshader" id="2_xiui8"]
+[ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="3_dqjbd"]
+[ext_resource type="StyleBox" uid="uid://c6kxtadbn2l03" path="res://scenes/menus/MenuButtons.tres" id="4_opdvj"]
+[ext_resource type="StyleBox" uid="uid://cn5dahxnklbrb" path="res://scenes/menus/MenuButtonsHover.tres" id="5_pf6lc"]
+[ext_resource type="FontFile" uid="uid://cfmwhwa5k786n" path="res://assets/fonts/OtherFont.ttf" id="6_j7gms"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqhbq"]
+shader = ExtResource("2_xiui8")
+shader_parameter/intensity = 0.2350000111625
+shader_parameter/glitch_frequency = 3.68000017154012
+shader_parameter/red_displacement = 0.02
+shader_parameter/green_displacement = 0.02
+shader_parameter/blue_displacement = 0.02
+shader_parameter/scanline_intensity = 0.3850000182875
+shader_parameter/noise_intensity = 0.3650000173375
+shader_parameter/slice_intensity = 0.7750000368125
+shader_parameter/ghost_intensity = 0.5
+shader_parameter/negative_intensity = 0.0
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=2141210872]
+process_mode = 3
+script = ExtResource("1_eyfc8")
+
+[node name="Overlay" type="TextureRect" parent="." unique_id=572760621]
+modulate = Color(0.17254902, 0.16078432, 0.14117648, 0.6039216)
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_dgi6y")
+stretch_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1607854318]
+offset_right = 1280.0
+offset_bottom = 720.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1094029275]
+layout_mode = 2
+theme_override_constants/separation = 47
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1616535174]
+material = SubResource("ShaderMaterial_gqhbq")
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6857328, 3.1044335e-06, 5.7756904e-07, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.3372549)
+theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -11
+theme_override_constants/outline_size = 22
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("6_j7gms")
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=844507008]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_j7gms")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_opdvj")
+theme_override_styles/hover = ExtResource("5_pf6lc")
+text = "RESUME"
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1240910466]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dqjbd")
+theme_override_styles/normal = ExtResource("4_opdvj")
+theme_override_styles/hover = ExtResource("5_pf6lc")
+text = "QUIT"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button2" to="." method="_on_quit_pressed"]

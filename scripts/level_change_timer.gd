@@ -80,8 +80,8 @@ func _teleport_player(lvl):
 		wave_spawner.enemy_list.append(cube03)
 	
 	elif lvl == lvl05:
-		player.global_position.x = 282.0
-		player.global_position.y = -2269.0
+		player.global_position.x = -11520.0
+		player.global_position.y = -2161.0
 		wave_spawner.enemy_list.clear()
 
 func _level_transition_shader():

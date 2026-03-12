@@ -82,7 +82,7 @@ theme_override_colors/font_outline_color = Color(0.09411765, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_s48i0")
 theme_override_font_sizes/font_size = 25
-text = "You are the last free robot. It is your job to terminate the rogue AI that is taking over the system.
+text = "You are the last free machine. It is your job to terminate the rogue AI that is taking over the system.
 
 Kill enemies to gain XP, gain enough XP to level up. Leveling up grants powerful items.
 

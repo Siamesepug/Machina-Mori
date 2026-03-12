@@ -80,6 +80,27 @@ func set_marathon():
 	EnemyStats.grunt_max_xp_drops = 3
 	EnemyStats.grunt_speed = 300.0
 	EnemyStats.grunt_damage = 10.0
+	
+	## CRAWLER STATS
+	EnemyStats.crawler_speed = 200.0
+	EnemyStats.crawler_damage = 20.0
+	EnemyStats.crawler_max_health = 150.0
+	EnemyStats.crawler_max_xp_drops = 3 # max total xp drops per kill
+
+	## WIREBALL STATS
+	EnemyStats.wireball_speed = 50.0
+	EnemyStats.wireball_damage = 15.0
+	EnemyStats.wireball_max_health = 175.0
+	EnemyStats.wireball_max_xp_drops = 5 # max total xp drops per kill
+
+	## WIREBALL STATS
+	EnemyStats.cube_speed = 75.0
+	EnemyStats.cube_damage = 20.0
+	EnemyStats.cube_child_damage = 10.0
+	EnemyStats.cube_max_health = 250.0
+	EnemyStats.cube_child_max_health = 25.0
+	EnemyStats.cube_max_xp_drops = 1 # max total xp drops per kill (for child only)
+	EnemyStats.cube_child_max_spawns = 4 # max amount of cubes to spawn
 
 func set_standard():
 	PlayerAttributes.reset_to_base()
@@ -104,6 +125,27 @@ func set_standard():
 	EnemyStats.grunt_max_xp_drops = 3
 	EnemyStats.grunt_speed = 300.0
 	EnemyStats.grunt_damage = 10.0
+	
+	## CRAWLER STATS
+	EnemyStats.crawler_speed = 200.0
+	EnemyStats.crawler_damage = 20.0
+	EnemyStats.crawler_max_health = 150.0
+	EnemyStats.crawler_max_xp_drops = 3 # max total xp drops per kill
+
+	## WIREBALL STATS
+	EnemyStats.wireball_speed = 50.0
+	EnemyStats.wireball_damage = 15.0
+	EnemyStats.wireball_max_health = 175.0
+	EnemyStats.wireball_max_xp_drops = 5 # max total xp drops per kill
+
+	## WIREBALL STATS
+	EnemyStats.cube_speed = 75.0
+	EnemyStats.cube_damage = 20.0
+	EnemyStats.cube_child_damage = 10.0
+	EnemyStats.cube_max_health = 250.0
+	EnemyStats.cube_child_max_health = 25.0
+	EnemyStats.cube_max_xp_drops = 1 # max total xp drops per kill (for child only)
+	EnemyStats.cube_child_max_spawns = 4 # max amount of cubes to spawn
 
 func set_blitz():
 	PlayerAttributes.reset_to_base()
@@ -128,6 +170,27 @@ func set_blitz():
 	EnemyStats.grunt_max_xp_drops = 3
 	EnemyStats.grunt_speed = 300.0
 	EnemyStats.grunt_damage = 10.0
+	
+	## CRAWLER STATS
+	EnemyStats.crawler_speed = 200.0
+	EnemyStats.crawler_damage = 20.0
+	EnemyStats.crawler_max_health = 150.0
+	EnemyStats.crawler_max_xp_drops = 3 # max total xp drops per kill
+
+	## WIREBALL STATS
+	EnemyStats.wireball_speed = 50.0
+	EnemyStats.wireball_damage = 15.0
+	EnemyStats.wireball_max_health = 175.0
+	EnemyStats.wireball_max_xp_drops = 5 # max total xp drops per kill
+
+	## WIREBALL STATS
+	EnemyStats.cube_speed = 75.0
+	EnemyStats.cube_damage = 20.0
+	EnemyStats.cube_child_damage = 10.0
+	EnemyStats.cube_max_health = 250.0
+	EnemyStats.cube_child_max_health = 25.0
+	EnemyStats.cube_max_xp_drops = 1 # max total xp drops per kill (for child only)
+	EnemyStats.cube_child_max_spawns = 4 # max amount of cubes to spawn
 
 func set_glass_cannon():
 	PlayerAttributes.reset_to_base()
@@ -150,6 +213,27 @@ func set_glass_cannon():
 	EnemyStats.grunt_max_xp_drops = 3
 	EnemyStats.grunt_speed = 300.0
 	EnemyStats.grunt_damage = 10.0
+	
+	## CRAWLER STATS
+	EnemyStats.crawler_speed = 200.0
+	EnemyStats.crawler_damage = 20.0
+	EnemyStats.crawler_max_health = 1.0
+	EnemyStats.crawler_max_xp_drops = 3 # max total xp drops per kill
+
+	## WIREBALL STATS
+	EnemyStats.wireball_speed = 50.0
+	EnemyStats.wireball_damage = 15.0
+	EnemyStats.wireball_max_health = 1.0
+	EnemyStats.wireball_max_xp_drops = 5 # max total xp drops per kill
+
+	## WIREBALL STATS
+	EnemyStats.cube_speed = 75.0
+	EnemyStats.cube_damage = 20.0
+	EnemyStats.cube_child_damage = 10.0
+	EnemyStats.cube_max_health = 1.0
+	EnemyStats.cube_child_max_health = 1.0
+	EnemyStats.cube_max_xp_drops = 1 # max total xp drops per kill (for child only)
+	EnemyStats.cube_child_max_spawns = 4 # max amount of cubes to spawn
 	
 	PlayerAttributes.glass_cannon = true
 
@@ -176,6 +260,27 @@ func set_chaos():
 	EnemyStats.grunt_max_xp_drops = randi_range(1, 15)
 	EnemyStats.grunt_speed = randi_range(100, 400)
 	EnemyStats.grunt_damage = randi_range(1, 50)
+	
+	## CRAWLER STATS
+	EnemyStats.crawler_speed = randi_range(100, 400)
+	EnemyStats.crawler_damage = randi_range(1, 50)
+	EnemyStats.crawler_max_health = randi_range(1, 500)
+	EnemyStats.crawler_max_xp_drops = randi_range(1, 15)
+
+	## WIREBALL STATS
+	EnemyStats.wireball_speed = randi_range(100, 400)
+	EnemyStats.wireball_damage = randi_range(1, 50)
+	EnemyStats.wireball_max_health = randi_range(1, 500)
+	EnemyStats.wireball_max_xp_drops = randi_range(1, 15)
+
+	## WIREBALL STATS
+	EnemyStats.cube_speed = randi_range(100, 400)
+	EnemyStats.cube_damage = randi_range(1, 50)
+	EnemyStats.cube_child_damage = randi_range(1, 50)
+	EnemyStats.cube_max_health = randi_range(1, 500)
+	EnemyStats.cube_child_max_health = randi_range(1, 500)
+	EnemyStats.cube_max_xp_drops = randi_range(1, 15)
+	EnemyStats.cube_child_max_spawns = randi_range(1, 15)
 
 func set_rip_and_tear():
 	PlayerAttributes.reset_to_base()
@@ -200,6 +305,27 @@ func set_rip_and_tear():
 	EnemyStats.grunt_max_xp_drops = 1
 	EnemyStats.grunt_speed = 300.0
 	EnemyStats.grunt_damage = 1.0
+	
+	## CRAWLER STATS
+	EnemyStats.crawler_speed = 200.0
+	EnemyStats.crawler_damage = 1.0
+	EnemyStats.crawler_max_health = 50.0
+	EnemyStats.crawler_max_xp_drops = 3 # max total xp drops per kill
+
+	## WIREBALL STATS
+	EnemyStats.wireball_speed = 50.0
+	EnemyStats.wireball_damage = 1.0
+	EnemyStats.wireball_max_health = 50.0
+	EnemyStats.wireball_max_xp_drops = 5 # max total xp drops per kill
+
+	## WIREBALL STATS
+	EnemyStats.cube_speed = 75.0
+	EnemyStats.cube_damage = 1.0
+	EnemyStats.cube_child_damage = 10.0
+	EnemyStats.cube_max_health = 50.0
+	EnemyStats.cube_child_max_health = 25.0
+	EnemyStats.cube_max_xp_drops = 1 # max total xp drops per kill (for child only)
+	EnemyStats.cube_child_max_spawns = 4 # max amount of cubes to spawn
 
 func _on_back_to_menu_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/menus/title_screen.tscn")

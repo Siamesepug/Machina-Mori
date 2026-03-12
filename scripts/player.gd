@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var hurt_audio = $HurtAudio
 @onready var attack_audio = $AttackAudio
 @onready var dash_audio = $DashAudio
+@onready var pause_scene = load("res://scenes/menus/pause_menu.tscn")
 
 @export var air_resistance = 10.0 # lower means more floating in the air
 @export var friction = 50.0 # how snappy the turning and stopping is on the ground
@@ -104,12 +105,12 @@ func _physics_process(delta):
 		if !is_on_floor():
 			velocity.y *= jump_cutoff_value
 	
-	if Input.is_action_just_pressed("debug_level_up"):
-		PlayerAttributes.xp_progress += xp_gain
-		SignalManager.xp_gained.emit(xp_gain)
+	#if Input.is_action_just_pressed("debug_level_up"):
+	#	PlayerAttributes.xp_progress += xp_gain
+	#	SignalManager.xp_gained.emit(xp_gain)
 	
 	if Input.is_action_just_pressed("back"):
-		get_tree().quit()
+		get_parent().add_child(pause_scene.instantiate())
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
