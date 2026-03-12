@@ -14,8 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://crpneaircb67p" path="res://scenes/upgrades/weapon_cd.tscn" id="10_eb6dy"]
 [ext_resource type="Script" uid="uid://cfvhu70p21sql" path="res://scripts/wave_spawner.gd" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://begrhi4ntdrhi" path="res://scenes/upgrades/acid_element.tscn" id="12_tel4y"]
-[ext_resource type="PackedScene" uid="uid://e886w33jbyu6" path="res://scenes/objects/basic_grunt.tscn" id="13_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://cft4omc85o6i7" path="res://scenes/objects/basic_flyer.tscn" id="14_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://vjuntkxlfvjv" path="res://scenes/player.tscn" id="15_jkv2x"]
 [ext_resource type="Script" uid="uid://chohbsngs34cd" path="res://scripts/sunlight.gd" id="16_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://ufkja3bo28y1" path="res://scenes/upgrades/fire_element.tscn" id="17_y6deb"]
@@ -31,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://bwook4wnx0rby" path="res://scenes/upgrades/jump_height.tscn" id="26_2wyq8"]
 [ext_resource type="PackedScene" uid="uid://bwxs6gutuvucb" path="res://scenes/upgrades/overclock.tscn" id="27_vxglm"]
 [ext_resource type="PackedScene" uid="uid://bovuqifnubrcw" path="res://scenes/upgrades/nuke_item.tscn" id="28_2f3dj"]
+[ext_resource type="PackedScene" uid="uid://cru1nbdoppm05" path="res://scenes/objects/charge_flyer.tscn" id="32_qkpxi"]
 
 [sub_resource type="Environment" id="Environment_jkv2x"]
 background_mode = 3
@@ -59,7 +58,7 @@ script = ExtResource("8_85g3d")
 
 [node name="WaveSpawner" type="Node2D" parent="." unique_id=1051497752]
 script = ExtResource("12_eb6dy")
-enemy_list = Array[PackedScene]([ExtResource("13_a8y0u"), ExtResource("14_jkv2x")])
+enemy_list = Array[PackedScene]([ExtResource("32_qkpxi")])
 
 [node name="SpawnTimer" type="Timer" parent="WaveSpawner" unique_id=617225926]
 
@@ -67,7 +66,7 @@ enemy_list = Array[PackedScene]([ExtResource("13_a8y0u"), ExtResource("14_jkv2x"
 
 [node name="Player" parent="." unique_id=131089335 groups=["Player"] instance=ExtResource("15_jkv2x")]
 visibility_layer = 3
-position = Vector2(419, 10)
+position = Vector2(418.00003, 39)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=638121522]
 environment = SubResource("Environment_jkv2x")
@@ -96,6 +95,9 @@ texture = ExtResource("18_dp3eg")
 
 [node name="ItemSelection" parent="." unique_id=2141210872 instance=ExtResource("3_sugp2")]
 item_list = Array[PackedScene]([ExtResource("12_tel4y"), ExtResource("23_pm3ni"), ExtResource("19_gqmmt"), ExtResource("21_jscy8"), ExtResource("20_yc10j"), ExtResource("25_og1vs"), ExtResource("4_tefeu"), ExtResource("19_qkpxi"), ExtResource("17_y6deb"), ExtResource("21_5q0nq"), ExtResource("26_2wyq8"), ExtResource("8_choun"), ExtResource("5_o6xl0"), ExtResource("28_2f3dj"), ExtResource("27_vxglm"), ExtResource("7_85g3d"), ExtResource("10_eb6dy"), ExtResource("22_pm3ni"), ExtResource("9_ya4ey"), ExtResource("6_tipki")])
+
+[node name="ChargeFlyer" parent="." unique_id=494621083 instance=ExtResource("32_qkpxi")]
+position = Vector2(1370, -168)
 
 [connection signal="timeout" from="LevelChangeTimer" to="LevelChangeTimer" method="_on_timeout"]
 [connection signal="timeout" from="LevelChangeTimer" to="DirectionalLight2D" method="_on_level_change_timer_timeout"]

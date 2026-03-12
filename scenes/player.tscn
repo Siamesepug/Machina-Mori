@@ -1,12 +1,9 @@
 [gd_scene format=3 uid="uid://vjuntkxlfvjv"]
 
-[ext_resource type="Texture2D" uid="uid://dtrq5uo1cv73" path="res://assets/images/player/Hit (32x32).png" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://d1jfp1kto26ql" path="res://scripts/player.gd" id="1_qlg0r"]
-[ext_resource type="Shader" uid="uid://qb3mqf1awsw" path="res://scenes/player.gdshader" id="2_d2wvv"]
-[ext_resource type="Texture2D" uid="uid://cmpefcobtj7vr" path="res://assets/images/player/Idle (32x32).png" id="2_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://dp3ugnfrrd40f" path="res://assets/images/player/Jump (32x32).png" id="3_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://bufs8ehsdnqbe" path="res://assets/images/player/Playerjump.png" id="3_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://d3chfbf5cfkek" path="res://assets/images/player/Playersprite.png" id="4_60mlk"]
-[ext_resource type="Texture2D" uid="uid://c6sh66he14syx" path="res://assets/images/player/Run (32x32).png" id="4_fjrip"]
+[ext_resource type="Texture2D" uid="uid://sc83cssyisnj" path="res://assets/images/player/Playermove.png" id="4_fulsm"]
 [ext_resource type="AudioStream" uid="uid://cok360m5t6wct" path="res://assets/sounds/jump.wav" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://cycxj1oy1fpd0" path="res://scripts/health_regen.gd" id="7_fjrip"]
 [ext_resource type="Script" uid="uid://cgcgjouhd3b2j" path="res://scripts/player_camera.gd" id="7_y4r1p"]
@@ -21,8 +18,99 @@
 [ext_resource type="Script" uid="uid://dlfdu3e1gke6w" path="res://scripts/nuke_attack.gd" id="16_fulsm"]
 [ext_resource type="AudioStream" uid="uid://cra1xpukrnlba" path="res://assets/sounds/gregorquendel-laser-charge_edited.mp3" id="16_qfm1y"]
 
+[sub_resource type="Shader" id="Shader_4r5pv"]
+code = "shader_type canvas_item;
+
+uniform float intensity : hint_range(0.0, 1.0) = 0.5;
+uniform float glitch_frequency : hint_range(0.1, 10.0) = 2.0;
+uniform float glitch_duration : hint_range(0.01, 0.5) = 0.1;
+
+uniform float red_displacement : hint_range(0.0, 0.1) = 0.02;
+uniform float green_displacement : hint_range(0.0, 0.1) = 0.02;
+uniform float blue_displacement : hint_range(0.0, 0.1) = 0.02;
+
+uniform float scanline_intensity : hint_range(0.0, 1.0) = 0.3;
+uniform float noise_intensity : hint_range(0.0, 1.0) = 0.2;
+uniform float slice_intensity : hint_range(0.0, 1.0) = 0.4;
+uniform float ghost_intensity : hint_range(0.0, 0.5) = 0.1;
+uniform float negative_intensity : hint_range(0.0, 1.0) = 0.0;
+
+float random(vec2 st) {
+    return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+}
+
+float noise(vec2 st) {
+    vec2 i = floor(st);
+    vec2 f = fract(st);
+    
+    float a = random(i);
+    float b = random(i + vec2(1.0, 0.0));
+    float c = random(i + vec2(0.0, 1.0));
+    float d = random(i + vec2(1.0, 1.0));
+    
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    
+    return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec4 base_color = texture(TEXTURE, uv);
+    vec4 final_color = base_color;
+    
+    float glitch_time = TIME * glitch_frequency;
+    float glitch_noise = noise(vec2(glitch_time, 0.0));
+    float glitch_active = step(1.0 - intensity, glitch_noise);
+    
+    if (glitch_active > 0.5) {
+        float slice_y = random(vec2(glitch_time * 10.0, 0.0));
+        if (abs(uv.y - slice_y) < 0.02 * slice_intensity) {
+            float slice_offset = (random(vec2(glitch_time * 15.0, 0.0)) - 0.5) * 0.1 * slice_intensity;
+            uv.x += slice_offset;
+        }
+        
+        float vertical_shift = random(vec2(glitch_time * 8.0, 0.0)) * 0.05 * intensity;
+        uv.y += vertical_shift;
+        
+        float wave = sin(uv.y * 100.0 + glitch_time * 5.0) * 0.01 * intensity;
+        uv.x += wave;
+        
+        final_color = texture(TEXTURE, uv);
+    }
+    
+    float shift_amount = red_displacement * glitch_active;
+    vec4 red_channel = texture(TEXTURE, uv + vec2(shift_amount, 0.0));
+    vec4 green_channel = texture(TEXTURE, uv + vec2(-green_displacement * glitch_active, 0.0));
+    vec4 blue_channel = texture(TEXTURE, uv + vec2(blue_displacement * glitch_active, 0.0));
+    
+    final_color.r = mix(final_color.r, red_channel.r, glitch_active);
+    final_color.g = mix(final_color.g, green_channel.g, glitch_active);
+    final_color.b = mix(final_color.b, blue_channel.b, glitch_active);
+    
+    float scanline = sin(uv.y * 300.0 + glitch_time * 2.0) * 0.5 + 0.5;
+    final_color.rgb *= 1.0 - scanline * scanline_intensity * intensity;
+    
+    float static_noise = random(uv + glitch_time) * noise_intensity * glitch_active;
+    final_color.rgb += static_noise;
+    
+    if (ghost_intensity > 0.0) {
+        vec4 ghost_color = texture(TEXTURE, uv + vec2(0.01, 0.01)) * ghost_intensity;
+        final_color.rgb = mix(final_color.rgb, ghost_color.rgb, ghost_intensity * 0.5);
+    }
+    
+    if (negative_intensity > 0.0) {
+        vec4 negative_color = vec4(1.0 - final_color.rgb, final_color.a);
+        final_color.rgb = mix(final_color.rgb, negative_color.rgb, negative_intensity * glitch_active);
+    }
+    
+    float glow = glitch_active * 0.2 * intensity;
+    final_color.rgb += glow;
+    
+    COLOR = final_color;
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3v2ag"]
-shader = ExtResource("2_d2wvv")
+shader = SubResource("Shader_4r5pv")
 shader_parameter/intensity = 0.0
 shader_parameter/glitch_frequency = 10.0
 shader_parameter/glitch_duration = 0.1
@@ -34,34 +122,6 @@ shader_parameter/noise_intensity = 0.7870000373825
 shader_parameter/slice_intensity = 0.4
 shader_parameter/ghost_intensity = 0.1
 shader_parameter/negative_intensity = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
-atlas = ExtResource("1_dqkch")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
-atlas = ExtResource("1_dqkch")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
-atlas = ExtResource("1_dqkch")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
-atlas = ExtResource("1_dqkch")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
-atlas = ExtResource("1_dqkch")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
-atlas = ExtResource("1_dqkch")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
-atlas = ExtResource("1_dqkch")
-region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mx1m4"]
 atlas = ExtResource("4_60mlk")
@@ -83,126 +143,48 @@ region = Rect2(96, 0, 32, 32)
 atlas = ExtResource("4_60mlk")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(128, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(160, 0, 32, 32)
+atlas = ExtResource("3_qfm1y")
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(320, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
-atlas = ExtResource("4_fjrip")
+atlas = ExtResource("4_fulsm")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_31cv2"]
-atlas = ExtResource("4_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+atlas = ExtResource("4_fulsm")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
-atlas = ExtResource("4_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
+atlas = ExtResource("4_fulsm")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dt7fs"]
-atlas = ExtResource("4_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
+atlas = ExtResource("4_fulsm")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqfne"]
-atlas = ExtResource("4_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
+atlas = ExtResource("4_fulsm")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
-atlas = ExtResource("4_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
+atlas = ExtResource("4_fulsm")
 region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
-atlas = ExtResource("4_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_31cv2"]
+atlas = ExtResource("4_fulsm")
 region = Rect2(192, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_487ah"]
-atlas = ExtResource("4_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
+atlas = ExtResource("4_fulsm")
 region = Rect2(224, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_md1ol"]
-atlas = ExtResource("4_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt7fs"]
+atlas = ExtResource("4_fulsm")
 region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bj30b"]
-atlas = ExtResource("4_fjrip")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jc3p3"]
-atlas = ExtResource("4_fjrip")
-region = Rect2(320, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hax0n"]
-atlas = ExtResource("4_fjrip")
-region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t4otl"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_smehm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ur7pv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y4r1p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d2wvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3v2ag")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jej6c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f1ej7")
-}],
-"loop": true,
-"name": &"hit",
-"speed": 20.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mx1m4")
@@ -225,31 +207,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_tuyoq")
+"texture": SubResource("AtlasTexture_60mlk")
 }],
 "loop": true,
 "name": &"jump",
-"speed": 20.0
+"speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oprun")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a8ls1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qfm1y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fulsm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4r5pv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_60mlk")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i4ail")
 }, {
@@ -264,12 +228,7 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ke2ow")
-}],
-"loop": true,
-"name": &"old_idle",
-"speed": 20.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ujl30")
 }, {
@@ -281,30 +240,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dt7fs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqfne")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wnwbv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gl8cc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_487ah")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_md1ol")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bj30b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jc3p3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hax0n")
 }],
 "loop": true,
 "name": &"run",
@@ -483,9 +418,8 @@ script = ExtResource("1_qlg0r")
 texture_filter = 1
 material = SubResource("ShaderMaterial_3v2ag")
 sprite_frames = SubResource("SpriteFrames_t4otl")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
-frame_progress = 0.65147877
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1797972652]
 position = Vector2(0.50000024, 5.333416)
@@ -557,6 +491,7 @@ energy = 3.0
 texture = SubResource("GradientTexture2D_qfm1y")
 
 [node name="NukeAttackNode" type="Node2D" parent="." unique_id=1155101979]
+visible = false
 
 [node name="NukeAttack" type="Area2D" parent="NukeAttackNode" unique_id=78467768]
 position = Vector2(0, -126.66667)

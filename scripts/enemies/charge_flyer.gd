@@ -1,17 +1,18 @@
 extends CharacterBody2D
 
-# GOING TO HAVE A FEW MAIN STATES:
-# - WANDERING
-# - HUNTING
-# - ATTACKING
-# - DEAD
+enum State {
+	HUNT,
+	CHARGE,
+	FIRE,
+	KNOCKBACK,
+	COOLDOWN,
+	DEAD
+}
 
-#var state = "wandering"
+var state: State = State.HUNT
+var state_start = false
 
-# Gonna need to do quite an overhaul here ngl
-# Need to have ~2 states where the enemy shoots the player or charges
-# at the player. This way, events can override the states and maybe even setup
-# an adaptive system to see what states are working better than others.
+var projectile_scene = load("res://scenes/objects/projectile.tscn")
 
 var speed = EnemyStats.flyer_speed
 var damage = EnemyStats.flyer_damage
@@ -47,6 +48,8 @@ var bleed_stacks = 0
 @onready var hurt_audio = $HurtAudio
 @onready var health_bar = $HealthBar
 @onready var sprite = $Sprite2D
+@onready var charge_time = $ChargeTime
+@onready var cooldown_timer = $CooldownTimer
 
 func _ready():
 	health_bar.max_value = current_health
@@ -54,25 +57,88 @@ func _ready():
 	SignalManager.level_change.connect(destroy)
 
 func _physics_process(delta):
-	if player == null || is_knocked_back:
+	if player == null:
 		player = get_tree().get_first_node_in_group("Player")
-		
-		# Still process movement for when knocked back, if needed
-		move_and_slide()
 		return
 	
+	match state:
+		State.HUNT: # Decide if enemy should charge/fire
+			state_start = false
+			hunt_player()
+		State.CHARGE:
+			if !state_start:
+				state_start = true
+				print("CHARGING")
+				charge_player()
+			move_and_slide()
+		State.FIRE:
+			if !state_start:
+				state_start = true
+				print("FIRING")
+				fire_at_player()
+		State.KNOCKBACK:
+			print("KNOCKED BACK")
+			move_and_slide()
+		State.COOLDOWN:
+			if cooldown_timer.is_stopped():
+				cooldown_timer.start()
+			hunt_player()
+		State.DEAD:
+			print("DEAD")
+			return
+
+func hunt_player():
 	nav_agent.target_position = player.global_position
-	
 	
 	var next_path_pos = nav_agent.get_next_path_position()
 	var direction = global_position.direction_to(next_path_pos)
 	
 	velocity = direction * speed
-	
 	move_and_slide()
+	
+	# decide what attack to use
+	if global_position.distance_to(player.global_position) < 350:
+		var attack_weight = charge_chance + fire_chance
+		var roll = randf() * attack_weight
+		
+		if roll < charge_chance:
+			state = State.CHARGE
+		else:
+			state = State.FIRE
 
+func charge_player():
+	var direction = global_position.direction_to(player.global_position)
+	velocity = direction * speed * 2
+	
+	charge_time.start()
+
+func _on_charge_time_timeout():
+	velocity = Vector2.ZERO
+	state = State.COOLDOWN
+
+func fire_at_player():
+	velocity = Vector2.ZERO
+	
+	var projectile = projectile_scene.instantiate()
+	get_parent().add_child(projectile)
+	projectile.global_position = global_position
+	projectile.damage = damage
+	
+	var direction = global_position.direction_to(player.global_position)
+	projectile.direction = direction
+	
+	await get_tree().create_timer(0.5).timeout
+	
+	state = State.COOLDOWN
+
+func _on_cooldown_timer_timeout():
+	state = State.HUNT
 
 func _on_area_2d_body_entered(body: CharacterBody2D):
+	can_damage = false
+	await get_tree().create_timer(1.0).timeout
+	can_damage = true
+	
 	if body == player && can_damage:
 		SignalManager.damage_player.emit(damage)
 		can_damage = false
@@ -95,10 +161,22 @@ func take_damage(damage):
 	
 	health_bar.value = current_health
 	
+	take_knockback()
+	
 	is_dead()
+
+func take_knockback():
+	is_knocked_back = true
+	state = State.KNOCKBACK
+	
+	await get_tree().create_timer(0.5).timeout
+	
+	state = State.HUNT
+	is_knocked_back = false
 
 func is_dead():
 	if current_health <= 0:
+		state = State.DEAD
 		max_xp_drops = EnemyStats.flyer_max_xp_drops
 		var xp_drops = randi_range(1, max_xp_drops)
 		

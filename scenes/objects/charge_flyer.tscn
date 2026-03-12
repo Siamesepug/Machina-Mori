@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cru1nbdoppm05"]
 
-[ext_resource type="Script" uid="uid://dkerrlmwwvb1k" path="res://scripts/enemies/charge_flyer.gd" id="1_d4vpa"]
+[ext_resource type="Script" uid="uid://b4rjek7nekjdk" path="res://scripts/enemies/charge_flyer.gd" id="1_d4vpa"]
 [ext_resource type="Texture2D" uid="uid://dw2c1fi2uruqq" path="res://assets/images/enemies/flyer/bluediode.png" id="2_girm6"]
 [ext_resource type="AudioStream" uid="uid://csog3oqiwvfk3" path="res://assets/sounds/enemy_hurt.ogg" id="3_j4syf"]
 
@@ -73,4 +73,14 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_nir26")
 value = 72.73
 show_percentage = false
 
+[node name="ChargeTime" type="Timer" parent="." unique_id=816578940]
+wait_time = 0.4
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1680579402]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="ChargeTime" to="." method="_on_charge_time_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
