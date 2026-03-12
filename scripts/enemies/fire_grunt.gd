@@ -143,11 +143,9 @@ func _on_cooldown_timer_timeout():
 	state = State.HUNT
 
 func _on_area_2d_body_entered(body: CharacterBody2D):
-	can_damage = false
 	await get_tree().create_timer(1.0).timeout
-	can_damage = true
 	
-	if body == player && can_damage:
+	if body == player && can_damage && (global_position.distance_to(player.global_position) < 90):
 		SignalManager.damage_player.emit(damage)
 		can_damage = false
 		is_knocked_back = true
