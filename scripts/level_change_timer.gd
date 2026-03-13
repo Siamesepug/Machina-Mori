@@ -44,21 +44,29 @@ func _on_timeout() -> void:
 		starting_level.queue_free()
 		lvl02_instance = lvl02.instantiate()
 		main.add_child(lvl02_instance)
+		
+		PlayerAttributes.current_health = PlayerAttributes.max_health
 		_teleport_player(lvl02)
 	elif lvl02_instance != null:
 		lvl02_instance.queue_free()
 		lvl03_instance = lvl03.instantiate()
 		main.add_child(lvl03.instantiate())
+		
+		PlayerAttributes.current_health = PlayerAttributes.max_health
 		_teleport_player(lvl03)
 	elif lvl03_instance != null:
 		lvl03_instance.queue_free()
 		lvl04_instance = lvl04.instantiate()
 		main.add_child(lvl04.instantiate())
+		
+		PlayerAttributes.current_health = PlayerAttributes.max_health
 		_teleport_player(lvl04)
 	elif lvl04_instance != null:
 		lvl04_instance.queue_free()
 		lvl05_instance = lvl05.instantiate()
 		main.add_child(lvl05.instantiate())
+		
+		PlayerAttributes.current_health = PlayerAttributes.max_health
 		_teleport_player(lvl05)
 
 func _teleport_player(lvl):
@@ -74,7 +82,7 @@ func _teleport_player(lvl):
 	
 	elif lvl == lvl04:
 		player.global_position.x = -120.0
-		player.global_position.y = -2161.0
+		player.global_position.y = -2170.0
 		wave_spawner.enemy_list.append(cube01) # add new enemy
 		wave_spawner.enemy_list.append(cube02)
 		wave_spawner.enemy_list.append(cube03)

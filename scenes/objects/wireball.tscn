@@ -105,14 +105,14 @@ script = ExtResource("1_pqvyb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1943053839]
 texture_filter = 1
-position = Vector2(6.666667, -25.333334)
+position = Vector2(-4, -25.333334)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_foyd1")
 autoplay = "default"
 frame_progress = 0.2646508
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525793527]
-position = Vector2(10.666667, 1.3333353)
+position = Vector2(0, 1.3333353)
 shape = SubResource("RectangleShape2D_c7xp6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=675640495]

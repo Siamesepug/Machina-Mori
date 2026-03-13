@@ -737,6 +737,7 @@ texture_scale = 9.75
 stream = ExtResource("6_3bnvu")
 volume_db = -17.197
 autoplay = true
+parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1955715139]
 script = ExtResource("6_w3bhg")

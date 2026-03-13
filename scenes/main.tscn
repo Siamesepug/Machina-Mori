@@ -70,7 +70,7 @@ enemy_list = Array[PackedScene]([ExtResource("32_qkpxi"), ExtResource("6_tel4y")
 [node name="WaveTimer" type="Timer" parent="WaveSpawner" unique_id=1685904327]
 
 [node name="Player" parent="." unique_id=131089335 groups=["Player"] instance=ExtResource("15_jkv2x")]
-position = Vector2(2870, -401)
+position = Vector2(439, 43)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=638121522]
 environment = SubResource("Environment_jkv2x")

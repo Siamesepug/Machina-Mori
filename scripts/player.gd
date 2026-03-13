@@ -71,7 +71,6 @@ func _ready():
 	player_sprite.flip_h = false
 
 func _process(delta):
-	print(tilemap)
 	get_attributes()
 
 func _physics_process(delta):
@@ -280,6 +279,9 @@ func _is_dead():
 
 func get_attributes():
 	# Update all player stats with any new changes
+	if PlayerAttributes.current_health > PlayerAttributes.max_health:
+		PlayerAttributes.current_health = PlayerAttributes.max_health
+	
 	current_weapon = PlayerAttributes.current_weapon
 	weapon_damage = PlayerAttributes.weapon_damage
 	weapon_cd = PlayerAttributes.weapon_cd

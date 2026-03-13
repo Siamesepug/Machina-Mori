@@ -43,6 +43,8 @@ var electric_stacks = 0
 var is_on_bleed = false
 var bleed_stacks = 0
 
+var dead = false
+
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var xp_drop = load("res://scenes/objects/xp_drop.tscn")
@@ -191,7 +193,8 @@ func take_knockback():
 	is_knocked_back = false
 
 func is_dead():
-	if current_health <= 0:
+	if current_health <= 0 && !dead:
+		dead = true
 		death_audio.play()
 		state = State.DEAD
 		await death_audio.finished
