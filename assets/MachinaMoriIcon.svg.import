@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3afmw3o5rk2j"
-path="res://.godot/imported/BatteryXP.png-726c940d5b69e2fb3a346c3687f5fd57.ctex"
+uid="uid://cay24j8yqiett"
+path="res://.godot/imported/MachinaMoriIcon.svg-57778d175324635f88b5e813164bd6ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/tilemap/BatteryXP.png"
-dest_files=["res://.godot/imported/BatteryXP.png-726c940d5b69e2fb3a346c3687f5fd57.ctex"]
+source_file="res://assets/MachinaMoriIcon.svg"
+dest_files=["res://.godot/imported/MachinaMoriIcon.svg-57778d175324635f88b5e813164bd6ec.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

@@ -473,7 +473,6 @@ position = Vector2(1, 5.3333335)
 shape = SubResource("RectangleShape2D_jej6c")
 
 [node name="BeamAttackNode" type="Node2D" parent="." unique_id=1958730333]
-visible = false
 
 [node name="BeamAttack" type="Area2D" parent="BeamAttackNode" unique_id=1976309637]
 collision_layer = 2
@@ -502,7 +501,6 @@ energy = 3.0
 texture = SubResource("GradientTexture2D_qfm1y")
 
 [node name="NukeAttackNode" type="Node2D" parent="." unique_id=1155101979]
-visible = false
 
 [node name="NukeAttack" type="Area2D" parent="NukeAttackNode" unique_id=78467768]
 position = Vector2(0, -126.66667)

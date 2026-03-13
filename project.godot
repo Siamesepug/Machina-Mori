@@ -13,8 +13,10 @@ config_version=5
 config/name="Machina Mori"
 run/main_scene="uid://bg8ouupge2wwc"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/bg_color=Color(0.20152658, 0.20152658, 0.20152652, 1)
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+boot_splash/image="uid://dfkowr4gnd6wa"
+config/icon="uid://cay24j8yqiett"
 run/size/mode=0
 
 [autoload]
