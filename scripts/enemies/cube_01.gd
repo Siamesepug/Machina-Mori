@@ -64,6 +64,9 @@ func _physics_process(delta):
 		player = get_tree().get_first_node_in_group("Player")
 		return
 	
+	if current_health <= 0:
+		state = State.DEAD
+	
 	sprite.animation = "default"
 	
 	match state:

@@ -177,7 +177,6 @@ text = "Level: "
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_6v45u")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/background = SubResource("StyleBoxFlat_3quv2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6v45u")

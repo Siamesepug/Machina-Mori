@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var attack_audio = $AttackAudio
 @onready var dash_audio = $DashAudio
 @onready var pause_scene = load("res://scenes/menus/pause_menu.tscn")
+@onready var health_regen = $HealthRegen
 
 @export var air_resistance = 10.0 # lower means more floating in the air
 @export var friction = 50.0 # how snappy the turning and stopping is on the ground
@@ -228,6 +229,7 @@ func _slow_from_dash():
 func _take_damage(damage):
 	hurt_audio.play()
 	PlayerAttributes.current_health -= damage
+	health_regen._took_damage()
 	damage_shader()
 	current_health = PlayerAttributes.current_health
 	

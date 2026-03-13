@@ -227,6 +227,8 @@ vertical_alignment = 1
 
 [node name="LevelUpAudio" type="AudioStreamPlayer" parent="." unique_id=512344782]
 stream = ExtResource("8_4lbqf")
+volume_db = -9.177
+pitch_scale = 0.5
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed" binds= ["item1"]]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Button" to="." method="_on_button_pressed" binds= ["item2"]]
