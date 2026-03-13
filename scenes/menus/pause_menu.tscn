@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cyt7pybhauju"]
 
-[ext_resource type="Script" uid="uid://ch4tuhq1jrlpr" path="res://scenes/menus/pause_menu.gd" id="1_eyfc8"]
+[ext_resource type="Script" uid="uid://ch4tuhq1jrlpr" path="res://scripts/pause_menu.gd" id="1_eyfc8"]
 [ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_dgi6y"]
 [ext_resource type="Shader" uid="uid://bhvbras4xd3mt" path="res://scenes/menus/title_glitch.gdshader" id="2_xiui8"]
 [ext_resource type="FontFile" uid="uid://ckg6uiejukua8" path="res://assets/fonts/MainMenu.ttf" id="3_dqjbd"]

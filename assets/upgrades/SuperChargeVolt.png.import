@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8q2p3hpmt42b"
-path="res://.godot/imported/SuperheatedSteel.png-9c5bd4a015c2be46f146ea50f45ed285.ctex"
+uid="uid://8kfsof2u86mj"
+path="res://.godot/imported/SuperChargeVolt.png-b94c846e0cbe24b7a9006f8ce2d8e8d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/upgrades/SuperheatedSteel.png"
-dest_files=["res://.godot/imported/SuperheatedSteel.png-9c5bd4a015c2be46f146ea50f45ed285.ctex"]
+source_file="res://assets/upgrades/SuperChargeVolt.png"
+dest_files=["res://.godot/imported/SuperChargeVolt.png-b94c846e0cbe24b7a9006f8ce2d8e8d8.ctex"]
 
 [params]
 

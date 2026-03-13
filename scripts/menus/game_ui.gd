@@ -55,7 +55,7 @@ func level_up_stats():
 	PlayerAttributes.weapon_damage += 2
 	PlayerAttributes.dash_damage += 2
 	PlayerAttributes.jump_velocity -= 10
-	PlayerAttributes.speed += 10
+	PlayerAttributes.speed *= 1.02
 
 func _update_hp_bar():
 	hp_bar.max_value = PlayerAttributes.max_health

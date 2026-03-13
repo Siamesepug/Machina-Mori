@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ckpc6b2fhxys5"]
 
 [ext_resource type="Script" uid="uid://cm6jswvxq61v3" path="res://scripts/upgrades/beam_item.gd" id="1_wpsbj"]
-[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_ne5lc"]
+[ext_resource type="Texture2D" uid="uid://b8a54l2xa2bp2" path="res://assets/upgrades/LaserBeam.png" id="2_wpsbj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
 size = Vector2(64, 64)
@@ -10,8 +10,9 @@ size = Vector2(64, 64)
 script = ExtResource("1_wpsbj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
-modulate = Color(1, 0.32156864, 1, 1)
-texture = ExtResource("2_ne5lc")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_wpsbj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
 shape = SubResource("RectangleShape2D_e7mu8")

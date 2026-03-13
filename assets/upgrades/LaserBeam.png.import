@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4i2itsflh7mi"
-path="res://.godot/imported/Attackspeed.png-756fbc09b9d4186def88173d60a1c67a.ctex"
+uid="uid://b8a54l2xa2bp2"
+path="res://.godot/imported/LaserBeam.png-5edb5b90be58ca91c188fd92025c41ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/upgrades/Attackspeed.png"
-dest_files=["res://.godot/imported/Attackspeed.png-756fbc09b9d4186def88173d60a1c67a.ctex"]
+source_file="res://assets/upgrades/LaserBeam.png"
+dest_files=["res://.godot/imported/LaserBeam.png-5edb5b90be58ca91c188fd92025c41ba.ctex"]
 
 [params]
 

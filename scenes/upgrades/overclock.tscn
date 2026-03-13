@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bwxs6gutuvucb"]
 
 [ext_resource type="Script" uid="uid://d12yf6qtu42w2" path="res://scripts/upgrades/overclock.gd" id="1_l1l14"]
-[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_xmhkm"]
+[ext_resource type="Texture2D" uid="uid://vbxx2ad1px32" path="res://assets/upgrades/Overclock.png" id="2_l1l14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
 size = Vector2(64, 64)
@@ -10,8 +10,9 @@ size = Vector2(64, 64)
 script = ExtResource("1_l1l14")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
-modulate = Color(1, 0.32156864, 1, 1)
-texture = ExtResource("2_xmhkm")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_l1l14")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
 shape = SubResource("RectangleShape2D_e7mu8")

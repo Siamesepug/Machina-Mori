@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7ge3bij0r5ct"
-path="res://.godot/imported/Dashsize.png-cc51e981aa06ac58a75b7ad548f51f0d.ctex"
+uid="uid://c4i2itsflh7mi"
+path="res://.godot/imported/Attackspeed.png-435338d9138c675a651c654fd0bfa656.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/upgrades/Dashsize.png"
-dest_files=["res://.godot/imported/Dashsize.png-cc51e981aa06ac58a75b7ad548f51f0d.ctex"]
+source_file="res://assets/upgrades/Attackspeed.png"
+dest_files=["res://.godot/imported/Attackspeed.png-435338d9138c675a651c654fd0bfa656.ctex"]
 
 [params]
 

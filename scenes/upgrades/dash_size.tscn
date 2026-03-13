@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cnneqjjrrhqsm"]
 
 [ext_resource type="Script" uid="uid://lgnula14jb2h" path="res://scripts/upgrades/dash_size.gd" id="1_2b3pu"]
-[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_2c3fc"]
+[ext_resource type="Texture2D" uid="uid://7ge3bij0r5ct" path="res://assets/upgrades/Dashsize.png" id="2_2b3pu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
 size = Vector2(64, 64)
@@ -10,8 +10,9 @@ size = Vector2(64, 64)
 script = ExtResource("1_2b3pu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
-modulate = Color(0.763208, 0, 0.13292459, 1)
-texture = ExtResource("2_2c3fc")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_2b3pu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
 shape = SubResource("RectangleShape2D_e7mu8")

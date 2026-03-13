@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6vxhc61y2flk"
-path="res://.godot/imported/NuclearBlast.png-cd4f29a607f3f0b05c550c746e95dca6.ctex"
+uid="uid://bmuetyi8uep0u"
+path="res://.godot/imported/DurableCasing.png-e96a97c46bb4f9193111b1bd14618390.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/upgrades/NuclearBlast.png"
-dest_files=["res://.godot/imported/NuclearBlast.png-cd4f29a607f3f0b05c550c746e95dca6.ctex"]
+source_file="res://assets/upgrades/DurableCasing.png"
+dest_files=["res://.godot/imported/DurableCasing.png-e96a97c46bb4f9193111b1bd14618390.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://begrhi4ntdrhi"]
 
 [ext_resource type="Script" uid="uid://yicxjtae0063" path="res://scripts/upgrades/acid_element.gd" id="1_qj0ul"]
-[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_2hd4k"]
+[ext_resource type="Texture2D" uid="uid://cdll8xakgmray" path="res://assets/upgrades/Corrosive_coat.png" id="2_qj0ul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
 size = Vector2(64, 64)
@@ -10,8 +10,9 @@ size = Vector2(64, 64)
 script = ExtResource("1_qj0ul")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
-modulate = Color(0.80757797, 0, 0.12833506, 1)
-texture = ExtResource("2_2hd4k")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_qj0ul")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
 shape = SubResource("RectangleShape2D_e7mu8")

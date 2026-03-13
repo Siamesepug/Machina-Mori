@@ -19,8 +19,8 @@ var dash_size = 1.0
 var max_health = 100.0
 var current_health = 100.0
 var regen_cd = 3.0 # seconds before regen starts
-var regen_rate = 2.0 # seconds between heals once active
-var regen_amount = 1.0 # amount to heal
+var regen_rate = 1.0 # seconds between heals once active
+var regen_amount = 2.0 # amount to heal
 
 var xp_level = 0
 var xp_progress = 0.0
@@ -35,7 +35,7 @@ var dash_speed = 4.0
 var level_duration = 300.0 # in seconds
 
 ## UNIQUE ITEM VARS
-var has_beam = false
+var has_beam = true
 var beam_cd = 10.0 # seconds
 var beam_duration = 2.5 # seconds , dont really change this, breaks audio timing
 

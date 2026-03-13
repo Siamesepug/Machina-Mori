@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbmr2vsn3qy8j"
-path="res://.godot/imported/Cryocool.png-a5afe812daee93ebc8ae9ba08780ae09.ctex"
+uid="uid://b8q2p3hpmt42b"
+path="res://.godot/imported/SuperheatedSteel.png-66e21e6a8c6859d9517a7473592196c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/upgrades/Cryocool.png"
-dest_files=["res://.godot/imported/Cryocool.png-a5afe812daee93ebc8ae9ba08780ae09.ctex"]
+source_file="res://assets/upgrades/SuperheatedSteel.png"
+dest_files=["res://.godot/imported/SuperheatedSteel.png-66e21e6a8c6859d9517a7473592196c6.ctex"]
 
 [params]
 

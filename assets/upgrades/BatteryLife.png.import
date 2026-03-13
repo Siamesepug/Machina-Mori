@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmuetyi8uep0u"
-path="res://.godot/imported/DurableCasing.png-59fe9bd1784816e6506b432d9be4286e.ctex"
+uid="uid://dwuekmqdrbvlt"
+path="res://.godot/imported/BatteryLife.png-6ddd3a92454b1f7c13d4f53758548688.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/upgrades/DurableCasing.png"
-dest_files=["res://.godot/imported/DurableCasing.png-59fe9bd1784816e6506b432d9be4286e.ctex"]
+source_file="res://assets/upgrades/BatteryLife.png"
+dest_files=["res://.godot/imported/BatteryLife.png-6ddd3a92454b1f7c13d4f53758548688.ctex"]
 
 [params]
 

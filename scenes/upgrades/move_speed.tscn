@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://daxfttal8sqc1"]
 
 [ext_resource type="Script" uid="uid://bar3bo7h6mmsb" path="res://scripts/upgrades/move_speed.gd" id="1_j0x51"]
-[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_s1rsq"]
+[ext_resource type="Texture2D" uid="uid://ohnwa0tbvgxj" path="res://assets/upgrades/AcceleratedCap.png" id="2_j0x51"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
 size = Vector2(64, 64)
@@ -10,8 +10,9 @@ size = Vector2(64, 64)
 script = ExtResource("1_j0x51")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
-modulate = Color(0.14809194, 0.752655, 0.7878075, 1)
-texture = ExtResource("2_s1rsq")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_j0x51")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
 shape = SubResource("RectangleShape2D_e7mu8")

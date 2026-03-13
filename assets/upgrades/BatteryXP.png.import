@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8a54l2xa2bp2"
-path="res://.godot/imported/LaserBeam.png-afc4ec6d9e5ef77038d5d7fd232fef18.ctex"
+uid="uid://dfot2r7m4n2om"
+path="res://.godot/imported/BatteryXP.png-25424e59f38380fd2e2fae420d9afc05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/upgrades/LaserBeam.png"
-dest_files=["res://.godot/imported/LaserBeam.png-afc4ec6d9e5ef77038d5d7fd232fef18.ctex"]
+source_file="res://assets/upgrades/BatteryXP.png"
+dest_files=["res://.godot/imported/BatteryXP.png-25424e59f38380fd2e2fae420d9afc05.ctex"]
 
 [params]
 

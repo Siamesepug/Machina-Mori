@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bwook4wnx0rby"]
 
 [ext_resource type="Script" uid="uid://dlqxat2ny3wjf" path="res://scripts/upgrades/jump_height.gd" id="1_wwsu7"]
-[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_mr84v"]
+[ext_resource type="Texture2D" uid="uid://0hhbghwa564m" path="res://assets/upgrades/PressureBoots.png" id="2_wwsu7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
 size = Vector2(64, 64)
@@ -10,8 +10,9 @@ size = Vector2(64, 64)
 script = ExtResource("1_wwsu7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
-modulate = Color(1, 0.32156864, 1, 1)
-texture = ExtResource("2_mr84v")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_wwsu7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
 shape = SubResource("RectangleShape2D_e7mu8")

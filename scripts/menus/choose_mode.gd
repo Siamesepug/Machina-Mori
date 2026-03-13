@@ -67,23 +67,23 @@ func set_marathon():
 	PlayerAttributes.level_duration = 900.0
 	
 	# Change enemy stats
-	EnemyStats.enemies_to_spawn = 13
-	EnemyStats.spawn_mult = 1.25
+	EnemyStats.enemies_to_spawn = 10
+	EnemyStats.spawn_mult = 1.18
 	EnemyStats.wave_delay = 100.0
 	
 	EnemyStats.flyer_max_health = 100.0
 	EnemyStats.flyer_max_xp_drops = 3
 	EnemyStats.flyer_speed = 200.0
-	EnemyStats.flyer_damage = 10.0
+	EnemyStats.flyer_damage = 7.0
 	
 	EnemyStats.grunt_max_health = 100.0
 	EnemyStats.grunt_max_xp_drops = 3
 	EnemyStats.grunt_speed = 300.0
-	EnemyStats.grunt_damage = 10.0
+	EnemyStats.grunt_damage = 7.0
 	
 	## CRAWLER STATS
 	EnemyStats.crawler_speed = 200.0
-	EnemyStats.crawler_damage = 20.0
+	EnemyStats.crawler_damage = 15.0
 	EnemyStats.crawler_max_health = 150.0
 	EnemyStats.crawler_max_xp_drops = 3 # max total xp drops per kill
 
@@ -112,23 +112,23 @@ func set_standard():
 	PlayerAttributes.level_duration = 300.0
 	
 	# Change enemy stats
-	EnemyStats.enemies_to_spawn = 10
-	EnemyStats.spawn_mult = 1.25
+	EnemyStats.enemies_to_spawn = 8
+	EnemyStats.spawn_mult = 1.18
 	EnemyStats.wave_delay = 60.0
 	
 	EnemyStats.flyer_max_health = 100.0
 	EnemyStats.flyer_max_xp_drops = 3
 	EnemyStats.flyer_speed = 200.0
-	EnemyStats.flyer_damage = 10.0
+	EnemyStats.flyer_damage = 7.0
 	
 	EnemyStats.grunt_max_health = 100.0
 	EnemyStats.grunt_max_xp_drops = 3
 	EnemyStats.grunt_speed = 300.0
-	EnemyStats.grunt_damage = 10.0
+	EnemyStats.grunt_damage = 7.0
 	
 	## CRAWLER STATS
 	EnemyStats.crawler_speed = 200.0
-	EnemyStats.crawler_damage = 20.0
+	EnemyStats.crawler_damage = 15.0
 	EnemyStats.crawler_max_health = 150.0
 	EnemyStats.crawler_max_xp_drops = 3 # max total xp drops per kill
 
@@ -157,23 +157,23 @@ func set_blitz():
 	PlayerAttributes.level_duration = 150.0
 	
 	# Change enemy stats
-	EnemyStats.enemies_to_spawn = 8
-	EnemyStats.spawn_mult = 1.25
+	EnemyStats.enemies_to_spawn = 6
+	EnemyStats.spawn_mult = 1.18
 	EnemyStats.wave_delay = 30.0
 	
 	EnemyStats.flyer_max_health = 100.0
 	EnemyStats.flyer_max_xp_drops = 3
 	EnemyStats.flyer_speed = 200.0
-	EnemyStats.flyer_damage = 10.0
+	EnemyStats.flyer_damage = 7.0
 	
 	EnemyStats.grunt_max_health = 100.0
 	EnemyStats.grunt_max_xp_drops = 3
 	EnemyStats.grunt_speed = 300.0
-	EnemyStats.grunt_damage = 10.0
+	EnemyStats.grunt_damage = 7.0
 	
 	## CRAWLER STATS
 	EnemyStats.crawler_speed = 200.0
-	EnemyStats.crawler_damage = 20.0
+	EnemyStats.crawler_damage = 15.0
 	EnemyStats.crawler_max_health = 150.0
 	EnemyStats.crawler_max_xp_drops = 3 # max total xp drops per kill
 
@@ -200,8 +200,8 @@ func set_glass_cannon():
 	PlayerAttributes.current_health = 1.0
 	
 	# Change enemy stats
-	EnemyStats.enemies_to_spawn = 10
-	EnemyStats.spawn_mult = 1.25
+	EnemyStats.enemies_to_spawn = 8
+	EnemyStats.spawn_mult = 1.18
 	EnemyStats.wave_delay = 60.0
 	
 	EnemyStats.flyer_max_health = 1.0
@@ -292,7 +292,7 @@ func set_rip_and_tear():
 	PlayerAttributes.level_duration = 300.0
 	
 	# Change enemy stats
-	EnemyStats.enemies_to_spawn = 200
+	EnemyStats.enemies_to_spawn = 100
 	EnemyStats.spawn_mult = 1.5
 	EnemyStats.wave_delay = 60.0
 	

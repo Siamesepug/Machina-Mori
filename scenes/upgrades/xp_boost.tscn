@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cyl8tofu4bsb6"]
 
 [ext_resource type="Script" uid="uid://82t40otkqktw" path="res://scripts/upgrades/xp_boost.gd" id="1_8va48"]
-[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_vbtmq"]
+[ext_resource type="Texture2D" uid="uid://dfot2r7m4n2om" path="res://assets/upgrades/BatteryXP.png" id="2_8va48"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
 size = Vector2(64, 64)
@@ -10,8 +10,9 @@ size = Vector2(64, 64)
 script = ExtResource("1_8va48")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
-modulate = Color(0, 0, 1, 1)
-texture = ExtResource("2_vbtmq")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_8va48")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
 shape = SubResource("RectangleShape2D_e7mu8")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf41xu1227h7e"
-path="res://.godot/imported/TraumaApp.png-52914e6df3f02fb13fdf77ffe863000e.ctex"
+uid="uid://cdll8xakgmray"
+path="res://.godot/imported/Corrosive_coat.png-64117af4a9f916248d3460d9bcd29a0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/upgrades/TraumaApp.png"
-dest_files=["res://.godot/imported/TraumaApp.png-52914e6df3f02fb13fdf77ffe863000e.ctex"]
+source_file="res://assets/upgrades/Corrosive_coat.png"
+dest_files=["res://.godot/imported/Corrosive_coat.png-64117af4a9f916248d3460d9bcd29a0c.ctex"]
 
 [params]
 

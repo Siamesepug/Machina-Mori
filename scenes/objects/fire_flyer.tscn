@@ -76,7 +76,6 @@ streams_count = 1
 stream_0/stream = ExtResource("6_ilqmg")
 
 [node name="FireFlyer" type="CharacterBody2D" unique_id=494621083]
-modulate = Color(0.6392157, 1, 1, 1)
 scale = Vector2(0.75, 0.75)
 collision_layer = 4
 collision_mask = 3

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqa1cyuxp46p8"
-path="res://.godot/imported/ExtraThrust.png-dcefb960c342de4b4d78666b9620ca9a.ctex"
+uid="uid://dbmr2vsn3qy8j"
+path="res://.godot/imported/Cryocool.png-5e5fbd8f96e24c3e540d81f9afe45e53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/upgrades/ExtraThrust.png"
-dest_files=["res://.godot/imported/ExtraThrust.png-dcefb960c342de4b4d78666b9620ca9a.ctex"]
+source_file="res://assets/upgrades/Cryocool.png"
+dest_files=["res://.godot/imported/Cryocool.png-5e5fbd8f96e24c3e540d81f9afe45e53.ctex"]
 
 [params]
 

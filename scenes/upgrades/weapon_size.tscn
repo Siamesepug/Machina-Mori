@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bauw807vljlxp"]
 
 [ext_resource type="Script" uid="uid://b7minuesksrc6" path="res://scripts/upgrades/weapon_size.gd" id="1_l1s21"]
-[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_ykbft"]
+[ext_resource type="Texture2D" uid="uid://dtvixt6v7x5qo" path="res://assets/upgrades/Weaponsize.png" id="2_l1s21"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
 size = Vector2(64, 64)
@@ -10,8 +10,9 @@ size = Vector2(64, 64)
 script = ExtResource("1_l1s21")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
-modulate = Color(0.763208, 0, 0.13292459, 1)
-texture = ExtResource("2_ykbft")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_l1s21")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
 shape = SubResource("RectangleShape2D_e7mu8")

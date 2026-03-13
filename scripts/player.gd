@@ -46,6 +46,10 @@ var jump_velocity = PlayerAttributes.jump_velocity
 var max_jumps = PlayerAttributes.max_jumps
 var jump_count = 0
 var jump_cutoff_value = 0.4
+var slow_percent = 1.0
+var tilemap = null
+var hazard_cd = 1.0 # in seconds, how many times hazards will affect the player
+var hazard_rate = 0.0 # the counter for hazard_cd
 
 var activate_screenshake = false
 var shake_amount : float
@@ -67,6 +71,7 @@ func _ready():
 	player_sprite.flip_h = false
 
 func _process(delta):
+	print(tilemap)
 	get_attributes()
 
 func _physics_process(delta):
@@ -117,7 +122,7 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
 	if direction:
-		velocity.x = direction * speed * dash_speed
+		velocity.x = direction * speed * dash_speed * slow_percent
 	else:
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x, 0, friction)
@@ -126,7 +131,7 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, air_resistance)
 	
 	check_oneway_platform()
-	check_map_hazard()
+	check_map_hazard(delta)
 	
 	move_and_slide()
 
@@ -162,6 +167,7 @@ func _input(event):
 				
 				if PlayerAttributes.has_double_attack:
 					await get_tree().create_timer(0.4).timeout
+					var direction = Input.get_axis("left", "right")
 					sword_attack.swing_sword()
 				
 				# if you have the beam item, fire it
@@ -205,15 +211,29 @@ func check_oneway_platform():
 		await get_tree().create_timer(0.1).timeout
 		set_collision_mask_value(4, true)
 
-func check_map_hazard():
-	pass
-	#for i in get_slide_collision_count():
-	#	var collision = get_slide_collision(i)
-	#	var danger = get_parent().get_node("Water")
-	#	if collision.collider == danger:
-	#		PlayerAttributes.current_health -= 1
-	#		current_health -= 1
-	#		SignalManager.hp_changed.emit()
+func check_map_hazard(delta):
+	if tilemap == null:
+		return
+	
+	slow_percent = 1.0
+	
+	var cell = tilemap.local_to_map(tilemap.to_local(global_position))
+	var tile_data = tilemap.get_cell_tile_data(cell)
+	
+	if tile_data:
+		var effect = tile_data.get_custom_data("effect")
+		if effect == "water":
+			slow_percent = 0.5
+			
+			hazard_rate -= delta
+			if hazard_rate <= 0:
+				_take_damage(1.0)
+				hazard_rate = hazard_cd
+		elif effect == "fire":
+			hazard_rate -= delta
+			if hazard_rate <= 0:
+				_take_damage(3.0)
+				hazard_rate = hazard_cd
 
 func _slow_from_dash():
 	

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mfdawgarfjgi"
-path="res://.godot/imported/Powersupply.png-3b13ab9b1387f4de527613100fc1ca48.ctex"
+path="res://.godot/imported/Powersupply.png-cab33c4b278a28ba91fd876c55f72065.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/upgrades/Powersupply.png"
-dest_files=["res://.godot/imported/Powersupply.png-3b13ab9b1387f4de527613100fc1ca48.ctex"]
+source_file="res://assets/upgrades/Powersupply.png"
+dest_files=["res://.godot/imported/Powersupply.png-cab33c4b278a28ba91fd876c55f72065.ctex"]
 
 [params]
 

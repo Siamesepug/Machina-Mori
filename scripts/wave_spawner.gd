@@ -22,6 +22,7 @@ func _ready():
 func spawn_wave():
 	spawn_mult = pow(EnemyStats.spawn_mult, current_wave)
 	enemies_to_spawn = int(base_enemies * spawn_mult)
+	enemies_to_spawn = min(enemies_to_spawn, 150)
 	spawn_interval = (wave_delay - 10.0) / enemies_to_spawn
 	
 	spawn_timer.wait_time = spawn_interval
@@ -37,7 +38,8 @@ func _on_spawn_timer_timeout():
 
 func _on_wave_timer_timeout():
 	current_wave += 1
-	level_up_enemy_stats()
+	if (current_wave % 2) == 0: # slower level up
+		level_up_enemy_stats()
 	spawn_wave()
 
 func level_up_enemy_stats():

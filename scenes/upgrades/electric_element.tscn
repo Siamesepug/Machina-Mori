@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://coxp5tljxj3ss"]
 
 [ext_resource type="Script" uid="uid://105n7iacydee" path="res://scripts/upgrades/electric_element.gd" id="1_27gh0"]
-[ext_resource type="Texture2D" uid="uid://dfkowr4gnd6wa" path="res://assets/images/background/Gray.png" id="2_001gd"]
+[ext_resource type="Texture2D" uid="uid://8kfsof2u86mj" path="res://assets/upgrades/SuperChargeVolt.png" id="2_27gh0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
 size = Vector2(64, 64)
@@ -10,8 +10,9 @@ size = Vector2(64, 64)
 script = ExtResource("1_27gh0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
-modulate = Color(0.80757797, 0, 0.12833506, 1)
-texture = ExtResource("2_001gd")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_27gh0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
 shape = SubResource("RectangleShape2D_e7mu8")

@@ -71,7 +71,6 @@ streams_count = 1
 stream_0/stream = ExtResource("4_7g3df")
 
 [node name="Cube03" type="CharacterBody2D" unique_id=494621083]
-modulate = Color(0.6392157, 1, 1, 1)
 scale = Vector2(0.97731036, 0.97731036)
 collision_layer = 4
 collision_mask = 3
