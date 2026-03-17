@@ -298,8 +298,8 @@ func get_attributes():
 	xp_progress = PlayerAttributes.xp_progress
 	xp_gain = PlayerAttributes.xp_gain
 	
-	speed = PlayerAttributes.speed
-	jump_velocity = PlayerAttributes.jump_velocity
+	speed = min(PlayerAttributes.speed, 800)
+	jump_velocity = max(PlayerAttributes.jump_velocity, -2000)
 	
 	max_jumps = PlayerAttributes.max_jumps
 	

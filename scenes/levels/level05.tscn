@@ -771,11 +771,10 @@ scale = Vector2(9.767045, 7.8483534)
 texture = ExtResource("5_6lrqc")
 
 [node name="PointLight2D3" type="PointLight2D" parent="." unique_id=1549912520]
-visible = false
 position = Vector2(91.666664, -1694.3333)
 rotation = -1.5707964
 scale = Vector2(6.9449215, 22.39861)
-color = Color(1, 0, 0, 0.5372549)
+color = Color(0.64719546, 0.5165252, 1.92523e-07, 0.5372549)
 energy = 1.9
 texture = SubResource("GradientTexture2D_mfhsn")
 texture_scale = 9.75

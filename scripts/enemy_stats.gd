@@ -13,7 +13,7 @@ var flyer_damage_cd = 1.5 # seconds
 
 var flyer_max_health = 100.0
 
-var flyer_max_xp_drops = 3 # max total xp drops per kill
+var flyer_max_xp_drops = 2 # max total xp drops per kill
 
 var flyer_charge_chance = 0.3 # chances on what to do
 var flyer_fire_chance = 0.7
@@ -25,7 +25,7 @@ var grunt_damage_cd = 1.5 # seconds
 
 var grunt_max_health = 100.0
 
-var grunt_max_xp_drops = 3 # max total xp drops per kill
+var grunt_max_xp_drops = 2 # max total xp drops per kill
 
 var grunt_charge_chance = 0.7 # chances on what to do
 var grunt_fire_chance = 0.3
@@ -49,7 +49,7 @@ var wireball_damage_cd = 1.0 # seconds
 
 var wireball_max_health = 175.0
 
-var wireball_max_xp_drops = 5 # max total xp drops per kill
+var wireball_max_xp_drops = 3 # max total xp drops per kill
 
 var wireball_charge_chance = 0.1 # chances on what to do
 var wireball_fire_chance = 0.9

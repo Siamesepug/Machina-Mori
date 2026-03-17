@@ -17,12 +17,19 @@ var spawn_interval = (wave_delay - 10.0) / enemies_to_spawn # seconds between sp
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
 func _ready():
+	SignalManager.map_change.connect(map_change)
 	spawn_wave()
 
 func spawn_wave():
 	spawn_mult = pow(EnemyStats.spawn_mult, current_wave)
 	enemies_to_spawn = int(base_enemies * spawn_mult)
-	enemies_to_spawn = min(enemies_to_spawn, 150)
+	
+	# Don't spawn too many enemies, gets laggy
+	if PlayerAttributes.rip_and_tear:
+		enemies_to_spawn = min(enemies_to_spawn, 200)
+	else:
+		enemies_to_spawn = min(enemies_to_spawn, 60)
+	
 	spawn_interval = (wave_delay - 10.0) / enemies_to_spawn
 	
 	spawn_timer.wait_time = spawn_interval
@@ -75,3 +82,18 @@ func get_random_spawn_position():
 	var safe_point = NavigationServer2D.map_get_closest_point(nav_map, random_point)
 	
 	return safe_point
+
+# When the map changes, reset back to default enemy count
+func map_change():
+	spawn_timer.stop()
+	wave_timer.stop()
+	
+	current_wave = 1
+	spawn_wave()
+	
+	# Spike enemy health between maps, might need to adjust these
+	EnemyStats.flyer_max_health *= 1.6
+	EnemyStats.grunt_max_health *= 1.6
+	EnemyStats.crawler_max_health *= 1.6
+	EnemyStats.wireball_max_health *= 1.6
+	EnemyStats.cube_max_health *= 1.6

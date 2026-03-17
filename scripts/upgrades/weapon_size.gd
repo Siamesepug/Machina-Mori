@@ -7,5 +7,5 @@ var rarity_weight = 20
 var one_time = false
 
 func activate_item():
-	PlayerAttributes.weapon_size += 0.15
+	PlayerAttributes.weapon_size += 0.2
 	queue_free()

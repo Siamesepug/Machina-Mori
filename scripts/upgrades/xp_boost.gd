@@ -8,5 +8,5 @@ var rarity_weight = 15
 var one_time = false
 
 func activate_item():
-	PlayerAttributes.xp_gain += 5.0
+	PlayerAttributes.xp_gain += 2.0
 	queue_free()

@@ -11,5 +11,4 @@ func activate_item():
 		PlayerAttributes.xp_healing += 1
 	else:
 		PlayerAttributes.xp_healing += 0.25
-		PlayerAttributes.xp_healing *= 1.5
 	queue_free()

@@ -71,5 +71,6 @@ var bleed_level = 0
 var default_speed = 1.0
 
 var glass_cannon = false
+var rip_and_tear = false
 
 var max_jumps = 1

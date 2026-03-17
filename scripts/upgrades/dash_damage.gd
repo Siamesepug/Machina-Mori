@@ -7,5 +7,5 @@ var rarity_weight = 20
 var one_time = false
 
 func activate_item():
-	PlayerAttributes.dash_damage *= 1.25
+	PlayerAttributes.dash_damage += 20
 	queue_free()

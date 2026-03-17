@@ -64,7 +64,7 @@ func set_marathon():
 	PlayerAttributes.max_health = 200.0
 	PlayerAttributes.current_health = 200.0
 	PlayerAttributes.xp_gain = 5.0
-	PlayerAttributes.level_duration = 900.0
+	PlayerAttributes.level_duration = 600.0
 	
 	# Change enemy stats
 	EnemyStats.enemies_to_spawn = 10
@@ -72,12 +72,12 @@ func set_marathon():
 	EnemyStats.wave_delay = 100.0
 	
 	EnemyStats.flyer_max_health = 100.0
-	EnemyStats.flyer_max_xp_drops = 3
+	EnemyStats.flyer_max_xp_drops = 2
 	EnemyStats.flyer_speed = 200.0
 	EnemyStats.flyer_damage = 7.0
 	
 	EnemyStats.grunt_max_health = 100.0
-	EnemyStats.grunt_max_xp_drops = 3
+	EnemyStats.grunt_max_xp_drops = 2
 	EnemyStats.grunt_speed = 300.0
 	EnemyStats.grunt_damage = 7.0
 	
@@ -91,7 +91,7 @@ func set_marathon():
 	EnemyStats.wireball_speed = 50.0
 	EnemyStats.wireball_damage = 15.0
 	EnemyStats.wireball_max_health = 175.0
-	EnemyStats.wireball_max_xp_drops = 5 # max total xp drops per kill
+	EnemyStats.wireball_max_xp_drops = 3 # max total xp drops per kill
 
 	## WIREBALL STATS
 	EnemyStats.cube_speed = 75.0
@@ -117,12 +117,12 @@ func set_standard():
 	EnemyStats.wave_delay = 60.0
 	
 	EnemyStats.flyer_max_health = 100.0
-	EnemyStats.flyer_max_xp_drops = 3
+	EnemyStats.flyer_max_xp_drops = 2
 	EnemyStats.flyer_speed = 200.0
 	EnemyStats.flyer_damage = 7.0
 	
 	EnemyStats.grunt_max_health = 100.0
-	EnemyStats.grunt_max_xp_drops = 3
+	EnemyStats.grunt_max_xp_drops = 2
 	EnemyStats.grunt_speed = 300.0
 	EnemyStats.grunt_damage = 7.0
 	
@@ -136,7 +136,7 @@ func set_standard():
 	EnemyStats.wireball_speed = 50.0
 	EnemyStats.wireball_damage = 15.0
 	EnemyStats.wireball_max_health = 175.0
-	EnemyStats.wireball_max_xp_drops = 5 # max total xp drops per kill
+	EnemyStats.wireball_max_xp_drops = 3 # max total xp drops per kill
 
 	## WIREBALL STATS
 	EnemyStats.cube_speed = 75.0
@@ -162,12 +162,12 @@ func set_blitz():
 	EnemyStats.wave_delay = 30.0
 	
 	EnemyStats.flyer_max_health = 100.0
-	EnemyStats.flyer_max_xp_drops = 3
+	EnemyStats.flyer_max_xp_drops = 2
 	EnemyStats.flyer_speed = 200.0
 	EnemyStats.flyer_damage = 7.0
 	
 	EnemyStats.grunt_max_health = 100.0
-	EnemyStats.grunt_max_xp_drops = 3
+	EnemyStats.grunt_max_xp_drops = 2
 	EnemyStats.grunt_speed = 300.0
 	EnemyStats.grunt_damage = 7.0
 	
@@ -181,7 +181,7 @@ func set_blitz():
 	EnemyStats.wireball_speed = 50.0
 	EnemyStats.wireball_damage = 15.0
 	EnemyStats.wireball_max_health = 175.0
-	EnemyStats.wireball_max_xp_drops = 5 # max total xp drops per kill
+	EnemyStats.wireball_max_xp_drops = 3 # max total xp drops per kill
 
 	## WIREBALL STATS
 	EnemyStats.cube_speed = 75.0
@@ -205,12 +205,12 @@ func set_glass_cannon():
 	EnemyStats.wave_delay = 60.0
 	
 	EnemyStats.flyer_max_health = 1.0
-	EnemyStats.flyer_max_xp_drops = 3
+	EnemyStats.flyer_max_xp_drops = 2
 	EnemyStats.flyer_speed = 200.0
 	EnemyStats.flyer_damage = 10.0
 	
 	EnemyStats.grunt_max_health = 1.0
-	EnemyStats.grunt_max_xp_drops = 3
+	EnemyStats.grunt_max_xp_drops = 2
 	EnemyStats.grunt_speed = 300.0
 	EnemyStats.grunt_damage = 10.0
 	
@@ -224,7 +224,7 @@ func set_glass_cannon():
 	EnemyStats.wireball_speed = 50.0
 	EnemyStats.wireball_damage = 15.0
 	EnemyStats.wireball_max_health = 1.0
-	EnemyStats.wireball_max_xp_drops = 5 # max total xp drops per kill
+	EnemyStats.wireball_max_xp_drops = 3 # max total xp drops per kill
 
 	## WIREBALL STATS
 	EnemyStats.cube_speed = 75.0
@@ -310,13 +310,13 @@ func set_rip_and_tear():
 	EnemyStats.crawler_speed = 200.0
 	EnemyStats.crawler_damage = 1.0
 	EnemyStats.crawler_max_health = 50.0
-	EnemyStats.crawler_max_xp_drops = 3 # max total xp drops per kill
+	EnemyStats.crawler_max_xp_drops = 1 # max total xp drops per kill
 
 	## WIREBALL STATS
 	EnemyStats.wireball_speed = 50.0
 	EnemyStats.wireball_damage = 1.0
 	EnemyStats.wireball_max_health = 50.0
-	EnemyStats.wireball_max_xp_drops = 5 # max total xp drops per kill
+	EnemyStats.wireball_max_xp_drops = 1 # max total xp drops per kill
 
 	## WIREBALL STATS
 	EnemyStats.cube_speed = 75.0
@@ -326,6 +326,8 @@ func set_rip_and_tear():
 	EnemyStats.cube_child_max_health = 25.0
 	EnemyStats.cube_max_xp_drops = 1 # max total xp drops per kill (for child only)
 	EnemyStats.cube_child_max_spawns = 4 # max amount of cubes to spawn
+	
+	PlayerAttributes.rip_and_tear = true
 
 func _on_back_to_menu_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/menus/title_screen.tscn")

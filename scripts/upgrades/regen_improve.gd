@@ -7,5 +7,5 @@ var rarity_weight = 20
 var one_time = false
 
 func activate_item():
-	PlayerAttributes.regen_amount += 1
+	PlayerAttributes.regen_amount += 2
 	queue_free()
