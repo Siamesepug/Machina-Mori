@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c4lv2o1odibet"]
+
+[ext_resource type="Script" uid="uid://drp5cpde62p5d" path="res://scripts/upgrades/armor.gd" id="1_1yju8"]
+[ext_resource type="Texture2D" uid="uid://3733tvd2qb50" path="res://assets/upgrades/Attackdamage.png" id="2_tbhaw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
+size = Vector2(64, 64)
+
+[node name="Armor" type="StaticBody2D" unique_id=567444937]
+script = ExtResource("1_1yju8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_tbhaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
+shape = SubResource("RectangleShape2D_e7mu8")

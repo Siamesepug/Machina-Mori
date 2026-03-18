@@ -180,7 +180,12 @@ func _on_area_2d_body_entered(body: CharacterBody2D):
 		can_damage = true
 
 func take_damage(damage):
+	# bonus damage
+	if current_health == EnemyStats.flyer_max_health:
+		current_health -= PlayerAttributes.high_health_bonus_dmg
+	
 	current_health -= damage
+	
 	hurt_audio.play()
 	
 	health_bar.value = current_health

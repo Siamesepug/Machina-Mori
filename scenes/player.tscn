@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://ctfre087qh7qq" path="res://scripts/sword_attack.gd" id="8_smehm"]
 [ext_resource type="Script" uid="uid://dgm8ru00cli1d" path="res://scripts/dash_attack.gd" id="11_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://3w5885cnr6n7" path="res://assets/images/player/Playersword.png" id="11_4r5pv"]
+[ext_resource type="Script" uid="uid://dic6p86pmhqce" path="res://scenes/dagger_attack.gd" id="11_i4ail"]
 [ext_resource type="Texture2D" uid="uid://ceoi1nvsi3uym" path="res://assets/images/player/Playerswordside.png" id="12_60mlk"]
 [ext_resource type="Shader" uid="uid://v2eqsaem5fen" path="res://scenes/beam.gdshader" id="12_f1ej7"]
 [ext_resource type="Script" uid="uid://btixi7qq5whdv" path="res://scripts/beam_attack.gd" id="12_oprun"]
@@ -260,7 +261,7 @@ stream_0/stream = ExtResource("5_fulsm")
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y4r1p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ur7pv"]
-size = Vector2(47, 34.166668)
+size = Vector2(42.458332, 34.166668)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4otl"]
 atlas = ExtResource("11_4r5pv")
@@ -463,6 +464,24 @@ scale = Vector2(0.666, 0.666)
 sprite_frames = SubResource("SpriteFrames_giy8y")
 animation = &"swing_side"
 
+[node name="DaggerAttackNode" type="Node2D" parent="." unique_id=1397122598]
+visible = false
+
+[node name="DaggerAttack" type="Area2D" parent="DaggerAttackNode" unique_id=1655065075]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("11_i4ail")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DaggerAttackNode/DaggerAttack" unique_id=367639807]
+shape = SubResource("RectangleShape2D_ur7pv")
+
+[node name="DaggerSprite" type="AnimatedSprite2D" parent="DaggerAttackNode" unique_id=672796687]
+modulate = Color(0.92941177, 1, 0, 1)
+texture_filter = 1
+scale = Vector2(0.666, 0.666)
+sprite_frames = SubResource("SpriteFrames_giy8y")
+animation = &"swing_side"
+
 [node name="DashAttack" type="Area2D" parent="." unique_id=963885]
 collision_layer = 2
 collision_mask = 4
@@ -559,6 +578,7 @@ texture = SubResource("GradientTexture2D_d2wvv")
 one_shot = true
 
 [connection signal="body_entered" from="SwordAttackNode/SwordAttack" to="SwordAttackNode/SwordAttack" method="_on_sword_attack_body_entered"]
+[connection signal="body_entered" from="DaggerAttackNode/DaggerAttack" to="DaggerAttackNode/DaggerAttack" method="_on_sword_attack_body_entered"]
 [connection signal="body_entered" from="DashAttack" to="DashAttack" method="_on_dash_attack_body_entered"]
 [connection signal="body_entered" from="BeamAttackNode/BeamAttack" to="BeamAttackNode/BeamAttack" method="_on_dash_attack_body_entered"]
 [connection signal="timeout" from="BeamAttackNode/BeamAttack/BeamCD" to="BeamAttackNode/BeamAttack" method="_on_beam_cd_timeout"]

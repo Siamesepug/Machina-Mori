@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player_sprite = $AnimatedSprite2D
 @onready var jump_sound = $JumpSound
 @onready var sword_attack = $SwordAttackNode/SwordAttack
+@onready var dagger_attack = $DaggerAttackNode/DaggerAttack
 @onready var dash_attack = $DashAttack
 @onready var beam_attack = $BeamAttackNode/BeamAttack
 @onready var nuke_attack = $NukeAttackNode/NukeAttack
@@ -110,9 +111,9 @@ func _physics_process(delta):
 		if !is_on_floor():
 			velocity.y *= jump_cutoff_value
 	
-	#if Input.is_action_just_pressed("debug_level_up"):
-	#	PlayerAttributes.xp_progress += xp_gain
-	#	SignalManager.xp_gained.emit(xp_gain)
+	if Input.is_action_just_pressed("debug_level_up"):
+		PlayerAttributes.xp_progress += xp_gain
+		SignalManager.xp_gained.emit(xp_gain)
 	
 	if Input.is_action_just_pressed("back"):
 		get_parent().add_child(pause_scene.instantiate())
@@ -165,8 +166,7 @@ func _input(event):
 				sword_attack.swing_sword()
 				
 				if PlayerAttributes.has_double_attack:
-					await get_tree().create_timer(0.4).timeout
-					var direction = Input.get_axis("left", "right")
+					await get_tree().create_timer(0.3).timeout
 					sword_attack.swing_sword()
 				
 				# if you have the beam item, fire it
@@ -177,7 +177,28 @@ func _input(event):
 				SignalManager.slash_cd_start.emit()
 				await get_tree().create_timer(weapon_cd).timeout
 				
-				print("Sword is restored")
+				on_weapon_cd = false
+	
+		if current_weapon == "dagger":
+			if !on_weapon_cd:
+				on_weapon_cd = true
+				
+				attack_audio.play()
+				dagger_attack.swing_dagger()
+				
+				# might remove on daggers?
+				if PlayerAttributes.has_double_attack:
+					await get_tree().create_timer(0.3).timeout
+					dagger_attack.swing_dagger()
+				
+				# if you have the beam item, fire it
+				if PlayerAttributes.has_beam:
+					beam_attack.is_firing()
+					SignalManager.beam_cd_start.emit()
+				
+				SignalManager.slash_cd_start.emit()
+				await get_tree().create_timer(weapon_cd).timeout
+				
 				on_weapon_cd = false
 	
 	# Dash input
@@ -247,7 +268,7 @@ func _slow_from_dash():
 
 func _take_damage(damage):
 	hurt_audio.play()
-	PlayerAttributes.current_health -= damage
+	PlayerAttributes.current_health -= (damage - PlayerAttributes.armor)
 	health_regen._took_damage()
 	damage_shader()
 	current_health = PlayerAttributes.current_health

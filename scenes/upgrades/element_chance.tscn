@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dn8ekwpd5d0vj"]
+
+[ext_resource type="Script" uid="uid://uj55yblvs2d3" path="res://scripts/upgrades/element_chance.gd" id="1_4xku5"]
+[ext_resource type="Texture2D" uid="uid://3733tvd2qb50" path="res://assets/upgrades/Attackdamage.png" id="2_6mipg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
+size = Vector2(64, 64)
+
+[node name="ElementChance" type="StaticBody2D" unique_id=567444937]
+script = ExtResource("1_4xku5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_6mipg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
+shape = SubResource("RectangleShape2D_e7mu8")

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bxd7j88qr01kg"]
+
+[ext_resource type="Script" uid="uid://u8raox7i0cxc" path="res://scripts/upgrades/high_hp_dmg.gd" id="1_0x1oe"]
+[ext_resource type="Texture2D" uid="uid://3733tvd2qb50" path="res://assets/upgrades/Attackdamage.png" id="2_cta7k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mu8"]
+size = Vector2(64, 64)
+
+[node name="HighHPDmg" type="StaticBody2D" unique_id=567444937]
+script = ExtResource("1_0x1oe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778294336]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_cta7k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877113859]
+shape = SubResource("RectangleShape2D_e7mu8")
